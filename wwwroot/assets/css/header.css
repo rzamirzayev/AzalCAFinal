@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: sans-serif;
+}
+p{
+    margin-bottom: 0 !important;
+}
+header{
+    padding: 32px;
+    justify-content: space-between;
+
+}
+.black_parag{
+    font-size: 20px;
+    line-height: 28px;
+    color: #2e3034 !important;
+    overflow: hidden;
+    height: 56px;
+    margin-bottom: 9px;
+}
+.gray_parag{
+    font-size: 14px;
+    line-height: 20px;
+    overflow: hidden;
+    height: 56px;
+
+    color: #6e7583 !important;
+    margin-bottom: 24px;
+    opacity: .5;
+}
+.head{
+    background-image: url(https://www.azal.az/_next/static/media/new_main_bg_fc902710c5.f4be4e32.jpg);
+    height: 80vh;
+    min-height: 500px;
+}
+.azal_logo img{
+    height: 40px;
+    width: 146px;
+}
+.head_button{
+    align-items: center;
+    border: 1px solid transparent;
+    background-color: hsla(0, 0%, 100%, .1);
+    transition: all .15s ease-in-out;
+    padding: 12px;
+    border-radius: 12px;
+    color: #fff;
+}
+.header_selects div{
+    margin-right: 16px;
+}
+.header_button_div.active{display: block;}
+.header_button_div{
+    display: none;
+    z-index: 4;
+    right: 0%;
+    top: calc(100% + 24px);
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 16px;
+    color: #2E3034;
+    background: #FFF;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgb(34 42 55 / 4%), 0px 0px 4px rgb(34 42 55 / 4%);
+}
+.header_button_div li{
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    min-width: 180px;
+    padding: 8px;
+    text-align: left;
+    border: none;
+    border-radius: 0;
+}
+.header_button_div li:hover{
+    background-color: #f4f5f5;
+}
+.header_button_div a{
+    color: #2E3034;
+}
+a:hover{
+    text-decoration: none !important;
+    color: #2e3034;
+}

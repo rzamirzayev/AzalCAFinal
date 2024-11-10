@@ -1,3 +1,6 @@
+using AzalCAFinal.AppCode.Services;
+using AzalCAFinal.AppCode.Services.Implementation;
+using AzalCAFinal.Models.Configuration;
 using AzalCAFinal.Models.Contexts;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,8 +14,22 @@ namespace AzalCAFinal
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<DataContext>(cfg =>
             {
-                cfg.UseSqlServer(builder.Configuration.GetConnectionString("cString"));
+                cfg.UseSqlServer(builder.Configuration.GetConnectionString("cString"), opt =>
+                {
+                    opt.MigrationsHistoryTable("MigrationHistory");
+                });
             });
+            builder.Services.Configure<EmailConfiguration>(cfg =>
+            {
+                builder.Configuration.GetSection(nameof(EmailConfiguration)).Bind(cfg);
+            });
+            builder.Services.Configure<CryptoServiceConfiguration>(cfg =>
+            {
+                builder.Configuration.GetSection(nameof(CryptoServiceConfiguration)).Bind(cfg);
+            });
+            builder.Services.AddSingleton<IEmailService, EmailService>();
+            builder.Services.AddSingleton<ICryptoService, CryptoService>();
+
             var app = builder.Build();
             app.UseStaticFiles();
             app.MapControllerRoute(name: "default", pattern: "{controller=home}/{action=index}/{id?}");

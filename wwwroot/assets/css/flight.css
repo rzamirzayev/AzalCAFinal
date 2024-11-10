@@ -1,0 +1,380 @@
+body{
+    background-color: #EDF1F4 !important;
+    font-family: "Suisse Intl", -apple-system, blinkmacsystemfont, arial, sans-serif !important;
+}
+.head_button{
+    color: #2E3034 !important;
+    background-color: rgb(255 255 255 /10%);
+    border: 1px solid #d9d9d9;
+}
+.head_button:hover{
+    color: #fff !important;
+    background-color: #37A6DB;
+    border: 1px solid rgba(0, 0, 0, 0);
+}
+
+
+.bookflight input,
+.bookflight button{
+    border: 1px solid #6e7583;
+}
+.flight_div{
+    margin-top: 40px;
+    width: 100%;
+}
+.flight_btn{
+    gap: 8px;
+}
+.btnn button{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    background: rgb(16 16 16 / 20%);
+    border-radius: 12px 12px 0 0;
+    color: #fff;
+    border-color: transparent;
+    
+}
+.bookflight{
+    padding: 24px;
+    width: 100%;
+    background: #fff;
+    border-radius: 0 12px 12px;
+}
+.bookflight input,
+.flightBtn{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 64px;
+    padding: 0 16px;
+    background-color: #fff;
+    border: 1px solid #DBE0E4;
+}
+.passangerDivs{
+    position: absolute;
+    z-index: 2;
+    top: 100px;
+    right: 43px;
+    overflow: hidden;
+    width: 330px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgb(34 42 55 / 4%), 0px 0px 4px rgb(34 42 55 / 4%);
+}
+.passangerDivs{
+    display: none;
+}
+.passangerDiv{
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #F2F5FB;
+    border-radius: .5px;
+}
+.passangerDiv div:last-child{
+    align-items: center;
+}
+.passangerDiv div:last-child p{
+    display: flex;
+    height: 20px;
+    width: 20px;
+    align-items: center;
+    font-size: 18px;
+    justify-content: center;
+    line-height: 28px;
+    margin: 0 8px;
+    font-weight: 500;
+    color: var(--color-n-900);
+}
+.passangerDiv_parag span{
+    font-size: 13px;
+    line-height: 20px;
+    color: #6E7583;
+}
+.passangerDiv_parag p{
+    font-size: large;
+    font-weight: bold;
+}
+.passangerDiv button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #F5F6F8;
+    border: 1px solid #CDD5DF;
+    border-radius: 50%;
+}
+.sumbitButton{
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    background: #01357E;
+    border: 1px solid #CDD5DF;
+    border-radius: 0 12px 12px 0;
+}
+.passangerButton{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 158px;
+    height: 64px;
+    padding: 10px 16px;
+    text-align: left;
+    background: #fff;
+    border: 1px solid #CDD5DF;
+}
+.passangerButton span{
+    font-size: 13px;
+    line-height: 20px;
+    color: #6E7583;
+}
+.passangerButton p{
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #2e3034;
+}
+.flight_svg{
+    width: 16px;
+    height: 16px;
+}
+.bookflight{
+    position: relative;
+}
+.bookflight .return_svg{
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 26%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    border: 1px solid #DBE0E4;
+    border-radius: 50%;
+}
+.calendar{
+    display: none;
+    z-index: 40;
+}
+.bookflight{
+    background-color: #EDF1F4 !important;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    max-width: 1160px;
+    margin: 0 auto;
+}
+
+
+
+/* calusel css */
+.flight_date_carusel{
+    position: relative;
+    display: flex;
+    max-height: 112px;
+    margin-top: 40px;
+}
+.carousel-itemm button {
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 130px;
+    height: 112px;
+    padding: 16px;
+    color: #2e3034;
+    text-align: left;
+    border: 2px solid #C1C8D1;
+    border-radius: 12px;
+    background-color: #fff;
+}
+.carousel-itemm span:first-child{
+    margin-bottom: 12px;
+    text-transform: capitalize;
+    font-size: 13px;
+    line-height: 20px;
+    color: #6E7583;
+}
+.carousel-itemm p{
+    font-size: 20px;
+    line-height: 28px;
+    color: #2e3034;
+}
+.carousel-itemm span:last-child{
+    color: rgb(46 48 52 / 50%) ;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+
+
+
+
+/* floght  */
+.finalFlightDate{
+    margin-top: 40px;
+}
+.flight_date{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: space-between;
+    box-sizing: border-box;
+    margin-top: 16px;
+    padding: 16px;
+    background:#fff;
+    border-radius: 12px;
+}
+.left_column{
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+}
+.arrivalDate{
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.dateInfo{
+    display: flex;
+    flex-direction: column;
+}
+.dateInfo p{
+    font-size: 32px;
+    line-height: 40px;
+    color: #2e3034;
+}
+.dateInfo span{
+    font-size: 13px;
+    line-height: 20px;
+    color: #6E7583;
+}
+.planeSvg{
+    margin-top: 20px;
+    color: #979DA8;
+    margin-bottom: 10px;
+}
+.svgFlight{
+    min-width: 146px;
+    margin-top: 16px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+.salt{
+    position: absolute;
+    width: 90%;
+    border: 1px solid black;
+    top: 4px;
+    left: 7px;
+}
+.round{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 2px solid #2e3034;
+}
+.right_column{
+    flex-grow: 1;
+    justify-content: space-between;
+}
+.flightInfoContainer{
+    min-width: 200px;
+    max-width: 310px;
+}
+.svgContainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.svgContainer div{
+    display: flex;
+    box-sizing: border-box;
+    width: fit-content;
+    height: 32px;
+    padding: 8px;
+    font-size: 12px;
+    line-height: 16px;
+    color: #6E7583;
+    border: 1px solid #DBE0E4;
+    border-radius: 16px;
+}
+.svgContainer svg{
+    margin-right: 8px;
+}
+.flightInfoContainer p{
+    font-size: 20px;
+    line-height: 28px;
+    margin-top: 26px;
+}
+.withoutSvg{
+    margin-top: 22px;
+}
+.flightService{
+    gap: 16px;
+}
+.service{
+    width: 176px;
+    min-height: 176px;
+}
+.service button{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    background: #F2F5FB;
+    border: 2px solid #F2F5FB;
+    border-radius: 12px !important;
+}
+.service button div:first-child{
+    width: 100%;
+    min-height: 24px;
+    padding: 18px 16px;
+    border-bottom: 1px solid #DBE0E4
+}
+.serviceName{
+    color: #01357e ;
+    font-size : 14px !important;
+     font-weight: 500 !important;
+     line-height: 20px !important;
+}
+.service button div:last-child{
+    width: 100%;
+    padding: 16px;
+    text-align: left;
+}
+.service p{
+    margin-top: auto;
+    font-size: 32px;
+    line-height: 40px;
+    color: #01357E;
+    text-align: start;
+}
+.service span{
+    font-size: 13px;
+    line-height: 20px;
+    color: #6E7583;
+}
+.flightService div:first-child button{
+    border-color: #C52F5C;
+}
+.businessService{
+    background: rgb(1 53 126 / 80%) url(https://www.azal.az/book/160a27e29b74fa6cfd09.svg) right no-repeat;
+}
+.businessService .serviceName{
+    color: #fff;
+}

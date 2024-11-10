@@ -1,0 +1,114 @@
+.footer_div {
+    max-width: 1160px;
+    width: 100%;
+    margin: 0 auto;
+}
+footer{
+    background-color:#01357e;
+}
+.sponsor{
+    display: flex;
+    justify-content: space-between;
+    padding: 38px 0;
+    border-bottom:1px solid hsla(0, 0%, 100%, .1);
+
+}
+.sponsor div{
+    max-width: 278px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right:1px solid hsla(0, 0%, 100%, .1);
+}
+.links{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 88px;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 24px;
+}
+ul{
+    list-style-type: none;
+}
+.link a{
+    transition: color .1s ease-in;
+    font-size: 14px;
+    line-height: 24px;
+    color: #b3c2d8;
+}
+.link a:hover{
+    color: #fff;
+}
+.link h4{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 16px;
+}
+.social_medias{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 24px;
+}
+.social_medias ul{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.social_medias ul li{
+    background-color: #f2f5f6;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: background-color .1s ease-in;
+}
+.social_medias li a{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.app_download{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.footer_bottom{
+    order: 4;
+    border-top: 1px solid hsla(0, 0%, 100%, .1);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 24px 0;
+}
+.footer_bottom span{
+    font-size: 13px;
+    line-height: 16px;
+    color: hsla(0, 0%, 100%, .7);
+}
+.footer_bottom div:last-child{
+    font-size: 13px;
+    line-height: 16px;
+    color: hsla(0, 0%, 100%, .7);
+    align-items: center;
+    max-width: 276px;
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+}
+.footer_bottom a{
+    font-size: 13px;
+    line-height: 16px;
+    color: hsla(0, 0%, 100%, .7);
+    transition: color .1s ease-in;
+}
+

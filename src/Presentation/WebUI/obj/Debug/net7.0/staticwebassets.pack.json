@@ -1,0 +1,109 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\assets\\css\\calendar.css",
+      "PackagePath": "staticwebassets\\assets\\css\\calendar.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\assets\\css\\flight.css",
+      "PackagePath": "staticwebassets\\assets\\css\\flight.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\assets\\css\\flightCarusel.css",
+      "PackagePath": "staticwebassets\\assets\\css\\flightCarusel.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\assets\\css\\footer.css",
+      "PackagePath": "staticwebassets\\assets\\css\\footer.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\assets\\css\\header.css",
+      "PackagePath": "staticwebassets\\assets\\css\\header.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\assets\\css\\services.css",
+      "PackagePath": "staticwebassets\\assets\\css\\services.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\assets\\css\\style.css",
+      "PackagePath": "staticwebassets\\assets\\css\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\assets\\js\\calendar.js",
+      "PackagePath": "staticwebassets\\assets\\js\\calendar.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\assets\\js\\flight.js",
+      "PackagePath": "staticwebassets\\assets\\js\\flight.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\assets\\js\\flightCarusel.js",
+      "PackagePath": "staticwebassets\\assets\\js\\flightCarusel.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\assets\\js\\header.js",
+      "PackagePath": "staticwebassets\\assets\\js\\header.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\assets\\js\\index.js",
+      "PackagePath": "staticwebassets\\assets\\js\\index.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\assets\\js\\overrides\\toastr.override.js",
+      "PackagePath": "staticwebassets\\assets\\js\\overrides\\toastr.override.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\assets\\js\\services.js",
+      "PackagePath": "staticwebassets\\assets\\js\\services.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\imgs\\azalMiles.png",
+      "PackagePath": "staticwebassets\\imgs\\azalMiles.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\imgs\\azerbaijan.png",
+      "PackagePath": "staticwebassets\\imgs\\azerbaijan.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\imgs\\portalSponsor.png",
+      "PackagePath": "staticwebassets\\imgs\\portalSponsor.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\imgs\\reytingSponsor.png",
+      "PackagePath": "staticwebassets\\imgs\\reytingSponsor.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\lib\\toastr.js\\toastr.css",
+      "PackagePath": "staticwebassets\\lib\\toastr.js\\toastr.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\lib\\toastr.js\\toastr.js.map",
+      "PackagePath": "staticwebassets\\lib\\toastr.js\\toastr.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\lib\\toastr.js\\toastr.min.css",
+      "PackagePath": "staticwebassets\\lib\\toastr.js\\toastr.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\lib\\toastr.js\\toastr.min.js",
+      "PackagePath": "staticwebassets\\lib\\toastr.js\\toastr.min.js"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.WebUI.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.WebUI.props",
+      "PackagePath": "build\\WebUI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.WebUI.props",
+      "PackagePath": "buildMultiTargeting\\WebUI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.WebUI.props",
+      "PackagePath": "buildTransitive\\WebUI.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

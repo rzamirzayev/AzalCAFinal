@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Domain;
+using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Persistence.Contexts
@@ -13,10 +14,20 @@ namespace Persistence.Contexts
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
         }
-        public override int SaveChanges()
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
-
-            return base.SaveChanges();
+            foreach(var entry in this.ChangeTracker.Entries<ICreateEntity>())
+            {
+                if (entry.State == EntityState.Added)
+                {
+                    entry.Entity.CreatedAt = DateTime.Now;
+                }
+                else
+                {
+                    entry.Property(m => m.CreatedAt).IsModified = false;
+                }
+            }
+            return base.SaveChangesAsync(cancellationToken);
         }
     }
 }

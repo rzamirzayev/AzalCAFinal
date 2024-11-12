@@ -17,9 +17,9 @@ namespace Services.Implementation
         }
         public string Add(string fullname, string email, string message)
         {
-            var post = new ContactPost { FullName = fullname, Email = email, Message = message, CreatedAt = DateTime.Now };
+            var post = new ContactPost { FullName = fullname, Email = email, Message = message};
             db.Set<ContactPost>().Add(post);
-            db.SaveChanges();
+            db.SaveChangesAsync().Wait();
             return "muraciet qeyde alindi";
         }
     }

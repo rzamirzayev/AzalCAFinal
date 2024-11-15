@@ -9,6 +9,19 @@ namespace Persistence.Contexts
         public DataContext(DbContextOptions options) : base(options) { }
 
         public DbSet<ContactPost> ContactPosts { get; set; }
+        public DbSet<Airplane> Airplanes { get; set; }
+        public DbSet<Airport> Airports { get; set; }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<Flight> Flights { get; set; }
+        public DbSet<FlightSchedule> FlightSchedules { get; set; }
+        public DbSet<Passenger> Passengers { get; set; }
+        public DbSet<TicketBooking> TicketBookings { get; set; }
+        public DbSet<Service> Services { get; set; }
+
+
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

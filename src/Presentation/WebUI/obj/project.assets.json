@@ -3883,13 +3883,28 @@
         "dependencies": {
           "Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore": "7.0.20",
-          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.20"
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.20",
+          "Repositories": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Persistence.dll": {}
         },
         "runtime": {
           "bin/placeholder/Persistence.dll": {}
+        }
+      },
+      "Repositories/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Domain": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "7.0.20"
+        },
+        "compile": {
+          "bin/placeholder/Repositories.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Repositories.dll": {}
         }
       },
       "Services/1.0.0": {
@@ -3909,6 +3924,7 @@
           "Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore": "7.0.20",
           "Microsoft.Extensions.Options": "8.0.2",
+          "Repositories": "1.0.0",
           "Services": "1.0.0"
         },
         "compile": {
@@ -11330,6 +11346,11 @@
       "type": "project",
       "path": "../../Infrastructure/Persistence/Persistence.csproj",
       "msbuildProject": "../../Infrastructure/Persistence/Persistence.csproj"
+    },
+    "Repositories/1.0.0": {
+      "type": "project",
+      "path": "../../Core/Repositories/Repositories.csproj",
+      "msbuildProject": "../../Core/Repositories/Repositories.csproj"
     },
     "Services/1.0.0": {
       "type": "project",

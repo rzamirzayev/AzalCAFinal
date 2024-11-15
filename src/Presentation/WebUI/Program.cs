@@ -1,6 +1,8 @@
 using Domain.Configurations;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Contexts;
+using Persistence.Repositories;
+using Repositories;
 using Services;
 using Services.Common;
 using Services.Implementation;
@@ -34,6 +36,7 @@ namespace WebUI
             builder.Services.AddSingleton<IEmailService, EmailService>();
             builder.Services.AddSingleton<ICryptoService, CryptoService>();
             builder.Services.AddScoped<IContactPostService, ContactPostService>();
+            builder.Services.AddScoped<IContactPostRepository, ContactPostRepository>();
 
 
             var app = builder.Build();

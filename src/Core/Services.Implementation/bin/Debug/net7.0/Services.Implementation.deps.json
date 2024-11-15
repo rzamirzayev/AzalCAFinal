@@ -11,6 +11,7 @@
           "Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore": "7.0.20",
           "Microsoft.Extensions.Options": "8.0.2",
+          "Repositories": "1.0.0",
           "Services": "1.0.0"
         },
         "runtime": {
@@ -133,6 +134,15 @@
           "Domain.dll": {}
         }
       },
+      "Repositories/1.0.0": {
+        "dependencies": {
+          "Domain": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "7.0.20"
+        },
+        "runtime": {
+          "Repositories.dll": {}
+        }
+      },
       "Services/1.0.0": {
         "runtime": {
           "Services.dll": {}
@@ -224,6 +234,11 @@
       "hashPath": "microsoft.extensions.primitives.8.0.0.nupkg.sha512"
     },
     "Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Repositories/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

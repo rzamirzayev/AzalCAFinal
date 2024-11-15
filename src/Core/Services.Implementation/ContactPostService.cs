@@ -1,5 +1,7 @@
 ﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Repositories;
+using Repositories.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +12,16 @@ namespace Services.Implementation
 {
     public class ContactPostService : IContactPostService
     {
-        private readonly DbContext db;
+        private readonly IContactPostRepository contactPostRepository;
 
-        public ContactPostService(DbContext db) {
-            this.db = db;
+        public ContactPostService(IContactPostRepository contactPostRepository) {
+            this.contactPostRepository = contactPostRepository;
         }
-        public string Add(string fullname, string email, string message)
+        public async Task<string> Add(string fullname, string email, string message)
         {
             var post = new ContactPost { FullName = fullname, Email = email, Message = message};
-            db.Set<ContactPost>().Add(post);
-            db.SaveChangesAsync().Wait();
+            await contactPostRepository.AddAsync(post);
+            await contactPostRepository.SaveAsync();
             return "muraciet qeyde alindi";
         }
     }

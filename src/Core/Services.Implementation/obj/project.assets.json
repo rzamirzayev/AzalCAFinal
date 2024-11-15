@@ -208,6 +208,20 @@
           "bin/placeholder/Domain.dll": {}
         }
       },
+      "Repositories/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Domain": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "7.0.20"
+        },
+        "compile": {
+          "bin/placeholder/Repositories.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Repositories.dll": {}
+        }
+      },
       "Services/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -560,6 +574,11 @@
       "path": "../Domain/Domain.csproj",
       "msbuildProject": "../Domain/Domain.csproj"
     },
+    "Repositories/1.0.0": {
+      "type": "project",
+      "path": "../Repositories/Repositories.csproj",
+      "msbuildProject": "../Repositories/Repositories.csproj"
+    },
     "Services/1.0.0": {
       "type": "project",
       "path": "../Services/Services.csproj",
@@ -571,6 +590,7 @@
       "Domain >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 7.0.20",
       "Microsoft.Extensions.Options >= 8.0.2",
+      "Repositories >= 1.0.0",
       "Services >= 1.0.0"
     ]
   },
@@ -603,6 +623,9 @@
           "projectReferences": {
             "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Core\\Domain\\Domain.csproj": {
               "projectPath": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Core\\Domain\\Domain.csproj"
+            },
+            "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Core\\Repositories\\Repositories.csproj": {
+              "projectPath": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Core\\Repositories\\Repositories.csproj"
             },
             "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Core\\Services\\Services.csproj": {
               "projectPath": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Core\\Services\\Services.csproj"

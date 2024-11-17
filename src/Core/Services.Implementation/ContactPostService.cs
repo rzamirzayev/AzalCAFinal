@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Services.Implementation
 {
-    public class ContactPostService : IContactPostService
+     class ContactPostService : IContactPostService
     {
         private readonly IContactPostRepository contactPostRepository;
 

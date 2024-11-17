@@ -17,8 +17,9 @@ namespace WebUI
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Host.UseServiceProviderFactory(new IoCFactory());
             builder.Services.AddControllersWithViews();
-            builder.Services.AddDbContext<DbContext,DataContext>(cfg =>
+            builder.Services.AddDbContext<DbContext>(cfg =>
             {
                 cfg.UseSqlServer(builder.Configuration.GetConnectionString("cString"), opt =>
                 {
@@ -33,10 +34,12 @@ namespace WebUI
             {
                 builder.Configuration.GetSection(nameof(CryptoServiceConfiguration)).Bind(cfg);
             });
-            builder.Services.AddSingleton<IEmailService, EmailService>();
-            builder.Services.AddSingleton<ICryptoService, CryptoService>();
-            builder.Services.AddScoped<IContactPostService, ContactPostService>();
-            builder.Services.AddScoped<IContactPostRepository, ContactPostRepository>();
+      
+
+            builder.Services.AddHttpContextAccessor();
+
+
+
 
 
             var app = builder.Build();

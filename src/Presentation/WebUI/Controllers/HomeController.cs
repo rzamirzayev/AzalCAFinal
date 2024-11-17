@@ -8,13 +8,11 @@ namespace WebUI.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly DataContext db;
         private readonly IEmailService emailService;
         private readonly IContactPostService contactPostService;
 
-        public HomeController(DataContext db,IEmailService emailService,IContactPostService contactPostService)
+        public HomeController(IEmailService emailService,IContactPostService contactPostService)
         {
-            this.db = db;
             this.emailService=emailService;
             this.contactPostService = contactPostService;
         } 

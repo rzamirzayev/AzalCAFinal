@@ -243,7 +243,7 @@ namespace Persistence.Migrations
                     b.ToTable("Passengers", (string)null);
                 });
 
-            modelBuilder.Entity("Domain.Entities.Service", b =>
+            modelBuilder.Entity("Domain.Entities.ServiceClass", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -254,26 +254,15 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime");
 
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("varchar");
-
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime");
-
-                    b.Property<string>("DeletedBy")
-                        .HasColumnType("varchar");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar");
 
-                    b.Property<DateTime?>("LastModifiedAt")
-                        .HasColumnType("datetime");
-
-                    b.Property<string>("LastModifiedBy")
-                        .HasColumnType("varchar");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar");
 
                     b.Property<string>("Title")
                         .IsRequired()

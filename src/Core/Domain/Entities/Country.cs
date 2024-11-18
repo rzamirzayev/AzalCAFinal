@@ -12,6 +12,6 @@ namespace Domain.Entities
         public required string CountryName { get; set; }
         public required string CountryCode { get; set; }
 
-        public ICollection<City> Cities { get; set; } = new List<City>();  // Bir ülkenin birden fazla şehri olabilir
+        public ICollection<City> Cities { get; set; } = new List<City>(); 
     }
 }

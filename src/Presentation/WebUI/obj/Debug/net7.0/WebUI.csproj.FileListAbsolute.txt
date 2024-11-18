@@ -265,3 +265,7 @@ C:\Users\Lenovo\Desktop\AzalCAFinal\src\Presentation\WebUI\obj\Debug\net7.0\refi
 C:\Users\Lenovo\Desktop\AzalCAFinal\src\Presentation\WebUI\obj\Debug\net7.0\WebUI.pdb
 C:\Users\Lenovo\Desktop\AzalCAFinal\src\Presentation\WebUI\obj\Debug\net7.0\WebUI.genruntimeconfig.cache
 C:\Users\Lenovo\Desktop\AzalCAFinal\src\Presentation\WebUI\obj\Debug\net7.0\ref\WebUI.dll
+C:\Users\Lenovo\Desktop\AzalCAFinal\src\Presentation\WebUI\bin\Debug\net7.0\FluentValidation.dll
+C:\Users\Lenovo\Desktop\AzalCAFinal\src\Presentation\WebUI\bin\Debug\net7.0\FluentValidation.AspNetCore.dll
+C:\Users\Lenovo\Desktop\AzalCAFinal\src\Presentation\WebUI\bin\Debug\net7.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\Lenovo\Desktop\AzalCAFinal\src\Presentation\WebUI\obj\Debug\net7.0\WebUI.MvcApplicationPartsAssemblyInfo.cs

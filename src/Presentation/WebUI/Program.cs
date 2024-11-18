@@ -1,4 +1,8 @@
 using Domain.Configurations;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Contexts;
 using Persistence.Repositories;
@@ -7,6 +11,7 @@ using Services;
 using Services.Common;
 using Services.Implementation;
 using Services.Implementation.Common;
+using WebUI.Filters;
 
 namespace WebUI
 {
@@ -18,7 +23,9 @@ namespace WebUI
         {
             var builder = WebApplication.CreateBuilder(args);
             builder.Host.UseServiceProviderFactory(new IoCFactory());
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews(cfg=>{
+                cfg.Filters.Add(new ValidationActionFilter());
+            });
             builder.Services.AddDbContext<DbContext>(cfg =>
             {
                 cfg.UseSqlServer(builder.Configuration.GetConnectionString("cString"), opt =>
@@ -37,6 +44,11 @@ namespace WebUI
       
 
             builder.Services.AddHttpContextAccessor();
+            builder.Services.AddFluentValidationAutoValidation(cfg =>
+            {
+                cfg.DisableDataAnnotationsValidation = true;
+            });
+            builder.Services.AddValidatorsFromAssemblyContaining<IServiceReference>(includeInternalTypes:true);
 
 
 

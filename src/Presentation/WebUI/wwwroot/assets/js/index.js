@@ -129,7 +129,8 @@ countryInput.forEach((input) => {
                     }
                 }
             });
-        } else {
+        }
+        else {
             let searchText = input.value.toLowerCase();
             countryButton.forEach((btn) => {
                 if (btn.classList.contains("to_inputt")) {

@@ -21,7 +21,7 @@ namespace WebUI.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create(AddServiceRequestDto model)
+        public async Task<IActionResult> Create([FromForm]AddServiceRequestDto model)
         {
             await service.AddAsync(model);
             return RedirectToAction("Index");
@@ -40,7 +40,9 @@ namespace WebUI.Areas.Admin.Controllers
                 Id = data.Id,
                 Title = data.Title,
                 Name = data.Name,
-                Description = data.Description
+                Description = data.Description,
+                ImagePath= data.ImagePath
+                
             };
 
             return View(model);

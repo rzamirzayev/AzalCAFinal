@@ -25,7 +25,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\admin\" />
+    <Content Update="wwwroot\error-pages\500.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\error-pages\404.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

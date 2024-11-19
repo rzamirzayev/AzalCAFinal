@@ -13,8 +13,8 @@ namespace Domain.Entities
         public int CityId { get; set; }
 
         public City? City { get; set; }
-        //public ICollection<Flight> DepartureFlights { get; set; } = new List<Flight>(); 
-        //public ICollection<Flight> DestinationFlights { get; set; } = new List<Flight>();  
+        public ICollection<Flight> DepartureFlights { get; set; } = new List<Flight>();
+        public ICollection<Flight> DestinationFlights { get; set; } = new List<Flight>();
     }
 
 }

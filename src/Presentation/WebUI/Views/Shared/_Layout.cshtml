@@ -17,6 +17,8 @@
    <link href="~/lib/toastr.js/toastr.min.css" rel="stylesheet"/>
     @*services css*@
     <link rel="stylesheet" href="~/./assets/css/services.css" />
+    @await RenderSectionAsync("addcss",required:false)
+
 
     <script src="~/./assets/js/calendar.js" defer></script>
     <script src="~/./assets/js/index.js" defer></script>

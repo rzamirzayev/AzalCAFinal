@@ -1,0 +1,78 @@
+﻿@model IEnumerable<FlightGetAllDto>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <div class="d-inline">
+                    <h4>Bootstrap Basic Tables</h4>
+                    <span>
+                        lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="../index.html"> <i class="feather icon-home"></i> </a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="#!">Bootstrap Table</a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="#!">Basic Table</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page-body">
+    <div class="card">
+        <div class="card-header">
+            <h5>ContactPost</h5>
+
+        </div>
+        <div class="card-block table-border-style">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Hardan</th>
+                            <th>Haraya</th>
+                            <th>Teyyare</th>
+                            <th>Qalxis</th>
+                            <th>Eniş</th>
+                            <th><a class="btn btn-success" asp-action="create">Create</a></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.DepartureAirportName</td>
+                                <td>@item.DestinationAirportName</td>
+                                <td>@item.AirplaneName</td>
+                                @foreach(var schedule in item.FlightSchedules)
+                                {
+                                    <td>@schedule.DepartureTime</td>
+                                    <td>@schedule.ArrivalTime</td>
+                                }
+                                <td><a class="btn btn-primary" asp-action="edit" asp-route-id="@item.FlightId">Edit</a></td>
+                                <td><a class="btn btn-danger" asp-action="remove" asp-route-id="@item.FlightId" >Remove</a></td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

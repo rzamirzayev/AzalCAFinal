@@ -18,7 +18,6 @@ namespace WebUI
     public class Program
     {
     
-    
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -50,10 +49,8 @@ namespace WebUI
             });
             builder.Services.AddValidatorsFromAssemblyContaining<IServiceReference>(includeInternalTypes:true);
 
-
-
-
-
+   
+    
             var app = builder.Build();
             app.UseStaticFiles();
             app.MapControllerRoute(name: "areas", pattern: "{area:exists}/{controller=Dashboard}/{action=index}/{id?}");

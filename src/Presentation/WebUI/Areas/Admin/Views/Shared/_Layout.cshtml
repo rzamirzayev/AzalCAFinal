@@ -23,13 +23,8 @@
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="~/admin/css/style.css">
     <link rel="stylesheet" type="text/css" href="~/admin/css/jquery.mCustomScrollbar.css">
-    <style>
-        .ck-editor__main,
-        .ck-content{
-            min-height:300px;
-        }
+    @await RenderSectionAsync("addcss",required:false)
 
-    </style>
 </head>
 <body>
     <partial name="_Preloader"/>

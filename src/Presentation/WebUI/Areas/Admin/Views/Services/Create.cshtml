@@ -21,13 +21,16 @@
 
         <div class="form-group">
             <label for="exampleImagePatg">Description</label>
-            <input type="text" class="form-control" id="editor" asp-for="Description">
+            <textarea type="text" class="form-control" id="editor" asp-for="Description"></textarea>
             <span asp-validation-for="Description" class="text text-danger"></span>
 
         </div>
         <div class="form-group">
             <label for="exampleImagePatg">Image</label>
-            <input type="file"  class="form-control" id="exampleImagePatg" asp-for="Image">
+            <label class="single-chooser">
+                <input type="file" class="form-control" id="exampleImagePatg" asp-for="Image">
+            </label>
+
             <span asp-validation-for="Image" class="text text-danger"></span>
 
         </div>
@@ -36,7 +39,11 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
+@section addcss{
+    <link href="~/lib/single-chooser/single-chooser.css" rel="stylesheet" />
+}
 @section addjs{
+    <script src="~/lib/single-chooser/single-chooser.js"></script>
     <script src="~/lib/ckeditor5/ckeditor.min.js"></script>
     <script>
         window.addEventListener('load',function(){
@@ -45,7 +52,7 @@
                 .then(editor=>{})
                 .catch(error=>{console.error(error)});
         })
+        document.querySelector('.single-chooser input[type=file]').singleChooser();
+
     </script>
-
-
 }

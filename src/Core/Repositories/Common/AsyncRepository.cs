@@ -46,13 +46,13 @@ namespace Repositories.Common
             return entry;
         }
 
-        //       public async Task<T> GetByIdAsync(int id, CancellationToken cancellationToken = default)
-        //       {
-        //           var query = db.Set<T>().AsQueryable();
-        //           var entry = await query.FirstOrDefaultAsync(m => m.id == id, cancellationToken);
-        //#warning entry null ola biler
-        //           return entry;
-        //       }
+//        public async Task<T> GetByIdAsync(int id, CancellationToken cancellationToken = default)
+//        {
+//            var query = db.Set<T>().AsQueryable();
+//            var entry = await query.FirstOrDefaultAsync(m => m.id == id, cancellationToken);
+//#warning entry null ola biler
+//            return entry;
+//        }
 
         public void Remove(T entry)
         {

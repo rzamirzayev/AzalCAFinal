@@ -22,6 +22,7 @@ namespace Persistence.Contexts.Configurations
             builder.Property(f => f.DestinationAirportId).HasColumnType("int");
             builder.Property(f => f.EconomyPrice).HasColumnType("int");
             builder.Property(f => f.BusinessPrice).HasColumnType("int");
+            builder.Property(f => f.FlightDate).HasColumnType("datetime").IsRequired();
 
             builder.HasOne(f => f.Airplane)
                    .WithMany(a => a.Flights)
@@ -41,12 +42,12 @@ namespace Persistence.Contexts.Configurations
             builder.HasMany(f => f.FlightSchedules)
                    .WithOne(fs => fs.Flight)
                    .HasForeignKey(fs => fs.FlightId)
-                   .OnDelete(DeleteBehavior.Cascade);
+                   .OnDelete(DeleteBehavior.NoAction);
 
             builder.HasMany(f => f.TicketBookings)
                    .WithOne(tb => tb.Flight)
                    .HasForeignKey(tb => tb.FlightId)
-                    .OnDelete(DeleteBehavior.Cascade);
+                    .OnDelete(DeleteBehavior.NoAction);
         }
     }
 

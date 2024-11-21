@@ -170,6 +170,12 @@ namespace Persistence.Migrations
                     b.Property<int>("AirplaneId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("AirportId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("AirportId1")
+                        .HasColumnType("int");
+
                     b.Property<int>("BusinessPrice")
                         .HasColumnType("int");
 
@@ -182,9 +188,16 @@ namespace Persistence.Migrations
                     b.Property<int>("EconomyPrice")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("FlightDate")
+                        .HasColumnType("datetime");
+
                     b.HasKey("FlightId");
 
                     b.HasIndex("AirplaneId");
+
+                    b.HasIndex("AirportId");
+
+                    b.HasIndex("AirportId1");
 
                     b.HasIndex("DepartureAirportId");
 
@@ -228,14 +241,34 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar");
+
                     b.Property<string>("FinCode")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("varchar");
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar");
 
-                    b.Property<string>("FullName")
+                    b.Property<string>("Gender")
                         .IsRequired()
-                        .HasMaxLength(200)
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar");
+
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasMaxLength(15)
                         .HasColumnType("nvarchar");
 
                     b.HasKey("PassangerId");
@@ -332,7 +365,7 @@ namespace Persistence.Migrations
                     b.HasOne("Domain.Entities.Country", "Country")
                         .WithMany("Cities")
                         .HasForeignKey("CountryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Country");
@@ -345,6 +378,14 @@ namespace Persistence.Migrations
                         .HasForeignKey("AirplaneId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Domain.Entities.Airport", null)
+                        .WithMany("DepartureFlights")
+                        .HasForeignKey("AirportId");
+
+                    b.HasOne("Domain.Entities.Airport", null)
+                        .WithMany("DestinationFlights")
+                        .HasForeignKey("AirportId1");
 
                     b.HasOne("Domain.Entities.Airport", "DepartureAirport")
                         .WithMany()
@@ -370,7 +411,7 @@ namespace Persistence.Migrations
                     b.HasOne("Domain.Entities.Flight", "Flight")
                         .WithMany("FlightSchedules")
                         .HasForeignKey("FlightId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Flight");
@@ -398,6 +439,13 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Domain.Entities.Airplane", b =>
                 {
                     b.Navigation("Flights");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Airport", b =>
+                {
+                    b.Navigation("DepartureFlights");
+
+                    b.Navigation("DestinationFlights");
                 });
 
             modelBuilder.Entity("Domain.Entities.City", b =>

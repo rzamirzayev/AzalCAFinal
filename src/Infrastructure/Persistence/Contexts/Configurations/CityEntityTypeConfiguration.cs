@@ -23,7 +23,7 @@ namespace Persistence.Contexts.Configurations
             builder.HasOne(c => c.Country)
                    .WithMany(c => c.Cities)
                    .HasForeignKey(c => c.CountryId)
-                   .OnDelete(DeleteBehavior.Cascade);
+                   .OnDelete(DeleteBehavior.NoAction);
 
             builder.HasMany(c => c.Airports)
                    .WithOne(a => a.City)

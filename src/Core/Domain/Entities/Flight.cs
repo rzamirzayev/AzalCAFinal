@@ -14,6 +14,7 @@ namespace Domain.Entities
         public int DestinationAirportId { get; set; }
         public int EconomyPrice { get; set; }
         public int BusinessPrice { get; set; }
+        public required DateTime FlightDate { get; set; }
 
 
         public Airplane? Airplane { get; set; }

@@ -1,0 +1,67 @@
+﻿@model FlightViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<form method="post" enctype="multipart/form-data" >
+    <div class="form-group">
+        <label for="Flight_AirplaneId">Airplane</label>
+        <select id="Flight_AirplaneId" asp-for="SelectedAirplaneId"  class="form-control">
+            @foreach (var airplane in Model.Airplanes)
+            {
+                
+                <option value="@airplane.AirplaneId">
+                    @airplane.AirplaneName
+                </option>
+            }
+        </select>
+    </div>
+
+   <div class="form-group">
+        <label for="Flight_DepartureAirportId">Departure Airport</label>
+        <select id="Flight_DepartureAirportId" asp-for="SelectedDepartureAirportId" class="form-control">
+            @foreach (var airport in Model.Airports)
+            {
+                <option value="@airport.AirportId" >
+                    @airport.AirportName
+                </option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="Flight_DestinationAirportId">Destination Airport</label>
+        <select id="Flight_DestinationAirportId" asp-for="SelectedDestinationAirportId" class="form-control">
+            @foreach (var airport in Model.Airports)
+            {
+                <option value="@airport.AirportId">
+                    @airport.AirportName
+                </option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="Flight_EconomyPrice">Economy Price</label>
+        <input type="number" id="Flight_EconomyPrice"  class="form-control" asp-for="EconomyPrice" />
+    </div>
+
+    <div class="form-group">
+        <label for="Flight_BusinessPrice">Business Price</label>
+        <input type="number" id="Flight_BusinessPrice"  class="form-control" asp-for="BusinessPrice" />
+    </div>
+
+    <div class="form-group">
+        <label for="Flight_DepartureDate">Departure Time</label>
+        <input type="datetime-local" id="Flight_DepartureDate"  class="form-control" asp-for="DepartureTime" />
+    </div>
+
+    <div class="form-group">
+        <label for="Flight_ArrivalDate">Arrival Time</label>
+        <input type="datetime-local" id="Flight_ArrivalDate"  class="form-control" asp-for="ArrivalTime" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Uçuş Oluştur</button>
+</form>

@@ -41,7 +41,7 @@
         </div>
         <div class="card-block table-border-style">
             <div class="table-responsive">
-                <table class="table table-hover">
+@*                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th>Hardan</th>
@@ -57,6 +57,7 @@
                         @foreach (var item in Model)
                         {
                             <tr>
+
                                 <td>@item.DepartureAirportName</td>
                                 <td>@item.DestinationAirportName</td>
                                 <td>@item.AirplaneName</td>
@@ -71,7 +72,87 @@
                         }
 
                     </tbody>
+                </table>*@
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Hardan</th>
+                            <th>Haraya</th>
+                            <th>Teyyare</th>
+                            <th>Qalxis</th>
+                            <th>Eniş</th>
+                            <th><a class="btn btn-success" asp-action="create">Create</a></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.DepartureAirportName</td>
+                                <td>@item.DestinationAirportName</td>
+                                <td>@item.AirplaneName</td>
+                                @foreach (var schedule in item.FlightSchedules)
+                                {
+                                    <td>@schedule.DepartureTime</td>
+                                    <td>@schedule.ArrivalTime</td>
+                                }
+                                <td>
+                                    <a class="btn btn-primary" asp-action="edit" asp-route-id="@item.FlightId">Edit</a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-danger" asp-action="remove" asp-route-id="@item.FlightId">Remove</a>
+                                </td>
+
+                                <td>
+                                    <button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#passengerAccordion_@item.FlightId" aria-expanded="false" aria-controls="passengerAccordion_@item.FlightId">
+                                        Sərnişinləri göstər
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr id="passengerAccordion_@item.FlightId" class="collapse">
+                                <td colspan="12" class="table-secondary" style="background-color:#fff;">
+                                    <div class="accordion" id="accordion_@item.FlightId">
+                                        <div class="accordion-item">
+                                            <div id="collapsePassengers_@item.FlightId" class="accordion-collapse collapse show" aria-labelledby="heading_@item.FlightId" data-bs-parent="#accordion_@item.FlightId">
+                                                <div class="accordion-body">
+                                              
+                                                    <table class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Ad</th>
+                                                                <th>Soyad</th>
+                                                                <th>Fin code</th>
+                                                                <th>Gender</th>
+                                                                <th>Dogum tariix</th>
+                                                                <th>Telefon</th>
+                                                                <th>Email</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var passenger in item.Passangers)
+                                                            {
+                                                                <tr>
+                                                                    <td>@passenger.Name</td>
+                                                                    <td>@passenger.Surname</td>
+                                                                    <td>@passenger.FinCode</td>
+                                                                    <td>@passenger.Gender</td>
+                                                                    <td>@passenger.DateOfBirth</td>
+                                                                    <td>@passenger.Phone</td>
+                                                                    <td>@passenger.Email</td>
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
                 </table>
+
             </div>
         </div>
     </div>

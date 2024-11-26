@@ -378,3 +378,44 @@ main{
 .businessService .serviceName{
     color: #fff;
 }
+
+
+.passangerClass {
+    font-size: 16px;
+    line-height: 24px;
+    -webkit-user-select: none;
+    user-select: none;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 50%;
+    padding: 0 12px;
+    color: #000;
+    text-align: center;
+}
+
+.classDiv {
+    display: block;
+    height: 48px;
+    margin-top: 24px;
+}
+
+    .classDiv div {
+        cursor: pointer;
+        position: relative;
+        display: flex;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        background: #F5F6F8;
+        border-radius: 8px;
+    }
+
+.activeClass {
+    color: #2C8DC7;
+    border: 1px solid #2C8DC7;
+    border-radius: 8px;
+}

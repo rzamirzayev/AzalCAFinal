@@ -2,6 +2,7 @@
 using Services.Airplane;
 using Services.Airport;
 using Services.Flight;
+using Services.Services;
 using WebUI.Models;
 
 namespace WebUI.Areas.Admin.Controllers
@@ -47,7 +48,8 @@ namespace WebUI.Areas.Admin.Controllers
                 EconomyPrice = model.EconomyPrice,
                 BusinessPrice = model.BusinessPrice,
                 DepartureTime = model.DepartureTime,
-                ArrivalTime = model.ArrivalTime
+                ArrivalTime = model.ArrivalTime,
+                FlightTime=model.FlightDate
             };
 
             await flightService.AddAsync(addFlightRequest);
@@ -55,5 +57,9 @@ namespace WebUI.Areas.Admin.Controllers
 
             return RedirectToAction("Index");
         }
+
+
+
+
     }
 }

@@ -188,8 +188,8 @@ namespace Persistence.Migrations
                     b.Property<int>("EconomyPrice")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("FlightDate")
-                        .HasColumnType("datetime");
+                    b.Property<DateTime>("FlightTime")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("FlightId");
 

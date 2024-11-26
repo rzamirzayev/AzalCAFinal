@@ -16,6 +16,12 @@ namespace Services.Implementation
         private readonly IFlightScheduleRepository flightScheduleRepository;
 
         public FlightScheduleService(IFlightScheduleRepository flightScheduleRepository) { this.flightScheduleRepository = flightScheduleRepository; }
+
+        //public Task<AddFlightScheduleResponseDto> AddAsync(AddFlightScheduleRequestDto model, CancellationToken cancellationToken = default)
+        //{
+        //    var data=new FlightSchedule { }
+        //}
+
         public async Task<IEnumerable<FlightScheduleGetAllDto>> GetAllAsync(CancellationToken cancellationToken = default)
         {
             var data = await flightScheduleRepository.GetAll().Select(fs => new FlightScheduleGetAllDto

@@ -14,12 +14,12 @@ namespace Domain.Entities
         public int DestinationAirportId { get; set; }
         public int EconomyPrice { get; set; }
         public int BusinessPrice { get; set; }
-        public required DateTime FlightDate { get; set; }
+        public DateOnly FlightTime { get; set; }
 
 
         public Airplane? Airplane { get; set; }
-        public Airport? DepartureAirport { get; set; }
-        public Airport? DestinationAirport { get; set; }
+        public virtual Airport? DepartureAirport { get; set; }
+        public virtual Airport? DestinationAirport { get; set; }
         public ICollection<FlightSchedule> FlightSchedules { get; set; } = new List<FlightSchedule>();
         public ICollection<TicketBooking> TicketBookings { get; set; } = new List<TicketBooking>();
     }

@@ -11,7 +11,6 @@
         <select id="Flight_AirplaneId" asp-for="SelectedAirplaneId"  class="form-control">
             @foreach (var airplane in Model.Airplanes)
             {
-                
                 <option value="@airplane.AirplaneId">
                     @airplane.AirplaneName
                 </option>
@@ -24,7 +23,7 @@
         <select id="Flight_DepartureAirportId" asp-for="SelectedDepartureAirportId" class="form-control">
             @foreach (var airport in Model.Airports)
             {
-                <option value="@airport.AirportId" >
+                <option value="@airport.AirportId"  >
                     @airport.AirportName
                 </option>
             }
@@ -52,16 +51,20 @@
         <label for="Flight_BusinessPrice">Business Price</label>
         <input type="number" id="Flight_BusinessPrice"  class="form-control" asp-for="BusinessPrice" />
     </div>
+    <div class="form-group">
+        <label for="Flight_ArrivalDate">Arrival Time</label>
+        <input type="date" id="Flight_ArrivalDate" class="form-control" asp-for="FlightDate" />
+    </div>
 
     <div class="form-group">
         <label for="Flight_DepartureDate">Departure Time</label>
-        <input type="datetime-local" id="Flight_DepartureDate"  class="form-control" asp-for="DepartureTime" />
+        <input type="time" id="Flight_DepartureDate"  class="form-control" asp-for="DepartureTime" />
     </div>
 
     <div class="form-group">
         <label for="Flight_ArrivalDate">Arrival Time</label>
-        <input type="datetime-local" id="Flight_ArrivalDate"  class="form-control" asp-for="ArrivalTime" />
+        <input type="time" id="Flight_ArrivalDate"  class="form-control" asp-for="ArrivalTime" />
     </div>
 
-    <button type="submit" class="btn btn-primary">Uçuş Oluştur</button>
+    <button type="submit" class="btn btn-primary">Sumbit</button>
 </form>

@@ -22,7 +22,10 @@ namespace Persistence.Contexts.Configurations
             builder.Property(f => f.DestinationAirportId).HasColumnType("int");
             builder.Property(f => f.EconomyPrice).HasColumnType("int");
             builder.Property(f => f.BusinessPrice).HasColumnType("int");
-            builder.Property(f => f.FlightDate).HasColumnType("datetime").IsRequired();
+            builder.Property(f => f.FlightTime).HasConversion(
+                              v => v.ToDateTime(TimeOnly.MinValue),  
+                                 v => DateOnly.FromDateTime(v)           
+                                     );
 
             builder.HasOne(f => f.Airplane)
                    .WithMany(a => a.Flights)

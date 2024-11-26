@@ -58,7 +58,7 @@ namespace WebUI.Filters
                 default:
                     context.Result = new ContentResult
                     {
-                        Content = File.ReadAllText("wwwroot/error-pages/404.html"),
+                        Content = File.ReadAllText("wwwroot/error-pages/505.html"),
                         ContentType = "text/html",
                         StatusCode = 200
                     };

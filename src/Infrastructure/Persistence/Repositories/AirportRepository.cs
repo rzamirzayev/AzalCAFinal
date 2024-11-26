@@ -15,5 +15,6 @@ namespace Persistence.Repositories
         public AirportRepository(DbContext db) : base(db)
         {
         }
+  
     }
 }

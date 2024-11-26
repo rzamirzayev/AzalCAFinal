@@ -1,7 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using Repositories;
 using Services.Flight;
 using Services.Passanger;
+using Services.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +43,7 @@ namespace Services.Implementation
                         DestinationAirportName = flight.DestinationAirport != null ? flight.DestinationAirport.AirportName : "Unknown",
                         EconomyPrice = flight.EconomyPrice,
                         BusinessPrice = flight.BusinessPrice,
-                        FlightDate=flight.FlightDate,
+                        FlightDate=flight.FlightTime,
                         FlightSchedules = flight.FlightSchedules.Select(schedule => new FlightScheduleDto
                         {
                             DepartureTime = schedule.DepartureTime,
@@ -66,12 +68,7 @@ namespace Services.Implementation
 
         }
 
-        public async Task<IEnumerable<FlightGetAllDto>> GetById(int id, CancellationToken cancellationToken = default)
-        {
-            var data = await flightRepository.GetAsync(f => f.FlightId == id, cancellationToken);
-
-            throw new NotImplementedException();
-        }
+   
         public async Task<AddFlightResponseDto> AddAsync(AddFlightRequestDto model, CancellationToken cancellationToken = default)
         {
             var flight = new Domain.Entities.Flight
@@ -81,10 +78,12 @@ namespace Services.Implementation
                 DestinationAirportId = model.DestinationAirportId,
                 EconomyPrice = model.EconomyPrice,
                 BusinessPrice = model.BusinessPrice,
-                FlightDate=model.FlightDate
+                FlightTime=model.FlightTime,
             };
 
             await flightRepository.AddAsync(flight, cancellationToken);
+            await flightRepository.SaveAsync();
+
 
             var flightSchedule = new Domain.Entities.FlightSchedule
             {
@@ -94,7 +93,6 @@ namespace Services.Implementation
             };
 
             await flightScheduleRepository.AddAsync(flightSchedule, cancellationToken);
-
             await flightScheduleRepository.SaveAsync(cancellationToken);
 
             return new AddFlightResponseDto
@@ -107,9 +105,14 @@ namespace Services.Implementation
                 BusinessPrice = flight.BusinessPrice,
                 DepartureTime = flightSchedule.DepartureTime.ToString(),
                 ArrivalTime = flightSchedule.ArrivalTime.ToString(),
-                FlightDate=flight.FlightDate
+                FlightTime=flight.FlightTime.ToString(),
+               
             };
         }
 
+        public Task<IEnumerable<FlightGetAllDto>> GetById(int id, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

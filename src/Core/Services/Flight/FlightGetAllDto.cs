@@ -15,7 +15,8 @@ namespace Services.Flight
         public string? DestinationAirportName { get; set; }
         public int EconomyPrice { get; set; }
         public int BusinessPrice { get; set; }
-        public DateTime FlightDate { get; set; }
+
+        public DateOnly FlightDate { get; set; }
         public List<FlightScheduleDto> FlightSchedules { get; set; } = new List<FlightScheduleDto>(); 
         public List<PassangerGetAllDto> Passangers { get; set; }=new List<PassangerGetAllDto>();
     }

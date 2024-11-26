@@ -70,3 +70,11 @@ returnButton.addEventListener("click", function (e) {
   fromInput.value = toInput.value;
   toInput.value = from;
 });
+let passangerClass = document.querySelectorAll(".passangerClass");
+passangerClass.forEach((p) => {
+    p.addEventListener("click", function () {
+        passangerClass.forEach((s) => s.classList.remove("activeClass"));
+
+        this.classList.add("activeClass");
+    });
+});

@@ -79,8 +79,8 @@
                             <th>Hardan</th>
                             <th>Haraya</th>
                             <th>Teyyare</th>
-                            <th>Qalxis</th>
-                            <th>Eniş</th>
+                            <th>Tarix</th>
+                            <th>Qalxis/Eniş</th>
                             <th><a class="btn btn-success" asp-action="create">Create</a></th>
                         </tr>
                     </thead>
@@ -91,10 +91,10 @@
                                 <td>@item.DepartureAirportName</td>
                                 <td>@item.DestinationAirportName</td>
                                 <td>@item.AirplaneName</td>
+                                <td>@item.FlightDate</td>
                                 @foreach (var schedule in item.FlightSchedules)
                                 {
-                                    <td>@schedule.DepartureTime</td>
-                                    <td>@schedule.ArrivalTime</td>
+                                    <td>@schedule.DepartureTime / @schedule.ArrivalTime </td>
                                 }
                                 <td>
                                     <a class="btn btn-primary" asp-action="edit" asp-route-id="@item.FlightId">Edit</a>

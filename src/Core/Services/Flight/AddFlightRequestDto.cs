@@ -15,7 +15,8 @@ namespace Services.Flight
         public int BusinessPrice { get; set; }
         public TimeSpan DepartureTime { get; set; }
         public TimeSpan ArrivalTime { get; set; }
-        public DateTime FlightDate { get; set; }
+        public DateOnly FlightTime { get; set; }
+
     }
     public class AddFlightResponseDto
     {
@@ -27,7 +28,7 @@ namespace Services.Flight
         public int BusinessPrice { get; set; }
         public string? DepartureTime { get; set; }
         public string? ArrivalTime { get; set; }
-        public DateTime FlightDate { get; set; }
+        public string? FlightTime { get; set; }
 
     }
 

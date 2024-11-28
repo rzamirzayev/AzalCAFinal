@@ -1,5 +1,5 @@
-let passangerButton = document.querySelectorAll(".passangerDiv button");
-let passangerSum = document.querySelectorAll(".passanger_num");
+﻿//let passangerButton = document.querySelectorAll(".passangerDiv button");
+//let passangerSum = document.querySelectorAll(".passanger_num");
 let passangers = document.querySelector(".passangerButton p");
 let passangerBtn = document.querySelector(".passangerButton");
 let passangerDiv = document.querySelector(".passangerDivs");
@@ -26,28 +26,84 @@ passangerBtn.addEventListener("click", function (e) {
         passangerDiv.style.display = "none";
     }
 });
+document.addEventListener('DOMContentLoaded', function () {
+    const passangerButtons = document.querySelectorAll('.passanger_minus, .passanger_plus');
+    const passangerSum = document.querySelectorAll('.passanger_num');
 
-passangerButton.forEach((btn) => {
-    btn.addEventListener("click", function (e) {
-        e.preventDefault();
-        if (btn.classList.contains("passanger_minus")) {
-            let number = parseInt(btn.nextElementSibling.textContent);
+    passangerButtons.forEach((btn) => {
+        btn.addEventListener("click", function (e) {
+            e.preventDefault();
 
-            if (number === 0) {
-            } else {
-                btn.nextElementSibling.textContent = number - 1;
+            let numberElement;
+            let currentNumber;
+            let passengerType;
+
+            if (btn.classList.contains("passanger_minus")) {
+                numberElement = btn.nextElementSibling; 
+                passengerType = numberElement.getAttribute("data-type");
+                currentNumber = parseInt(numberElement.textContent);
+                if (currentNumber > 0) {
+                    numberElement.textContent = currentNumber - 1;
+                }
             }
+
+            if (btn.classList.contains("passanger_plus")) {
+                numberElement = btn.previousElementSibling; 
+                passengerType = numberElement.getAttribute("data-type");
+                currentNumber = parseInt(numberElement.textContent);
+                numberElement.textContent = currentNumber + 1;
+            }
+
+            updateHiddenInputs(passengerType, numberElement.textContent);
+            updateTotal(passangerSum);
+        });
+    });
+    function updateHiddenInputs(type, value) {
+        switch (type) {
+            case 'adult':
+                document.getElementById('adultCount').value = value;
+                break;
+            case 'children':
+                document.getElementById('childrenCount').value = value;
+                break;
+            case 'infant':
+                document.getElementById('infantCount').value = value;
+                break;
         }
-        if (btn.classList.contains("passanger_plus")) {
-            let number = parseInt(btn.previousElementSibling.textContent);
-            btn.previousElementSibling.textContent = number + 1;
-        }
-        const total = Array.from(passangerSum)
+    }
+
+    function updateTotal(elements) {
+        const total = Array.from(elements)
             .map((p) => parseInt(p.textContent) || 0)
             .reduce((acc, curr) => acc + curr, 0);
-        passangers.textContent = total;
-    });
+        passangers.textContent = total; 
+    }
+
+    updateTotal(passangerSum);
 });
+
+
+//passangerButton.forEach((btn) => {
+//    btn.addEventListener("click", function (e) {
+//        e.preventDefault();
+//        if (btn.classList.contains("passanger_minus")) {
+//            let number = parseInt(btn.nextElementSibling.textContent);
+
+//            if (number === 0) {
+//            } else {
+//                btn.nextElementSibling.textContent = number - 1;
+//            }
+//        }
+//        if (btn.classList.contains("passanger_plus")) {
+//            let number = parseInt(btn.previousElementSibling.textContent);
+//            btn.previousElementSibling.textContent = number + 1;
+//        }
+//        const total = Array.from(passangerSum)
+//            .map((p) => parseInt(p.textContent) || 0)
+//            .reduce((acc, curr) => acc + curr, 0);
+//        passangers.textContent = total;
+//    });
+//});
 flightBtn.addEventListener("click", function (e) {
     e.preventDefault();
     if (calendar.style.display === "none") {
@@ -59,17 +115,31 @@ flightBtn.addEventListener("click", function (e) {
 calendarBtn.addEventListener("click", function (e) {
     e.preventDefault();
 });
+//calendarDay.forEach((day) => {
+//    day.addEventListener("click", function (e) {
+//        e.preventDefault();
+//        let textMonth = calendarMonth.textContent;
+//        let textYear = calendarYear.textContent;
+
+//        let datetime = day.textContent + "." + textMonth + "." + textYear;
+//        console.log(datetime);
+//        flightBtn.value = datetime;
+//        calendar.style.display = "none";
+//    });
+//});
+
 calendarDay.forEach((day) => {
     day.addEventListener("click", function (e) {
         e.preventDefault();
-        let textMonth = calendarMonth.textContent;
-        let textYear = calendarYear.textContent;
-
-        let datetime = day.textContent + "." + textMonth + "." + textYear;
-        flightBtn.textContent = datetime;
+        let selectedDay = day.textContent.trim().padStart(2, '0');
+        let selectedMonth = calendarMonth.textContent; 
+        let monthNumber = new Date(Date.parse(selectedMonth + " 1, 2022")).getMonth() + 1;
+        let selectedYear = calendarYear.textContent; 
+        let datetime = `${selectedDay}.${monthNumber.toString().padStart(2, '0')}.${selectedYear}`;
+        flightBtn.value = datetime;
+        calendar.style.display = "none";
     });
 });
-
 returnButton.addEventListener("click", function (e) {
     e.preventDefault();
     let from = fromInput.value;
@@ -90,7 +160,6 @@ fromInput.addEventListener("click", function (e) {
 });
 toInput.addEventListener("click", function (e) {
     e.preventDefault();
-    console.log("2");
     toCountryDiv.style.display == "none"
         ? (toCountryDiv.style.display = "block")
         : (toCountryDiv.style.display = "none");

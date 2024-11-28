@@ -126,7 +126,7 @@
             </div>
         </div>
         <div class="bookflight">
-            <form action="">
+            <form asp-action="index" asp-controller="flight">
                 <button class="return_svg">
                     <svg xmlns="http://www.w3.org/2000/svg"
                          fill="none"
@@ -148,28 +148,23 @@
                 </button>
                 <div class="d-flex" style="width: 100%">
                <div class="d-flex" style="width: 25%">
-                <input
-                  type="text"
-                  placeholder="From"
-                  class="from_input cntr_input"
-                  style="border-radius: 12px 0 0 12px"
-                />
-                <div class="country_lists from_country">
+
                     @await Component.InvokeAsync("AllCities")
-                </div>
+            
               </div>
               <div class="d-flex" style="width: 25%">
                 <input
                   type="text"
                   placeholder="To"
                   class="cntr_input to_input"
+                  name="destinationCity"
                 />
                 <div class="country_lists to_country">
                     @await Component.InvokeAsync("AllCities",new {view="ToCountry"})
                 </div>
               </div>
                     <div style="width: 30%; position: relative">
-                        <button class="flightBtn">Flight</button>
+                        <input  class="flightBtn" name="FlightDate" placeholder="Flight"/>
                         <div class="calendar" style="position: absolute"></div>
                     </div>
                     <div style="width: 15%">
@@ -178,6 +173,54 @@
                             <p>0</p>
                         </button>
                         <div class="passangerDivs">
+                            <div class="passangerDiv d-flex">
+                                <div class="passangerDiv_parag">
+                                    <p>Adults</p>
+                                    <span>from 12 years</span>
+                                </div>
+                                <div class="d-flex">
+                                    <button type="button" class="passanger_minus">-</button>
+                                    <p class="passanger_num" data-type="adult">0</p>
+                                    <button type="button" class="passanger_plus">+</button>
+                                </div>
+                            </div>
+
+                            <div class="passangerDiv d-flex">
+                                <div class="passangerDiv_parag">
+                                    <p>Children</p>
+                                    <span>from 12 years</span>
+                                </div>
+                                <div class="d-flex">
+                                    <button type="button" class="passanger_minus">-</button>
+                                    <p class="passanger_num" data-type="children">0</p>
+                                    <button type="button" class="passanger_plus">+</button>
+                                </div>
+                            </div>
+
+                            <div class="passangerDiv d-flex">
+                                <div class="passangerDiv_parag">
+                                    <p>Infants</p>
+                                    <span>from 12 years</span>
+                                </div>
+                                <div class="d-flex">
+                                    <button type="button" class="passanger_minus">-</button>
+                                    <p class="passanger_num" data-type="infant">0</p>
+                                    <button type="button" class="passanger_plus">+</button>
+                                </div>
+                            </div>
+
+                            <div class="classDiv">
+                                <div class="d-flex">
+                                    <span class="passangerClass activeClass">Economy</span>
+                                    <span class="passangerClass">Business</span>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" id="adultCount" name="adultCount" value="0">
+                        <input type="hidden" id="childrenCount" name="childCount" value="0">
+                        <input type="hidden" id="infantCount" name="infantCount" value="0">
+
+@*                        <div class="passangerDivs">
                             <div class="passangerDiv d-flex">
                                 <div class="passangerDiv_parag">
                                     <p>Adults</p>
@@ -217,7 +260,7 @@
                                     <span class="passangerClass">Business</span>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                     </div>
 
                     <div style="width: 5%">

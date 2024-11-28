@@ -11,8 +11,11 @@ namespace Services.Flight
     {
         public int FlightId { get; set; }
         public string? AirplaneName { get; set; }
+        public int? AirplaneId { get; set; }
         public string? DepartureAirportName { get; set; }
+        public int? DepartureAirportId { get; set; }
         public string? DestinationAirportName { get; set; }
+        public int? DestinationAirportId { get; set; }
         public int EconomyPrice { get; set; }
         public int BusinessPrice { get; set; }
 
@@ -23,6 +26,9 @@ namespace Services.Flight
 
     public class FlightScheduleDto
     {
+#warning silinecek iki property
+        public int Id { get; set; }
+        public int FlightId { get; set; }
         public TimeSpan DepartureTime { get; set; }
         public TimeSpan ArrivalTime { get; set; }
     }

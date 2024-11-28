@@ -1,4 +1,4 @@
-//check the console for date click event
+﻿//check the console for date click event
 //Fixed day highlight
 //Added previous month and next month view
 
@@ -71,12 +71,20 @@ function CalendarControl() {
       monthLabel.innerHTML = calendarControl.calMonthName[calendar.getMonth()];
     },
     selectDate: function (e) {
-      console.log(
-        `${e.target.textContent} ${
-          calendarControl.calMonthName[calendar.getMonth()]
-        } ${calendar.getFullYear()}`
-      );
-    },
+
+            // Gün ve ayı sıfırla doldurmak için `padStart` kullanıyoruz
+            let day = e.target.textContent.padStart(2, '0'); // 1 -> 01, 9 -> 09
+            let month = (calendar.getMonth() + 1).toString().padStart(2, '0'); // 1 -> 01, 11 -> 11
+            let year = calendar.getFullYear(); // Yıl doğrudan alınıyor
+
+            // Tarihi oluşturuyoruz: "26.11.2024" gibi
+            let datetime = `${day}.${month}.${year}`;
+            console.log(datetime); // Konsola yazdırıyoruz
+            flightBtn.value = datetime; // `flightBtn`'e yazıyoruz
+            calendar.style.display = "none"; // Takvimi gizliyoruz
+
+      },
+
     plotSelectors: function () {
       document.querySelector(
         ".calendar"
@@ -89,12 +97,12 @@ function CalendarControl() {
           </div>
           <div class="calendar-next"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><path fill="#666" d="M38.8 124.2l52.4-52.42L99 64l-7.77-7.78-52.4-52.4-9.8 7.77L81.44 64 29 116.42z"/></svg></a></div>
           </div>
-          <div class="calendar-today-date">Today: 
-            ${calendarControl.calWeekDays[calendarControl.localDate.getDay()]}, 
-            ${calendarControl.localDate.getDate()}, 
+          <div class="calendar-today-date">Today:
+            ${calendarControl.calWeekDays[calendarControl.localDate.getDay()]},
+            ${calendarControl.localDate.getDate()},
             ${
               calendarControl.calMonthName[calendarControl.localDate.getMonth()]
-            } 
+            }
             ${calendarControl.localDate.getFullYear()}
           </div>
           <div class="calendar-body"></div></div>`;
@@ -131,7 +139,7 @@ function CalendarControl() {
           prevMonthDatesArray.push(calendarControl.prevMonthLastDate--);
         } else {
           document.querySelector(
-            ".calendar .calendar-body"
+              ".calendar .calendar-body"
           ).innerHTML += `<div class="number-item" data-num=${count}><a class="dateNumber" href="#">${count++}</a></div>`;
         }
       }
@@ -228,3 +236,4 @@ function CalendarControl() {
 }
 
 const calendarControl = new CalendarControl();
+

@@ -2,7 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Persistence.Contexts;
 using Services;
+using Services.Cities;
 using Services.Common;
+using Services.Flight;
+using Services.Implementation;
+using WebUI.Models;
 
 namespace WebUI.Controllers
 {
@@ -20,6 +24,7 @@ namespace WebUI.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public IActionResult Contact(string fullname,string email,string message)
         {

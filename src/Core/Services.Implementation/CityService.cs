@@ -23,6 +23,7 @@ namespace Services.Implementation
     .Include(city => city.Country)  
     .Select(m => new CitiesGetAllDto
     {
+        CityId=m.CityId,
         CityName = m.CityName,
         CountryName = m.Country != null ? m.Country.CountryName : string.Empty 
     })

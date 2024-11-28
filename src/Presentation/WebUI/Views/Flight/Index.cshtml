@@ -1,4 +1,4 @@
-﻿
+﻿@model List<FlightSearchDto>
 @{
     ViewData["Title"] = "Index";
     Layout = null;
@@ -448,552 +448,159 @@
         </div>
       </div>
       <div class="finalFlightDate">
-        <div class="flight_date d-flex">
-          <div class="left_column">
-            <div class="d-flex">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                fill="none"
-                viewBox="0 0 20 20"
-                class="root_ESF size_20__Il"
-              >
-                <g id="logo">
-                  <g id="Group 135">
-                    <path
-                      id="path23491"
-                      fill="#036"
-                      d="M15.154 12.916c-.868 2.63-3.347 4.534-6.264 4.534a6.604 6.604 0 0 1-6.596-6.597A6.604 6.604 0 0 1 8.89 4.257c1.108 0 2.152.275 3.069.76l.236-.208a6.847 6.847 0 0 0-3.305-.846c-3.8 0-6.89 3.09-6.89 6.89s3.09 6.89 6.89 6.89c3.086 0 5.705-2.04 6.58-4.842l-.316.015Z"
-                    ></path>
-                    <path
-                      id="path23493"
-                      fill="#00B2E2"
-                      d="M4.476 12.976c3.978-.366 7.919-.976 11.804-1.955l-.18.806c-4.97 1.133-8.437 1.237-11.624 1.15Z"
-                    ></path>
-                    <path
-                      id="path23495"
-                      fill="#00B2E2"
-                      d="M5.108 12.581a69.207 69.207 0 0 0 11.459-2.838l-.185.825c-4.346 1.366-8.051 1.976-11.274 2.013Z"
-                    ></path>
-                    <path
-                      id="path23497"
-                      fill="#57C8E7"
-                      d="M5.715 12.161c3.654-.911 7.375-2.186 11.141-3.713l-.185.83c-3.99 1.566-7.68 2.597-10.956 2.883Z"
-                    ></path>
-                    <path
-                      id="path23499"
-                      fill="#98DAE9"
-                      d="M6.32 11.664c3.685-1.12 7.309-2.803 10.895-4.821l-.227 1.017c-4.296 2.133-7.936 3.5-10.668 3.804Z"
-                    ></path>
-                    <path
-                      id="path23501"
-                      fill="#57C8E7"
-                      d="M7.104 11.139c4.138-2.001 7.502-4.074 10.533-6.18l-.25 1.121C13.95 8.274 10.52 10.091 7.103 11.14Z"
-                    ></path>
-                    <path
-                      id="path23503"
-                      fill="#00B2E2"
-                      d="M7.707 10.488c4.069-2.571 7.598-5.188 10.451-7.86l-.306 1.369c-3.375 2.913-6.83 4.919-10.145 6.491Z"
-                    ></path>
-                    <path
-                      id="path23505"
-                      fill="#00B2E2"
-                      d="m18.391 1-1.15.03a50.476 50.476 0 0 1-4.302 4.62c-1.563 1.489-3.134 2.824-4.707 4.138C11.677 7.464 15.095 4.861 18.392 1Z"
-                    ></path>
-                  </g>
-                </g>
-              </svg>
-              Azerbaijan Airlines
-            </div>
-            <div class="d-flex arrivalDate">
-              <div class="dateInfo">
-                <p>08:30</p>
-                <div class="planeSvg">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    class="root_ESF size_20__Il"
-                  >
-                    <path
-                      d="M5.196 2.624a.837.837 0 0 0-.604 1.405l3.501 3.783-3.205 1.401-1.973-1.158a.828.828 0 0 0-1.12 1.157l1.116 1.772a2.355 2.355 0 0 0 2.935.902l11.64-5.095a1.413 1.413 0 0 0-1.131-2.589l-4.377 1.913-6.38-3.394a.836.836 0 0 0-.402-.097Zm-2.071 13.21a.628.628 0 0 0-.634.624.625.625 0 0 0 .634.625h13.75a.624.624 0 1 0 0-1.25H3.125Z"
-                    ></path>
-                  </svg>
-                </div>
-                <span style="color: #2e3034">Baku</span>
-                <span>Terminal 1</span>
-                <span>12 Nov , Tu</span>
-              </div>
-              <div class="svgFlight">
-                <div class="salt"></div>
-                <div class="round"></div>
-                <div class="round"></div>
-              </div>
-              <div class="dateInfo">
-                <p>10:00</p>
-                <div class="planeSvg">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    class="root_ESF size_20__Il"
-                  >
-                    <path
-                      d="M8.964 1.667a.853.853 0 0 0-.837.865l.078 5.11-3.383-1.119-.708-2.22a.844.844 0 0 0-1.637.113l-.36 2.104A2.4 2.4 0 0 0 3.73 9.202l12.295 4.058a1.44 1.44 0 0 0 .904-2.733L12.25 8.98l-2.47-6.752a.852.852 0 0 0-.815-.56Zm-5.84 14.166a.624.624 0 1 0 0 1.25h13.75a.628.628 0 0 0 .586-.383.626.626 0 0 0-.585-.867H3.125Z"
-                    ></path>
-                  </svg>
-                </div>
-                <span style="color: #2e3034">Vienna</span>
-                <span>Terminal 1</span>
-                <span>12 Nov , Tu</span>
-              </div>
-            </div>
-          </div>
-          <div class="right_column d-flex">
-            <div class="flightInfoContainer">
-              <div class="svgContainer d-flex">
-                <div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="1.5 5 21 14"
-                    class="root_ESF size_16_MSX"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M21.8 9.265a.75.75 0 0 0 .7-.75V6.75c0-.965-.785-1.75-1.75-1.75H16.5v1A.749.749 0 1 1 15 6V5H3.25c-.965 0-1.75.785-1.75 1.75v1.765a.75.75 0 0 0 .7.75c1.43.09 2.55 1.295 2.55 2.735s-1.12 2.645-2.55 2.735a.75.75 0 0 0-.7.75v1.765c0 .965.785 1.75 1.75 1.75H15v-1a.749.749 0 1 1 1.5 0v1h4.25c.965 0 1.75-.785 1.75-1.75v-1.765a.75.75 0 0 0-.7-.75c-1.43-.09-2.55-1.295-2.55-2.735s1.12-2.645 2.55-2.735ZM16.5 15a.749.749 0 1 1-1.5 0v-1.5a.749.749 0 1 1 1.5 0V15Zm0-4.5a.749.749 0 1 1-1.5 0V9a.749.749 0 1 1 1.5 0v1.5Z"
-                    ></path>
-                  </svg>
-                  J2 71
-                </div>
-                <div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    viewBox="0 0 16 16"
-                    class="root_ESF size_16_MSX"
-                  >
-                    <path
-                      d="M13.333 6.667H10L6.62 1.66a.698.698 0 0 0-1.256.576l1.628 4.43h-3.66l-.92-1.134c-.1-.12-.186-.2-.34-.2h-.406a.33.33 0 0 0-.32.414L2 8l-.653 2.253a.33.33 0 0 0 .32.414h.406c.154 0 .24-.08.34-.2l.92-1.134h3.66l-1.627 4.43a.697.697 0 0 0 1.257.576L10 9.333h3.333a1.333 1.333 0 1 0 0-2.666Z"
-                    ></path>
-                  </svg>
-                  Airbus A319
-                </div>
-              </div>
-              <p>4 h 30 min</p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                class="root_ESF direct_icon_vMk size_20__Il withoutSvg"
-              >
-                <path
-                  fill="#2C8DC7"
-                  d="M8.535 5.41A.625.625 0 0 0 8.1 6.484l3.1 3.1H1.875a.625.625 0 1 0 0 1.25H11.2l-3.1 3.1a.625.625 0 1 0 .884.883l4.166-4.167a.625.625 0 0 0 0-.884L8.984 5.6a.625.625 0 0 0-.449-.19Zm7.923 2.507a2.294 2.294 0 0 0-2.291 2.291 2.294 2.294 0 0 0 2.291 2.292 2.294 2.294 0 0 0 2.292-2.292 2.294 2.294 0 0 0-2.292-2.291Z"
-                ></path>
-              </svg>
-              <br />
-              <span style="margin-top: 8px">Without Stops</span>
-            </div>
-            <div class="flightService d-flex">
-              <div class="service">
-                <button>
-                  <div>
-                    <p class="serviceName">Economy</p>
-                  </div>
-                  <div>
-                    <p>351.47</p>
-                    <span>Starting price</span>
-                  </div>
-                </button>
-              </div>
-              <div class="service">
-                <button>
-                  <div class="businessService">
-                    <p class="serviceName">Business</p>
-                  </div>
-                  <div>
-                    <p>1200.47</p>
-                    <span>Starting price</span>
-                  </div>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="flight_date d-flex">
-          <div class="left_column">
-            <div class="d-flex">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                fill="none"
-                viewBox="0 0 20 20"
-                class="root_ESF size_20__Il"
-              >
-                <g id="logo">
-                  <g id="Group 135">
-                    <path
-                      id="path23491"
-                      fill="#036"
-                      d="M15.154 12.916c-.868 2.63-3.347 4.534-6.264 4.534a6.604 6.604 0 0 1-6.596-6.597A6.604 6.604 0 0 1 8.89 4.257c1.108 0 2.152.275 3.069.76l.236-.208a6.847 6.847 0 0 0-3.305-.846c-3.8 0-6.89 3.09-6.89 6.89s3.09 6.89 6.89 6.89c3.086 0 5.705-2.04 6.58-4.842l-.316.015Z"
-                    ></path>
-                    <path
-                      id="path23493"
-                      fill="#00B2E2"
-                      d="M4.476 12.976c3.978-.366 7.919-.976 11.804-1.955l-.18.806c-4.97 1.133-8.437 1.237-11.624 1.15Z"
-                    ></path>
-                    <path
-                      id="path23495"
-                      fill="#00B2E2"
-                      d="M5.108 12.581a69.207 69.207 0 0 0 11.459-2.838l-.185.825c-4.346 1.366-8.051 1.976-11.274 2.013Z"
-                    ></path>
-                    <path
-                      id="path23497"
-                      fill="#57C8E7"
-                      d="M5.715 12.161c3.654-.911 7.375-2.186 11.141-3.713l-.185.83c-3.99 1.566-7.68 2.597-10.956 2.883Z"
-                    ></path>
-                    <path
-                      id="path23499"
-                      fill="#98DAE9"
-                      d="M6.32 11.664c3.685-1.12 7.309-2.803 10.895-4.821l-.227 1.017c-4.296 2.133-7.936 3.5-10.668 3.804Z"
-                    ></path>
-                    <path
-                      id="path23501"
-                      fill="#57C8E7"
-                      d="M7.104 11.139c4.138-2.001 7.502-4.074 10.533-6.18l-.25 1.121C13.95 8.274 10.52 10.091 7.103 11.14Z"
-                    ></path>
-                    <path
-                      id="path23503"
-                      fill="#00B2E2"
-                      d="M7.707 10.488c4.069-2.571 7.598-5.188 10.451-7.86l-.306 1.369c-3.375 2.913-6.83 4.919-10.145 6.491Z"
-                    ></path>
-                    <path
-                      id="path23505"
-                      fill="#00B2E2"
-                      d="m18.391 1-1.15.03a50.476 50.476 0 0 1-4.302 4.62c-1.563 1.489-3.134 2.824-4.707 4.138C11.677 7.464 15.095 4.861 18.392 1Z"
-                    ></path>
-                  </g>
-                </g>
-              </svg>
-              Azerbaijan Airlines
-            </div>
-            <div class="d-flex arrivalDate">
-              <div class="dateInfo">
-                <p>08:30</p>
-                <div class="planeSvg">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    class="root_ESF size_20__Il"
-                  >
-                    <path
-                      d="M5.196 2.624a.837.837 0 0 0-.604 1.405l3.501 3.783-3.205 1.401-1.973-1.158a.828.828 0 0 0-1.12 1.157l1.116 1.772a2.355 2.355 0 0 0 2.935.902l11.64-5.095a1.413 1.413 0 0 0-1.131-2.589l-4.377 1.913-6.38-3.394a.836.836 0 0 0-.402-.097Zm-2.071 13.21a.628.628 0 0 0-.634.624.625.625 0 0 0 .634.625h13.75a.624.624 0 1 0 0-1.25H3.125Z"
-                    ></path>
-                  </svg>
-                </div>
-                <span style="color: #2e3034">Baku</span>
-                <span>Terminal 1</span>
-                <span>12 Nov , Tu</span>
-              </div>
-              <div class="svgFlight">
-                <div class="salt"></div>
-                <div class="round"></div>
-                <div class="round"></div>
-              </div>
-              <div class="dateInfo">
-                <p>10:00</p>
-                <div class="planeSvg">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    class="root_ESF size_20__Il"
-                  >
-                    <path
-                      d="M8.964 1.667a.853.853 0 0 0-.837.865l.078 5.11-3.383-1.119-.708-2.22a.844.844 0 0 0-1.637.113l-.36 2.104A2.4 2.4 0 0 0 3.73 9.202l12.295 4.058a1.44 1.44 0 0 0 .904-2.733L12.25 8.98l-2.47-6.752a.852.852 0 0 0-.815-.56Zm-5.84 14.166a.624.624 0 1 0 0 1.25h13.75a.628.628 0 0 0 .586-.383.626.626 0 0 0-.585-.867H3.125Z"
-                    ></path>
-                  </svg>
-                </div>
-                <span style="color: #2e3034">Vienna</span>
-                <span>Terminal 1</span>
-                <span>12 Nov , Tu</span>
-              </div>
-            </div>
-          </div>
-          <div class="right_column d-flex">
-            <div class="flightInfoContainer">
-              <div class="svgContainer d-flex">
-                <div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="1.5 5 21 14"
-                    class="root_ESF size_16_MSX"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M21.8 9.265a.75.75 0 0 0 .7-.75V6.75c0-.965-.785-1.75-1.75-1.75H16.5v1A.749.749 0 1 1 15 6V5H3.25c-.965 0-1.75.785-1.75 1.75v1.765a.75.75 0 0 0 .7.75c1.43.09 2.55 1.295 2.55 2.735s-1.12 2.645-2.55 2.735a.75.75 0 0 0-.7.75v1.765c0 .965.785 1.75 1.75 1.75H15v-1a.749.749 0 1 1 1.5 0v1h4.25c.965 0 1.75-.785 1.75-1.75v-1.765a.75.75 0 0 0-.7-.75c-1.43-.09-2.55-1.295-2.55-2.735s1.12-2.645 2.55-2.735ZM16.5 15a.749.749 0 1 1-1.5 0v-1.5a.749.749 0 1 1 1.5 0V15Zm0-4.5a.749.749 0 1 1-1.5 0V9a.749.749 0 1 1 1.5 0v1.5Z"
-                    ></path>
-                  </svg>
-                  J2 71
-                </div>
-                <div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    viewBox="0 0 16 16"
-                    class="root_ESF size_16_MSX"
-                  >
-                    <path
-                      d="M13.333 6.667H10L6.62 1.66a.698.698 0 0 0-1.256.576l1.628 4.43h-3.66l-.92-1.134c-.1-.12-.186-.2-.34-.2h-.406a.33.33 0 0 0-.32.414L2 8l-.653 2.253a.33.33 0 0 0 .32.414h.406c.154 0 .24-.08.34-.2l.92-1.134h3.66l-1.627 4.43a.697.697 0 0 0 1.257.576L10 9.333h3.333a1.333 1.333 0 1 0 0-2.666Z"
-                    ></path>
-                  </svg>
-                  Airbus A319
-                </div>
-              </div>
-              <p>4 h 30 min</p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                class="root_ESF direct_icon_vMk size_20__Il withoutSvg"
-              >
-                <path
-                  fill="#2C8DC7"
-                  d="M8.535 5.41A.625.625 0 0 0 8.1 6.484l3.1 3.1H1.875a.625.625 0 1 0 0 1.25H11.2l-3.1 3.1a.625.625 0 1 0 .884.883l4.166-4.167a.625.625 0 0 0 0-.884L8.984 5.6a.625.625 0 0 0-.449-.19Zm7.923 2.507a2.294 2.294 0 0 0-2.291 2.291 2.294 2.294 0 0 0 2.291 2.292 2.294 2.294 0 0 0 2.292-2.292 2.294 2.294 0 0 0-2.292-2.291Z"
-                ></path>
-              </svg>
-              <br />
-              <span style="margin-top: 8px">Without Stops</span>
-            </div>
-            <div class="flightService d-flex">
-              <div class="service">
-                <button>
-                  <div>
-                    <p class="serviceName">Economy</p>
-                  </div>
-                  <div>
-                    <p>351.47</p>
-                    <span>Starting price</span>
-                  </div>
-                </button>
-              </div>
-              <div class="service">
-                <button>
-                  <div class="businessService">
-                    <p class="serviceName">Business</p>
-                  </div>
-                  <div>
-                    <p>1200.47</p>
-                    <span>Starting price</span>
-                  </div>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="flight_date d-flex">
-          <div class="left_column">
-            <div class="d-flex">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                fill="none"
-                viewBox="0 0 20 20"
-                class="root_ESF size_20__Il"
-              >
-                <g id="logo">
-                  <g id="Group 135">
-                    <path
-                      id="path23491"
-                      fill="#036"
-                      d="M15.154 12.916c-.868 2.63-3.347 4.534-6.264 4.534a6.604 6.604 0 0 1-6.596-6.597A6.604 6.604 0 0 1 8.89 4.257c1.108 0 2.152.275 3.069.76l.236-.208a6.847 6.847 0 0 0-3.305-.846c-3.8 0-6.89 3.09-6.89 6.89s3.09 6.89 6.89 6.89c3.086 0 5.705-2.04 6.58-4.842l-.316.015Z"
-                    ></path>
-                    <path
-                      id="path23493"
-                      fill="#00B2E2"
-                      d="M4.476 12.976c3.978-.366 7.919-.976 11.804-1.955l-.18.806c-4.97 1.133-8.437 1.237-11.624 1.15Z"
-                    ></path>
-                    <path
-                      id="path23495"
-                      fill="#00B2E2"
-                      d="M5.108 12.581a69.207 69.207 0 0 0 11.459-2.838l-.185.825c-4.346 1.366-8.051 1.976-11.274 2.013Z"
-                    ></path>
-                    <path
-                      id="path23497"
-                      fill="#57C8E7"
-                      d="M5.715 12.161c3.654-.911 7.375-2.186 11.141-3.713l-.185.83c-3.99 1.566-7.68 2.597-10.956 2.883Z"
-                    ></path>
-                    <path
-                      id="path23499"
-                      fill="#98DAE9"
-                      d="M6.32 11.664c3.685-1.12 7.309-2.803 10.895-4.821l-.227 1.017c-4.296 2.133-7.936 3.5-10.668 3.804Z"
-                    ></path>
-                    <path
-                      id="path23501"
-                      fill="#57C8E7"
-                      d="M7.104 11.139c4.138-2.001 7.502-4.074 10.533-6.18l-.25 1.121C13.95 8.274 10.52 10.091 7.103 11.14Z"
-                    ></path>
-                    <path
-                      id="path23503"
-                      fill="#00B2E2"
-                      d="M7.707 10.488c4.069-2.571 7.598-5.188 10.451-7.86l-.306 1.369c-3.375 2.913-6.83 4.919-10.145 6.491Z"
-                    ></path>
-                    <path
-                      id="path23505"
-                      fill="#00B2E2"
-                      d="m18.391 1-1.15.03a50.476 50.476 0 0 1-4.302 4.62c-1.563 1.489-3.134 2.824-4.707 4.138C11.677 7.464 15.095 4.861 18.392 1Z"
-                    ></path>
-                  </g>
-                </g>
-              </svg>
-              Azerbaijan Airlines
-            </div>
-            <div class="d-flex arrivalDate">
-              <div class="dateInfo">
-                <p>08:30</p>
-                <div class="planeSvg">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    class="root_ESF size_20__Il"
-                  >
-                    <path
-                      d="M5.196 2.624a.837.837 0 0 0-.604 1.405l3.501 3.783-3.205 1.401-1.973-1.158a.828.828 0 0 0-1.12 1.157l1.116 1.772a2.355 2.355 0 0 0 2.935.902l11.64-5.095a1.413 1.413 0 0 0-1.131-2.589l-4.377 1.913-6.38-3.394a.836.836 0 0 0-.402-.097Zm-2.071 13.21a.628.628 0 0 0-.634.624.625.625 0 0 0 .634.625h13.75a.624.624 0 1 0 0-1.25H3.125Z"
-                    ></path>
-                  </svg>
-                </div>
-                <span style="color: #2e3034">Baku</span>
-                <span>Terminal 1</span>
-                <span>12 Nov , Tu</span>
-              </div>
-              <div class="svgFlight">
-                <div class="salt"></div>
-                <div class="round"></div>
-                <div class="round"></div>
-              </div>
-              <div class="dateInfo">
-                <p>10:00</p>
-                <div class="planeSvg">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    class="root_ESF size_20__Il"
-                  >
-                    <path
-                      d="M8.964 1.667a.853.853 0 0 0-.837.865l.078 5.11-3.383-1.119-.708-2.22a.844.844 0 0 0-1.637.113l-.36 2.104A2.4 2.4 0 0 0 3.73 9.202l12.295 4.058a1.44 1.44 0 0 0 .904-2.733L12.25 8.98l-2.47-6.752a.852.852 0 0 0-.815-.56Zm-5.84 14.166a.624.624 0 1 0 0 1.25h13.75a.628.628 0 0 0 .586-.383.626.626 0 0 0-.585-.867H3.125Z"
-                    ></path>
-                  </svg>
-                </div>
-                <span style="color: #2e3034">Vienna</span>
-                <span>Terminal 1</span>
-                <span>12 Nov , Tu</span>
-              </div>
-            </div>
-          </div>
-          <div class="right_column d-flex">
-            <div class="flightInfoContainer">
-              <div class="svgContainer d-flex">
-                <div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="1.5 5 21 14"
-                    class="root_ESF size_16_MSX"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M21.8 9.265a.75.75 0 0 0 .7-.75V6.75c0-.965-.785-1.75-1.75-1.75H16.5v1A.749.749 0 1 1 15 6V5H3.25c-.965 0-1.75.785-1.75 1.75v1.765a.75.75 0 0 0 .7.75c1.43.09 2.55 1.295 2.55 2.735s-1.12 2.645-2.55 2.735a.75.75 0 0 0-.7.75v1.765c0 .965.785 1.75 1.75 1.75H15v-1a.749.749 0 1 1 1.5 0v1h4.25c.965 0 1.75-.785 1.75-1.75v-1.765a.75.75 0 0 0-.7-.75c-1.43-.09-2.55-1.295-2.55-2.735s1.12-2.645 2.55-2.735ZM16.5 15a.749.749 0 1 1-1.5 0v-1.5a.749.749 0 1 1 1.5 0V15Zm0-4.5a.749.749 0 1 1-1.5 0V9a.749.749 0 1 1 1.5 0v1.5Z"
-                    ></path>
-                  </svg>
-                  J2 71
-                </div>
-                <div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    viewBox="0 0 16 16"
-                    class="root_ESF size_16_MSX"
-                  >
-                    <path
-                      d="M13.333 6.667H10L6.62 1.66a.698.698 0 0 0-1.256.576l1.628 4.43h-3.66l-.92-1.134c-.1-.12-.186-.2-.34-.2h-.406a.33.33 0 0 0-.32.414L2 8l-.653 2.253a.33.33 0 0 0 .32.414h.406c.154 0 .24-.08.34-.2l.92-1.134h3.66l-1.627 4.43a.697.697 0 0 0 1.257.576L10 9.333h3.333a1.333 1.333 0 1 0 0-2.666Z"
-                    ></path>
-                  </svg>
-                  Airbus A319
-                </div>
-              </div>
-              <p>4 h 30 min</p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                class="root_ESF direct_icon_vMk size_20__Il withoutSvg"
-              >
-                <path
-                  fill="#2C8DC7"
-                  d="M8.535 5.41A.625.625 0 0 0 8.1 6.484l3.1 3.1H1.875a.625.625 0 1 0 0 1.25H11.2l-3.1 3.1a.625.625 0 1 0 .884.883l4.166-4.167a.625.625 0 0 0 0-.884L8.984 5.6a.625.625 0 0 0-.449-.19Zm7.923 2.507a2.294 2.294 0 0 0-2.291 2.291 2.294 2.294 0 0 0 2.291 2.292 2.294 2.294 0 0 0 2.292-2.292 2.294 2.294 0 0 0-2.292-2.291Z"
-                ></path>
-              </svg>
-              <br />
-              <span style="margin-top: 8px">Without Stops</span>
-            </div>
-            <div class="flightService d-flex">
-              <div class="service">
-                <button>
-                  <div>
-                    <p class="serviceName">Economy</p>
-                  </div>
-                  <div>
-                    <p>351.47</p>
-                    <span>Starting price</span>
-                  </div>
-                </button>
-              </div>
-              <div class="service">
-                <button>
-                  <div class="businessService">
-                    <p class="serviceName">Business</p>
-                  </div>
-                  <div>
-                    <p>1200.47</p>
-                    <span>Starting price</span>
-                  </div>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+            @foreach(var item in Model)
+            {
+                <form>
+                    <div class="flight_date d-flex">
+                        <div class="left_column">
+                            <div class="d-flex">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                 width="20"
+                                 height="20"
+                                 fill="none"
+                                 viewBox="0 0 20 20"
+                                 class="root_ESF size_20__Il">
+                                    <g id="logo">
+                                        <g id="Group 135">
+                                            <path id="path23491"
+                                              fill="#036"
+                                              d="M15.154 12.916c-.868 2.63-3.347 4.534-6.264 4.534a6.604 6.604 0 0 1-6.596-6.597A6.604 6.604 0 0 1 8.89 4.257c1.108 0 2.152.275 3.069.76l.236-.208a6.847 6.847 0 0 0-3.305-.846c-3.8 0-6.89 3.09-6.89 6.89s3.09 6.89 6.89 6.89c3.086 0 5.705-2.04 6.58-4.842l-.316.015Z"></path>
+                                            <path id="path23493"
+                                              fill="#00B2E2"
+                                              d="M4.476 12.976c3.978-.366 7.919-.976 11.804-1.955l-.18.806c-4.97 1.133-8.437 1.237-11.624 1.15Z"></path>
+                                            <path id="path23495"
+                                              fill="#00B2E2"
+                                              d="M5.108 12.581a69.207 69.207 0 0 0 11.459-2.838l-.185.825c-4.346 1.366-8.051 1.976-11.274 2.013Z"></path>
+                                            <path id="path23497"
+                                              fill="#57C8E7"
+                                              d="M5.715 12.161c3.654-.911 7.375-2.186 11.141-3.713l-.185.83c-3.99 1.566-7.68 2.597-10.956 2.883Z"></path>
+                                            <path id="path23499"
+                                              fill="#98DAE9"
+                                              d="M6.32 11.664c3.685-1.12 7.309-2.803 10.895-4.821l-.227 1.017c-4.296 2.133-7.936 3.5-10.668 3.804Z"></path>
+                                            <path id="path23501"
+                                              fill="#57C8E7"
+                                              d="M7.104 11.139c4.138-2.001 7.502-4.074 10.533-6.18l-.25 1.121C13.95 8.274 10.52 10.091 7.103 11.14Z"></path>
+                                            <path id="path23503"
+                                              fill="#00B2E2"
+                                              d="M7.707 10.488c4.069-2.571 7.598-5.188 10.451-7.86l-.306 1.369c-3.375 2.913-6.83 4.919-10.145 6.491Z"></path>
+                                            <path id="path23505"
+                                              fill="#00B2E2"
+                                              d="m18.391 1-1.15.03a50.476 50.476 0 0 1-4.302 4.62c-1.563 1.489-3.134 2.824-4.707 4.138C11.677 7.464 15.095 4.861 18.392 1Z"></path>
+                                        </g>
+                                    </g>
+                                </svg>
+                                Azerbaijan Airlines
+                            </div>
+                            <div class="d-flex arrivalDate">
+                                <div class="dateInfo">
+                                    <p>@item.FlightSchedules.FirstOrDefault()?.DepartureTime.ToString(@"hh\:mm")</p>
+                                    <div class="planeSvg">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                         width="20"
+                                         height="20"
+                                         fill="currentColor"
+                                         viewBox="0 0 20 20"
+                                         class="root_ESF size_20__Il">
+                                            <path d="M5.196 2.624a.837.837 0 0 0-.604 1.405l3.501 3.783-3.205 1.401-1.973-1.158a.828.828 0 0 0-1.12 1.157l1.116 1.772a2.355 2.355 0 0 0 2.935.902l11.64-5.095a1.413 1.413 0 0 0-1.131-2.589l-4.377 1.913-6.38-3.394a.836.836 0 0 0-.402-.097Zm-2.071 13.21a.628.628 0 0 0-.634.624.625.625 0 0 0 .634.625h13.75a.624.624 0 1 0 0-1.25H3.125Z"></path>
+                                        </svg>
+                                    </div>
+                                    <span style="color: #2e3034">@item.DepartureAirport</span>
+                                    <span>Terminal 1</span>
+                                    <span>@item.FlightDate</span>
+                                </div>
+                                <div class="svgFlight">
+                                    <div class="salt"></div>
+                                    <div class="round"></div>
+                                    <div class="round"></div>
+                                </div>
+                                <div class="dateInfo">
+                                    <p>@item.FlightSchedules.FirstOrDefault()?.ArrivalTime.ToString(@"hh\:mm")</p>
+
+                                    <div class="planeSvg">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                         width="20"
+                                         height="20"
+                                         fill="currentColor"
+                                         viewBox="0 0 20 20"
+                                         class="root_ESF size_20__Il">
+                                            <path d="M8.964 1.667a.853.853 0 0 0-.837.865l.078 5.11-3.383-1.119-.708-2.22a.844.844 0 0 0-1.637.113l-.36 2.104A2.4 2.4 0 0 0 3.73 9.202l12.295 4.058a1.44 1.44 0 0 0 .904-2.733L12.25 8.98l-2.47-6.752a.852.852 0 0 0-.815-.56Zm-5.84 14.166a.624.624 0 1 0 0 1.25h13.75a.628.628 0 0 0 .586-.383.626.626 0 0 0-.585-.867H3.125Z"></path>
+                                        </svg>
+                                    </div>
+                                    <span style="color: #2e3034">@item.DestinationAirport</span>
+                                    <span>Terminal 1</span>
+                                    <span>@item.FlightDate</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right_column d-flex">
+                            <div class="flightInfoContainer">
+                                <div class="svgContainer d-flex">
+                                    <div>
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                         fill="none"
+                                         viewBox="1.5 5 21 14"
+                                         class="root_ESF size_16_MSX">
+                                            <path fill="currentColor"
+                                              d="M21.8 9.265a.75.75 0 0 0 .7-.75V6.75c0-.965-.785-1.75-1.75-1.75H16.5v1A.749.749 0 1 1 15 6V5H3.25c-.965 0-1.75.785-1.75 1.75v1.765a.75.75 0 0 0 .7.75c1.43.09 2.55 1.295 2.55 2.735s-1.12 2.645-2.55 2.735a.75.75 0 0 0-.7.75v1.765c0 .965.785 1.75 1.75 1.75H15v-1a.749.749 0 1 1 1.5 0v1h4.25c.965 0 1.75-.785 1.75-1.75v-1.765a.75.75 0 0 0-.7-.75c-1.43-.09-2.55-1.295-2.55-2.735s1.12-2.645 2.55-2.735ZM16.5 15a.749.749 0 1 1-1.5 0v-1.5a.749.749 0 1 1 1.5 0V15Zm0-4.5a.749.749 0 1 1-1.5 0V9a.749.749 0 1 1 1.5 0v1.5Z"></path>
+                                        </svg>
+                                        J2 71
+                                    </div>
+                                    <div>
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                         width="16"
+                                         height="16"
+                                         fill="currentColor"
+                                         viewBox="0 0 16 16"
+                                         class="root_ESF size_16_MSX">
+                                            <path d="M13.333 6.667H10L6.62 1.66a.698.698 0 0 0-1.256.576l1.628 4.43h-3.66l-.92-1.134c-.1-.12-.186-.2-.34-.2h-.406a.33.33 0 0 0-.32.414L2 8l-.653 2.253a.33.33 0 0 0 .32.414h.406c.154 0 .24-.08.34-.2l.92-1.134h3.66l-1.627 4.43a.697.697 0 0 0 1.257.576L10 9.333h3.333a1.333 1.333 0 1 0 0-2.666Z"></path>
+                                        </svg>
+                                        @item.Airplane
+                                    </div>
+                                </div>
+                                <p>4 h 30 min</p>
+
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                 width="20"
+                                 height="20"
+                                 fill="currentColor"
+                                 viewBox="0 0 20 20"
+                                 class="root_ESF direct_icon_vMk size_20__Il withoutSvg">
+                                    <path fill="#2C8DC7"
+                                      d="M8.535 5.41A.625.625 0 0 0 8.1 6.484l3.1 3.1H1.875a.625.625 0 1 0 0 1.25H11.2l-3.1 3.1a.625.625 0 1 0 .884.883l4.166-4.167a.625.625 0 0 0 0-.884L8.984 5.6a.625.625 0 0 0-.449-.19Zm7.923 2.507a2.294 2.294 0 0 0-2.291 2.291 2.294 2.294 0 0 0 2.291 2.292 2.294 2.294 0 0 0 2.292-2.292 2.294 2.294 0 0 0-2.292-2.291Z"></path>
+                                </svg>
+                                <br />
+                                <span style="margin-top: 8px">Without Stops</span>
+                            </div>
+                            <div class="flightService d-flex">
+                                <div class="service">
+                                    <button>
+                                        <div>
+                                            <p class="serviceName">Economy</p>
+                                        </div>
+                                        <div>
+                                            <p>@item.EconomyPrice</p>
+                                            <span>Starting price</span>
+                                        </div>
+                                    </button>
+                                </div>
+                                <div class="service">
+                                    <button>
+                                        <div class="businessService">
+                                            <p class="serviceName">Business</p>
+                                        </div>
+                                        <div>
+                                            <p>@item.BusinessPrice</p>
+                                            <span>Starting price</span>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+        
+            }
+
       </div>
     </main>
     <footer style="margin-top: 80px">

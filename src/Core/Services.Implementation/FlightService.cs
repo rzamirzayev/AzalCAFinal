@@ -2,12 +2,14 @@
 using Microsoft.EntityFrameworkCore;
 using Repositories;
 using Services.Flight;
+using Services.FlightSchedule;
 using Services.Passanger;
 using Services.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Services.Implementation
@@ -110,9 +112,65 @@ namespace Services.Implementation
             };
         }
 
-        public Task<IEnumerable<FlightGetAllDto>> GetById(int id, CancellationToken cancellationToken = default)
+        public async Task<FlightGetAllDto> GetById(int id, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            var f = await flightRepository.GetAsync(f=>f.FlightId==id,cancellationToken);
+
+            return new FlightGetAllDto { FlightId = f.FlightId, DepartureAirportId = f.DepartureAirportId, DestinationAirportId = f.DestinationAirportId, AirplaneId = f.AirplaneId, EconomyPrice = f.EconomyPrice, BusinessPrice = f.BusinessPrice, FlightDate = f.FlightTime };
         }
+
+        public async Task<List<FlightSearchDto>> GetAvailableFlights(string departureCity, string destinationCity, string flightDate, int adultCount, int childCount, int infantCount)
+        {
+            
+            var data = await flightRepository.GetAll()
+        .Include(flight => flight.Airplane)
+        .Include(flight => flight.DepartureAirport).ThenInclude(a=>a.City)
+        .Include(flight => flight.DestinationAirport).ThenInclude(b=>b.City)
+        .Include(flight => flight.FlightSchedules)
+        .Include(flight => flight.TicketBookings).ThenInclude(ticket => ticket.Passenger)
+        .ToListAsync();
+            var a= data.Where(f => f.DepartureAirport?.City?.CityName == departureCity &&
+                   f.DestinationAirport?.City?.CityName == destinationCity &&
+                    f.FlightTime.ToString() == flightDate).ToList();
+
+            var flightDtos = a.Select(flight => new FlightSearchDto
+            {
+                Id =flight.FlightId,
+                DepartureAirport = flight.DepartureAirport.AirportName,
+                DestinationAirport = flight.DestinationAirport.AirportName,
+                FlightDate = flight.FlightTime.ToString(),
+                EconomyPrice=flight.EconomyPrice,
+                BusinessPrice=flight.BusinessPrice,
+                Airplane=flight.Airplane.AirplaneName,
+                FlightSchedules = flight.FlightSchedules.Select(sch => new FlightScheduleDto
+                {
+                    FlightId = sch.FlightId,
+                    DepartureTime = sch.DepartureTime,
+                    ArrivalTime = sch.ArrivalTime
+                }).ToList()
+
+            }).ToList();
+
+            return flightDtos;
+        }
+
+        //    public async Task<List<AddFlightResponseDto>> GetAvailableFlights(string departureCity, string destinationCity, DateOnly flightDate, int adultCount, int childCount, int infantCount)
+        //    {
+        //        var flights = await flightRepository.GetAll()
+        //.Include(f => f.DepartureAirport)
+        //.Include(f => f.DestinationAirport)
+        //.Where(f => f.DepartureAirport.City.CityName == departureCity &&
+        //            f.DestinationAirport.City.CityName == destinationCity &&
+        //            f.FlightTime == flightDate)
+        //.ToListAsync();
+
+
+        //var filteredFlights = flights.Where(f => f.TicketBookings
+        //        .Count(ticket => !ticket.Passenger.IsChild) >= adultCount &&
+        //        f.TicketBookings.Count(ticket => ticket.Passenger.IsChild) >= childCount &&
+        //        f.TicketBookings.Count(ticket => ticket.Passenger.IsInfant) >= infantCount)
+        //    .ToList();
+
+        //    }
     }
 }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "OS77jz9q43oqzc83c/kRuahbuth3VV3+S175aSeoXYM=",
+  "Hash": "NOAb3EDthMK3MQsIWSZulsqjIj23meur84+LjUQXAOk=",
   "Source": "WebUI",
   "BasePath": "_content/WebUI",
   "Mode": "Default",
@@ -21707,6 +21707,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\css\\flightCarusel.css"
+    },
+    {
+      "Identity": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\assets\\css\\flightId.css",
+      "SourceId": "WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\",
+      "BasePath": "_content/WebUI",
+      "RelativePath": "assets/css/flightId.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\css\\flightId.css"
     },
     {
       "Identity": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\assets\\css\\footer.css",

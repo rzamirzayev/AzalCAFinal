@@ -5105,6 +5105,10 @@
       "PackagePath": "staticwebassets\\assets\\css\\flightCarusel.css"
     },
     {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\assets\\css\\flightId.css",
+      "PackagePath": "staticwebassets\\assets\\css\\flightId.css"
+    },
+    {
       "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\assets\\css\\footer.css",
       "PackagePath": "staticwebassets\\assets\\css\\footer.css"
     },

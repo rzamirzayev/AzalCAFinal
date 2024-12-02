@@ -112,11 +112,24 @@ namespace Services.Implementation
             };
         }
 
-        public async Task<FlightGetAllDto> GetById(int id, CancellationToken cancellationToken = default)
+        public async Task<AddFlightResponseDto> GetById(int id, CancellationToken cancellationToken = default)
         {
-            var f = await flightRepository.GetAsync(f=>f.FlightId==id,cancellationToken);
+            var flight = await flightRepository.GetAsync(f=>f.FlightId==id,cancellationToken);
+            var time=await flightScheduleRepository.GetAsync(f=>f.FlightId== id,cancellationToken);
 
-            return new FlightGetAllDto { FlightId = f.FlightId, DepartureAirportId = f.DepartureAirportId, DestinationAirportId = f.DestinationAirportId, AirplaneId = f.AirplaneId, EconomyPrice = f.EconomyPrice, BusinessPrice = f.BusinessPrice, FlightDate = f.FlightTime };
+            return new AddFlightResponseDto
+            {
+                FlightId = flight.FlightId,
+                AirplaneName = (await airplaneRepoitory.GetAsync(a => a.AirplaneId == flight.AirplaneId, cancellationToken)).AirplaneName,
+                DepartureAirport = (await airportRepository.GetAsync(a => a.AirportId == flight.DepartureAirportId, cancellationToken)).AirportName,
+                DestinationAirport = (await airportRepository.GetAsync(a => a.AirportId == flight.DestinationAirportId, cancellationToken)).AirportName,
+                EconomyPrice = flight.EconomyPrice,
+                BusinessPrice = flight.BusinessPrice,
+                DepartureTime = time.DepartureTime.ToString(),
+                ArrivalTime = time.ArrivalTime.ToString(),
+                FlightTime = flight.FlightTime.ToString(),
+
+            };
         }
 
         public async Task<List<FlightSearchDto>> GetAvailableFlights(string departureCity, string destinationCity, string flightDate, int adultCount, int childCount, int infantCount)

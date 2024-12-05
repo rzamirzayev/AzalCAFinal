@@ -1,0 +1,12 @@
+﻿@model ServiceGetAllDto
+<div class="service">
+    <img src="~/uploads/@Model.ImagePath"
+         alt="" />
+    <div class="card_text">
+        <p class="black_parag">@Model.Name</p>
+        <p class="gray_parag">
+            @Model.Title
+        </p>
+        <a asp-controller="services" asp-action="details" asp-route-id="@Model.Id">Read More</a>
+    </div>
+</div>

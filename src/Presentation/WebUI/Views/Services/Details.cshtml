@@ -1,4 +1,4 @@
-﻿
+﻿@model ServiceGetAllDto
 @{
     ViewData["Title"] = "Details";
 }
@@ -111,67 +111,22 @@
                     <a href="#">Services</a>
                     <div class="nokta"></div>
                 </li>
-                <li>Premium Economy</li>
+                <li>@Model.Name</li>
             </ul>
-            <h1>Premium Economy</h1>
+            <h1>@Model.Name</h1>
         </div>
     </div>
 </div>
 <main>
     <div class="premium_information">
         <h3>
-            Wherever you are travelling to, Azerbaijan Airlines Premium Economy
-            Class will allow you to feel more comfortable and free throughout your
-            flight.
+            @Model.Title
         </h3>
-        <ul>
-            <li>
-                More personal space for work and relax, seats with extra legroom and
-                with wide-angle recline
-            </li>
-            <li>
-                More personal space for work and relax, seats with extra legroom and
-                with wide-angle recline
-            </li>
-            <li>
-                More personal space for work and relax, seats with extra legroom and
-                with wide-angle recline
-            </li>
-            <li>
-                More personal space for work and relax, seats with extra legroom and
-                with wide-angle recline
-            </li>
-            <li>
-                More personal space for work and relax, seats with extra legroom and
-                with wide-angle recline
-            </li>
-            <li>
-                More personal space for work and relax, seats with extra legroom and
-                with wide-angle recline
-            </li>
-            <li>
-                More personal space for work and relax, seats with extra legroom and
-                with wide-angle recline
-            </li>
-            <li>
-                More personal space for work and relax, seats with extra legroom and
-                with wide-angle recline
-            </li>
-            <li>
-                More personal space for work and relax, seats with extra legroom and
-                with wide-angle recline
-            </li>
-            <li>
-                More personal space for work and relax, seats with extra legroom and
-                with wide-angle recline
-            </li>
-            <li>
-                More personal space for work and relax, seats with extra legroom and
-                with wide-angle recline
-            </li>
-        </ul>
+        @Model.Description
     </div>
 </main>
 
 
-
+@section addcss{
+    <link rel="stylesheet" href="~/./assets/css/services.css" />
+}

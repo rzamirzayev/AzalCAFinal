@@ -247,7 +247,6 @@ namespace Persistence.Migrations
                         .HasColumnType("nvarchar");
 
                     b.Property<string>("FinCode")
-                        .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar");
 
@@ -289,7 +288,7 @@ namespace Persistence.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(500)
+                        .HasMaxLength(1000)
                         .HasColumnType("nvarchar");
 
                     b.Property<string>("ImagePath")
@@ -339,6 +338,11 @@ namespace Persistence.Migrations
 
                     b.Property<int>("Price")
                         .HasColumnType("int");
+
+                    b.Property<string>("TicketNumber")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar");
 
                     b.HasKey("BookingId");
 

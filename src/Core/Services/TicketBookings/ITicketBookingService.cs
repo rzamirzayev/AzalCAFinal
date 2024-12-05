@@ -11,5 +11,6 @@ namespace Services.TicketBookings
     {
         Task<IEnumerable<TicketBookingGetAllDto>> GetAllAsync(CancellationToken cancellationToken = default);
         Task<AddTicketBookingResponseDto> AddAsync(AddTicketBookingRequestDto model, CancellationToken cancellationToken = default);
+        Task<AddTicketBookingResponseDto> GetTicketNumber(string surname, string number);
     }
 }

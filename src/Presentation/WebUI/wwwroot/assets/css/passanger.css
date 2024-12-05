@@ -1,0 +1,241 @@
+.cardsPassanger{
+    display: flex;
+        flex-direction: column;
+        row-gap: 16px;
+}
+.passanger_card{
+    display: flex;
+    flex: 0 0 calc(50% - 12px);
+    flex-direction: column;
+    background-color: #fff;
+    width: 100%;
+    border: 1px solid #DBE0E4;
+    border-radius: 8px;
+}
+.passhead{
+    margin: 40px 0;
+}
+.passanger_card h2{
+    display: flex
+;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    font-weight: 500;
+    color: #fff;
+    background-color: #01357E;
+    padding: 24px 30px;
+}
+.passanger_info{
+    display: block;
+    padding-top: 20px;
+}
+.passanger_info_texts{
+    padding: 12px;
+    background-color: #fff;
+}
+.personalinfo{
+    position: relative;
+    display: flex
+;
+    flex-wrap: wrap;
+    row-gap: 16px;
+    column-gap: 24px;
+    justify-content: space-between;
+    
+}
+
+.personText{
+    position: relative;
+    display: flex
+;
+    flex-direction: column;
+    border-radius: 8px;
+    width: 256px;
+}
+.personalinfo:first-child{
+    margin-bottom: 80px;
+}
+
+.passanger_info span{
+    margin-bottom: 8px;
+    font-size: 13px;
+    line-height: 20px;
+    color: #6E7583;
+    font-weight: 400;
+}
+.personText div{
+    display: flex
+;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 11px 16px;
+    background: #fff;
+    border: 1px solid #DBE0E4;
+    border-radius: 8px;
+
+}
+.personText input{
+    flex: 1 1 auto;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #2e3034;
+    white-space: nowrap;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    outline: none;
+}
+.gender div{
+    display: flex
+;
+    column-gap: 12px;
+    align-self: flex-start;
+    border: none;
+    padding: 0;
+
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.gender button{
+    min-width: 48px;
+    padding: 10px;
+    font-size: 15px;
+    line-height: 24px;
+    color: #6E7583;
+    border: 1px solid #d0d5dd;
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0);
+}
+.personText:nth-child(3){
+align-items: center;}
+.documentinfo h4{
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 24px;
+}
+.documentinfo select{
+    width: 100%;
+    border-color: var(--color-n-100);
+    border-radius: 8px;
+    box-shadow: none;
+}
+.passportSelect {
+    display: flex;
+}
+.passportSelect select{
+    color: inherit;
+    background: 0px center;
+    opacity: 1;
+    width: 100%;
+    grid-area: 1 / 2;
+    font: inherit;
+    min-width: 2px;
+    border: 0px;
+    margin: 0px;
+    outline: 0px;
+    padding: 0px;
+}
+.documentinfo{
+    margin-bottom: 20px;
+}
+.flightConfirm{
+    position: sticky;
+    z-index: 2;
+    bottom: 0;
+    width: 100%;
+    padding: 12px 0;
+    color: #fff;
+    background-color: #C52F5C;
+}
+.flights-texts{
+    display: grid
+;
+    grid-template-columns: 2fr 3fr;
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+.leftText,
+.rightText{
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    justify-content: space-between;
+}
+.leftText div{
+    display: flex
+;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+}
+.leftText svg{
+    margin-right: 12px;
+    width: 20px;
+    height: 20px;
+}
+.leftText button{
+    margin-left: auto;
+    font-size: 14px;
+    line-height: 20px;
+    color: #fff;
+    text-align: left;
+    text-decoration: underline;
+    cursor: pointer;
+    user-select: none;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    transition: all .15s ease-in-out;
+}
+.rightText div{
+    flex: 1;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 16px;
+    padding: 0 20px;
+    border-right: 1px solid rgb(255 255 255 / 20%);
+    border-left: 1px solid rgb(255 255 255 / 20%);
+    display: flex
+;
+flex-direction: column;
+    align-items: normal;
+}
+.rightText p{
+    display: flex
+;
+    flex-direction: column;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+}
+.rightText span{
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    color: rgb(255 255 255 / 70%);
+}
+.rightText button{
+    width: 278px;
+    height: 48px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #fff;
+    border: solid 2px #fff;
+    border-radius: 12px;
+    cursor: pointer;
+    user-select: none;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+html,body{height: 100%;}

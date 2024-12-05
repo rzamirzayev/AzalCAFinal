@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using Repositories;
 using Services.Services;
 using Services.TicketBookings;
@@ -26,6 +27,7 @@ namespace Services.Implementation
                 IsChild = model.IsChild,
                 Price = model.Price,
                 BookingDate = model.BookingDate,
+                TicketNumber=model.TicketNumber,
             };
             await ticketBookingsRepository.AddAsync(entitiy, cancellationToken);
             await ticketBookingsRepository.SaveAsync();
@@ -36,6 +38,7 @@ namespace Services.Implementation
                 FlightId=entitiy.FlightId,
                 IsChild=entitiy.IsChild,
                 Price = entitiy.Price,
+                TicketNumber=entitiy.TicketNumber,
                 BookingDate=entitiy.BookingDate.ToString(),
             };
 
@@ -43,9 +46,57 @@ namespace Services.Implementation
     
         }
 
-        public Task<IEnumerable<TicketBookingGetAllDto>> GetAllAsync(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<TicketBookingGetAllDto>> GetAllAsync(CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            var data = await ticketBookingsRepository.GetAll().Select(m => new TicketBookingGetAllDto
+            {
+                BookingDate = m.BookingDate,
+                FlightId = m.FlightId,
+                CabinClass = m.CabinClass,
+                IsChild = m.IsChild,
+                Price = m.Price,
+                TicketNumber=m.TicketNumber,
+                PassangerId=m.PassangerId,
+                BookingId=m.BookingId,
+                
+    }).ToListAsync(cancellationToken);
+            return data;
         }
+
+        public async Task<AddTicketBookingResponseDto> GetTicketNumber(string surname, string number)
+        {
+            var ticketBookings = await ticketBookingsRepository
+                .GetAll()
+                .Include(m => m.Passenger) 
+                .ToListAsync();
+
+    
+            var matchingTicket = ticketBookings
+                .FirstOrDefault(f => f.Passenger.Surname.Equals(surname, StringComparison.OrdinalIgnoreCase) && f.TicketNumber == number);
+
+            
+            if (matchingTicket == null)
+            {
+              
+                throw new Exception("Ticket not found.");
+            }
+
+            
+            var responseDto = new AddTicketBookingResponseDto
+            {
+                TicketNumber = matchingTicket.TicketNumber,
+                PassangerId = matchingTicket.Passenger.PassangerId, 
+                BookingDate = matchingTicket.BookingDate.ToString(),
+                BookingId = matchingTicket.BookingId,
+                IsChild=matchingTicket.IsChild,
+                Price= matchingTicket.Price,
+                CabinClass=matchingTicket.CabinClass,
+                FlightId=matchingTicket.FlightId,
+
+            };
+
+            return responseDto;
+        }
+
     }
 }

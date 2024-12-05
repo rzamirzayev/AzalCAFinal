@@ -9,13 +9,13 @@ namespace Services.Passanger
     public class AddPassangerRequestDto
     {
     
-        public required string Name { get; set; }
-        public required string Surname { get; set; }
-        public required string FinCode { get; set; }
-        public required DateTime DateOfBirth { get; set; }
-        public required string Gender { get; set; }
-        public required string Phone { get; set; }
-        public required string Email { get; set; }
+        public  string Name { get; set; }
+        public  string Surname { get; set; }
+        public  string FinCode { get; set; }
+        public  DateTime DateOfBirth { get; set; }
+        public  string Gender { get; set; }
+        public  string Phone { get; set; }
+        public  string Email { get; set; }
     }
     public class AddPassangerResponseDto
     {

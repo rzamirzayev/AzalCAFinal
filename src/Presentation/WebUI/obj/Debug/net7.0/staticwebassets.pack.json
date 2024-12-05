@@ -5117,6 +5117,10 @@
       "PackagePath": "staticwebassets\\assets\\css\\header.css"
     },
     {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\assets\\css\\passanger.css",
+      "PackagePath": "staticwebassets\\assets\\css\\passanger.css"
+    },
+    {
       "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\assets\\css\\services.css",
       "PackagePath": "staticwebassets\\assets\\css\\services.css"
     },
@@ -5949,8 +5953,24 @@
       "PackagePath": "staticwebassets\\lib\\toastr.js\\toastr.min.js"
     },
     {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\uploads\\0f35306c-e180-4e5f-9b70-1584f0f12e7b.jpg",
+      "PackagePath": "staticwebassets\\uploads\\0f35306c-e180-4e5f-9b70-1584f0f12e7b.jpg"
+    },
+    {
       "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\uploads\\16d264de-54a2-40e0-a482-06465ad3906a.jpg",
       "PackagePath": "staticwebassets\\uploads\\16d264de-54a2-40e0-a482-06465ad3906a.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\uploads\\195236f2-ac9b-46d0-9bc6-3ee2d1e0de75.jpg",
+      "PackagePath": "staticwebassets\\uploads\\195236f2-ac9b-46d0-9bc6-3ee2d1e0de75.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\uploads\\197f05f7-cd66-4fc9-a9fe-9bc3ad23a2f0.jpg",
+      "PackagePath": "staticwebassets\\uploads\\197f05f7-cd66-4fc9-a9fe-9bc3ad23a2f0.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\uploads\\199f91a3-5889-4828-a6ab-c03354c7d9a3.jpg",
+      "PackagePath": "staticwebassets\\uploads\\199f91a3-5889-4828-a6ab-c03354c7d9a3.jpg"
     },
     {
       "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\uploads\\1e5553a9-9ca9-4190-a6ac-b5c514f72a78.jpg",
@@ -5961,8 +5981,24 @@
       "PackagePath": "staticwebassets\\uploads\\3ca2c988-ea1d-4ea7-b193-9ef023e60793.jpg"
     },
     {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\uploads\\41038f2d-f704-4276-a7c3-8aecdd6552e6.jpg",
+      "PackagePath": "staticwebassets\\uploads\\41038f2d-f704-4276-a7c3-8aecdd6552e6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\uploads\\79486540-fd68-4ea4-a23e-1018861c68c1.jpg",
+      "PackagePath": "staticwebassets\\uploads\\79486540-fd68-4ea4-a23e-1018861c68c1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\uploads\\deb06205-7d84-4918-b8cb-bf78d8ea09cf.jpg",
+      "PackagePath": "staticwebassets\\uploads\\deb06205-7d84-4918-b8cb-bf78d8ea09cf.jpg"
+    },
+    {
       "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\uploads\\ee6e779a-2849-4d8c-ab1d-ee5e3c73b81b.jpg",
       "PackagePath": "staticwebassets\\uploads\\ee6e779a-2849-4d8c-ab1d-ee5e3c73b81b.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\uploads\\f43f8389-4626-4f23-8fdb-c1efb4901582.jpg",
+      "PackagePath": "staticwebassets\\uploads\\f43f8389-4626-4f23-8fdb-c1efb4901582.jpg"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.WebUI.Microsoft.AspNetCore.StaticWebAssets.props",

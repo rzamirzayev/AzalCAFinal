@@ -27,11 +27,12 @@ namespace Services.Implementation.Common
                 message.Subject = subject;
                 message.Body = body;
                 message.IsBodyHtml = true;
-                message.From = new MailAddress(options.UserName);
+                message.From = new MailAddress(options.UserName, options.DisplayName);
+
                 message.To.Add(to);
+
                 await SendMailAsync(message);
             }
-            throw new NotImplementedException();
         }
     }
 }

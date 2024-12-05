@@ -15,7 +15,7 @@ namespace Domain.Entities
         public bool IsChild { get; set; }  
         public int Price { get; set; }  
         public DateTime BookingDate { get; set; }
-
+        public string TicketNumber { get; set; }
         public Passenger? Passenger { get; set; }
         public Flight? Flight { get; set; }
     }

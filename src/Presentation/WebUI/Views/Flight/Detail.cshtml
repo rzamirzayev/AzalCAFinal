@@ -2,9 +2,17 @@
 @{
     ViewData["Title"] = "Detail";
     Layout = null;
-    double ecoPrice = Model.EconomyPrice;
+    double ecoPrice = ViewBag.Price;
     double totalPrice = (ViewBag.AdultCount * ecoPrice)+(ViewBag.ChildCount*(ecoPrice * 0.5));
-
+    string ticketClass;
+    if (Model.BusinessPrice == ViewBag.Price)
+    {
+         ticketClass = "Business";
+    }
+    else
+    {
+         ticketClass = "Economy";
+    }
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -254,7 +262,7 @@
                     <div class="flightsCabin">
                         <div class="flightCabin">
                             <h3>
-                                Economy
+                                @ticketClass
                                 <div>Budget</div>
                             </h3>
                         </div>
@@ -342,7 +350,10 @@
                     <p>@totalPrice</p>
                     <span>for all passanger</span>
                 </div>
-                <button>Confirm</button>
+@*                <form  asp-controller="Flight" asp-action="Passanger" asp-route-id="@Model.FlightId" asp-route-adultCount="@ViewBag.AdultCount" asp-route-childCount="@ViewBag.ChildCount" asp-route-infantCount="@ViewBag.InfantCount">
+                <button type="submit">Confirm</button>
+                </form>*@
+                <a asp-action="Passanger" asp-route-id="@Model.FlightId" asp-route-adultCount="@ViewBag.AdultCount" asp-route-childCount="@ViewBag.ChildCount" asp-route-infantCount="@ViewBag.InfantCount" asp-route-flightClass="@ticketClass">Sumbit</a>
             </div>
         </div>
     </div>

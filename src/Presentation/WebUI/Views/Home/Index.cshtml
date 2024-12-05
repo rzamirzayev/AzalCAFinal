@@ -125,7 +125,7 @@
                 <button>Flight Status</button>
             </div>
         </div>
-        <div class="bookflight">
+        <div class="bookflight" >
             <form asp-action="index" asp-controller="flight">
                 <button class="return_svg">
                     <svg xmlns="http://www.w3.org/2000/svg"
@@ -309,6 +309,17 @@
                 </div>
             </form>
         </div>
+@*        <div class="managebooking">
+            <form class="d-flex" asp-controller="flight" asp-action="PassangerGetTicketNumber" >
+                <div class="d-flex">
+                    <input type="text" name="surname" />
+                </div>
+                <div class="d-flex">
+                    <input type="text" name="number"/>
+                </div>
+                <button type="submit">Search</button>
+            </form>
+        </div>*@
     </div>
 </div>
 <main>
@@ -359,44 +370,9 @@
     <!-- Our Services -->
     <h3 class="head_section">Our Services</h3>
     <div class="our_services d-flex">
-        <div class="service">
-            <img src="https://www.azal.az/_next/static/media/business_class_p_2_33c4d907d3.fd011fad.jpg"
-                 alt="" />
-            <div class="card_text">
-                <p class="black_parag">Busines Class</p>
-                <p class="gray_parag">
-                    Travel in comfort and more relaxed journey in Business Class
-                </p>
-                <a href="#">Read More</a>
-            </div>
-        </div>
-
-        <div class="service">
-            <img src="https://www.azal.az/_next/static/media/qidalanma_3_d30d72de34.9ffad3ae.jpg"
-                 alt="" />
-            <div class="card_text">
-                <p class="black_parag">Meals on-board</p>
-                <p class="gray_parag">
-                    Free meals are served on all international flights of Azerbaijan
-                    Airlines
-                </p>
-                <a href="#">Read More</a>
-            </div>
-        </div>
-
-        <div class="service">
-            <img src="https://www.azal.az/_next/static/media/245x138_2_Bigmiles_24ccd08f03.e51a3bc4.jpg"
-                 alt="" />
-            <div class="card_text">
-                <p class="black_parag">AZAL Miles</p>
-                <p class="gray_parag">
-                    AZAL Miles is the frequent flyer programme of Azerbaijan Airlines.
-                    AZAL Miles is a unique frequent flyer programme that rewards
-                    members with travel and status points.
-                </p>
-                <a href="#">Read More</a>
-            </div>
-        </div>
+        @await Component.InvokeAsync("Services", new { id = 21 })
+        @await Component.InvokeAsync("Services", new { id = 20})
+        @await Component.InvokeAsync("Services", new { id = 22})
     </div>
 
     <!-- Popular directions -->

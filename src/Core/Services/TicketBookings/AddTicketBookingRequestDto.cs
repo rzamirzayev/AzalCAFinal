@@ -15,6 +15,7 @@ namespace Services.TicketBookings
         public bool IsChild { get; set; }
         public int Price { get; set; }
         public DateTime BookingDate { get; set; }
+        public string TicketNumber { get; set; }
     }
     public class AddTicketBookingResponseDto
     {
@@ -25,5 +26,7 @@ namespace Services.TicketBookings
         public bool IsChild { get; set; }
         public int Price { get; set; }
         public string BookingDate { get; set; }
+        public string TicketNumber { get; set; }
+
     }
 }

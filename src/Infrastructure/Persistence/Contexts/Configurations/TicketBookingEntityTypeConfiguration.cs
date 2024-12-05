@@ -23,6 +23,7 @@ namespace Persistence.Contexts.Configurations
             builder.Property(tb => tb.IsChild).HasColumnType("bit");
             builder.Property(tb => tb.Price).HasColumnType("int");
             builder.Property(tb => tb.BookingDate).HasColumnType("datetime");
+            builder.Property(tb => tb.TicketNumber).HasColumnType("nvarchar").HasMaxLength(30);
 
             builder.HasOne(tb => tb.Passenger)
                    .WithMany(p => p.TicketBookings)

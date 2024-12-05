@@ -23,14 +23,31 @@ namespace Services.Implementation
                 DateOfBirth = model.DateOfBirth,
                 Email = model.Email,
                 Gender = model.Gender,
-                Name = model.Name,
-                Surname = model.Surname,
+                Name = model.Name.ToUpper(),
+                Surname = model.Surname.ToUpper(),
                 Phone= model.Phone,
             };
             await passangersRepository.AddAsync(entity,cancellationToken);
             await passangersRepository.SaveAsync();
             return new AddPassangerResponseDto { PassangerId = entity.PassangerId, FinCode = entity.FinCode, Email = entity.Email, Gender = entity.Gender, Name = entity.Name, Surname = entity.Surname, Phone = entity.Phone,DateOfBirth=entity.DateOfBirth.ToString(), };
 
+        }
+
+        public async Task<PassangerGetAllDto> GetById(int id, CancellationToken cancellationToken = default)
+        {
+            var data=await passangersRepository.GetAsync(p=>p.PassangerId== id);
+            return new PassangerGetAllDto
+            {
+                PassangerId=data.PassangerId,
+                Name=data.Name,
+                Surname=data.Surname,
+                DateOfBirth=data.DateOfBirth,
+                Phone=data.Phone,
+                Email=data.Email,
+                Gender=data.Gender,
+                FinCode=data.FinCode,
+
+            };
         }
     }
 }

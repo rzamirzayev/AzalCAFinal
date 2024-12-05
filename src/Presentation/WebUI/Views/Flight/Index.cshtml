@@ -396,7 +396,7 @@
         <div class="finalFlightDate">
             @foreach (var item in Model)
             {
-                <form asp-controller="flight" asp-action="detail" asp-route-id="@item.Id" asp-route-adultCount="@ViewBag.AdultCount" asp-route-childCount="@ViewBag.ChildCount" asp-route-infantCount="@ViewBag.InfantCount">
+                <form asp-controller="flight" asp-action="detail" asp-route-id="@item.Id" asp-route-adultCount="@ViewBag.AdultCount" asp-route-childCount="@ViewBag.ChildCount" asp-route-infantCount="@ViewBag.InfantCount" asp-route-class="flightClass">
                               <div class="flight_date d-flex">
                     <div class="left_column">
                         <div class="d-flex">
@@ -517,7 +517,49 @@
                             <br />
                             <span style="margin-top: 8px">Without Stops</span>
                         </div>
-                        <div class="flightService d-flex">
+                            <div class="flightService d-flex">
+                                <input type="hidden" id="selectedFlightClass" name="selectedFlightClass" value="">
+
+                                <div class="service">
+                                    <button type="submit"
+                                        class="selectFlightClass"
+                                        data-class="Economy"
+                                       @* data-from="@item.DepartureAirport"
+                                        data-to="@item.DestinationAirport"
+                                        data-ecoprice="@item.EconomyPrice"
+                                        data-busprice="@item.BusinessPrice"
+                                        data-date="@item.FlightDate"
+                                        data-toTime="@item.FlightSchedules.FirstOrDefault()?.DepartureTime.ToString(@"hh\:mm")"*@
+                                        @*data-arrTime="@item.FlightSchedules.FirstOrDefault()?.ArrivalTime.ToString(@"hh\:mm")"*@
+                                        >
+                                        <div>
+                                            <p class="serviceName">Economy</p>
+                                        </div>
+                                        <div>
+                                            <p>@item.EconomyPrice</p>
+                                            <span>Starting price</span>
+                                        </div>
+                                    </button>
+                                </div>
+
+                                <div class="service">
+                                    <button type="submit"
+                                        class="selectFlightClass"
+                                        data-class="Business">
+                                        <div class="businessService">
+                                            <p class="serviceName">Business</p>
+                                        </div>
+                                        <div>
+                                            <p>@item.BusinessPrice</p>
+                                            <span>Starting price</span>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+
+
+
+@*                        <div class="flightService d-flex">
                             <div class="service">
                                 <button type="submit" data-from="@item.DepartureAirport" data-to="@item.DestinationAirport" data-ecoprice="@item.EconomyPrice" data-busprice="@item.BusinessPrice" data-date="@item.FlightDate" data-toTime="@item.FlightSchedules.FirstOrDefault()?.DepartureTime.ToString(@"hh\:mm")" data-arrTime="@item.FlightSchedules.FirstOrDefault()?.ArrivalTime.ToString(@"hh\:mm")">
                                     <div>
@@ -530,7 +572,8 @@
                                 </button>
                             </div>
                             <div class="service">
-                                <button>
+                                    <button type="submit">
+
                                     <div class="businessService">
                                         <p class="serviceName">Business</p>
                                     </div>
@@ -540,7 +583,7 @@
                                     </div>
                                 </button>
                             </div>
-                        </div>
+                        </div>*@
                     </div>
                 </div>
                 </form>
@@ -877,6 +920,18 @@
     }
 
 </script>*@
+<script>
+    document.querySelectorAll('.selectFlightClass').forEach(button => {
+        button.addEventListener('click', function (event) {
+
+            const flightClass = this.getAttribute('data-class');
+            document.getElementById('selectedFlightClass').value = flightClass;
+
+        });
+    });
+
+
+</script>
 </html>
 
 

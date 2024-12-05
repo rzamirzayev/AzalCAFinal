@@ -11,7 +11,7 @@ namespace Domain.Entities
         public int PassangerId { get; set; }
         public required string Name { get; set; }
         public required string Surname { get; set; }
-        public required string FinCode { get; set; }
+        public string? FinCode { get; set; }
         public required DateTime DateOfBirth { get; set; }
         public required string Gender { get; set; }
         public required string Phone { get; set; }

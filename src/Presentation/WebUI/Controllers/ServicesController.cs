@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Services.Services;
 
 namespace WebUI.Controllers
 {
+    [AllowAnonymous]
     public class ServicesController : Controller
     {
         private readonly IServiceService service;

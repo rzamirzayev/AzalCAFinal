@@ -14,6 +14,7 @@ namespace Services.Flight
         Task<AddFlightResponseDto> AddAsync(AddFlightRequestDto model, CancellationToken cancellationToken = default);
         //Task<List<AddFlightResponseDto>> GetAvailableFlights(string departureCity, string destinationCity, DateOnly flightDate, int adultCount, int childCount, int infantCount);
         Task<List<FlightSearchDto>> GetAvailableFlights(string departureCity, string destinationCity, string flightDate, int adultCount, int childCount, int infantCount);
+        Task<RoundTripFlightSearchResultDto> GetAvailableRoundTripFlights(string departureCity,string destinationCity,string flightDate,string returnFlightDate,int adultCount,int childCount,int infantCount);
 
 
     }

@@ -31,17 +31,7 @@ namespace Services.Flight
         public string? FlightTime { get; set; }
 
     }
-    //public class FlightCreateRequestDto
-    //{
-    //    public int? SelectedAirplaneId { get; set; }
-    //    public int? SelectedDepartureAirportId { get; set; }
-    //    public int? SelectedDestinationAirportId { get; set; }
-    //    public DateTime? FlightDate { get; set; }
-    //    public int EconomyPrice { get; set; }
-    //    public int BusinessPrice { get; set; }
-    //    public TimeSpan DepartureTime { get; set; }
-    //    public TimeSpan ArrivalTime { get; set; }
-    //}
+
 
 
 

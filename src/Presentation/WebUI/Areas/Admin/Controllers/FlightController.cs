@@ -66,24 +66,24 @@ namespace WebUI.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        //    public async Task<IActionResult> Edit(int id)
-        //    {
-        //        var flight = await flightService.GetById(id);
-        //        var airplanes = await airplaneService.GetAllAsync();
-        //        var airports = await airportService.GetAllAsync();
-        //        var viewModel = new FlightViewModel
-        //        {
-        //            Airplanes = airplanes.ToList(),
-        //            Airports = airports.ToList(),
-        //            SelectedAirplaneId = (int)flight.AirplaneId,
-        //     SelectedDepartureAirportId= (int)flight.DepartureAirportId,
-        //    SelectedDestinationAirportId= (int)flight.DestinationAirportId,
-        //    EconomyPrice =flight.EconomyPrice,
-        // BusinessPrice =flight.BusinessPrice,
-        //    FlightDate=flight.FlightDate
-        //};
-        //        return View(viewModel);
-        //    }
+        public async Task<IActionResult> Edit(int id)
+        {
+            var flight = await flightService.GetById(id);
+            var airplanes = await airplaneService.GetAllAsync();
+            var airports = await airportService.GetAllAsync();
+            var viewModel = new FlightViewModel
+            {
+                Airplanes = airplanes.ToList(),
+                Airports = airports.ToList(),
+                SelectedAirplaneId = (int)flight.AirplaneId,
+                SelectedDepartureAirportId = (int)flight.DepartureAirportId,
+                SelectedDestinationAirportId = (int)flight.DestinationAirportId,
+                EconomyPrice = flight.EconomyPrice,
+                BusinessPrice = flight.BusinessPrice,
+                FlightDate = flight.FlightDate
+            };
+            return View(viewModel);
+        }
 
 
 

@@ -166,24 +166,18 @@ namespace Services.Implementation
 
             return flightDtos;
         }
+        public async Task<RoundTripFlightSearchResultDto> GetAvailableRoundTripFlights(string departureCity,string destinationCity,string flightDate,string returnFlightDate,int adultCount,int childCount,int infantCount)
+        {
+            var outboundFlights = await GetAvailableFlights(departureCity, destinationCity, flightDate, adultCount, childCount, infantCount);
+            var returnFlights = await GetAvailableFlights(destinationCity, departureCity, returnFlightDate, adultCount, childCount, infantCount);
 
-        //    public async Task<List<AddFlightResponseDto>> GetAvailableFlights(string departureCity, string destinationCity, DateOnly flightDate, int adultCount, int childCount, int infantCount)
-        //    {
-        //        var flights = await flightRepository.GetAll()
-        //.Include(f => f.DepartureAirport)
-        //.Include(f => f.DestinationAirport)
-        //.Where(f => f.DepartureAirport.City.CityName == departureCity &&
-        //            f.DestinationAirport.City.CityName == destinationCity &&
-        //            f.FlightTime == flightDate)
-        //.ToListAsync();
+            return new RoundTripFlightSearchResultDto
+            {
+                OutboundFlights = outboundFlights,
+                ReturnFlights = returnFlights
+            };
+        }
 
 
-        //var filteredFlights = flights.Where(f => f.TicketBookings
-        //        .Count(ticket => !ticket.Passenger.IsChild) >= adultCount &&
-        //        f.TicketBookings.Count(ticket => ticket.Passenger.IsChild) >= childCount &&
-        //        f.TicketBookings.Count(ticket => ticket.Passenger.IsInfant) >= infantCount)
-        //    .ToList();
-
-        //    }
     }
 }

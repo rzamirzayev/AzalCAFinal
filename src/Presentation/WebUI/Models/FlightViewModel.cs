@@ -18,4 +18,18 @@ namespace WebUI.Models
         public TimeSpan DepartureTime { get; set; }         
         public TimeSpan ArrivalTime { get; set; }
     }
+    public class FlightSearchViewModel
+    {
+        public List<FlightSearchDto> OutboundFlights { get; set; }
+        public List<FlightSearchDto> ReturnFlights { get; set; }
+        public int AdultCount { get; set; }
+        public int ChildCount { get; set; }
+        public int InfantCount { get; set; }
+        public string TripType { get; set; }
+    }
+    public class FlightDetailsViewModel
+    {
+        public AddFlightResponseDto? OutboundFlights { get; set; }
+        public AddFlightResponseDto? ReturnFlights { get; set; }
+    }
 }

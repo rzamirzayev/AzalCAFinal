@@ -152,18 +152,19 @@
     </header>
     <div class="flight_div container">
         <div class="flight_btn d-flex">
-            <div class="btnn">
+            <div class="btnn bookFlightBtn">
                 <button>Book a flight</button>
             </div>
-            <div class="btnn">
+            <div class="btnn manageFlightBtn">
                 <button>Manage Booking</button>
             </div>
             <div class="btnn">
                 <button>Flight Status</button>
             </div>
         </div>
-        <div class="bookflight" >
+        <div class="bookflight flightDiv">
             <form asp-action="index" asp-controller="flight">
+
                 <button class="return_svg">
                     <svg xmlns="http://www.w3.org/2000/svg"
                          fill="none"
@@ -184,6 +185,7 @@
                     </svg>
                 </button>
                 <div class="d-flex homeflightdiv" style="width: 100%" >
+      
                     <div class="d-flex toinpflight" style="width: 25%">
 
                     @await Component.InvokeAsync("AllCities")
@@ -195,15 +197,22 @@
                   placeholder="To"
                   class="cntr_input to_input"
                   name="destinationCity"
+                  required
                 />
                 <div class="country_lists to_country">
                     @await Component.InvokeAsync("AllCities",new {view="ToCountry"})
                 </div>
               </div>
-                    <div style="width: 30%; position: relative" class="inpflight">
-                        <input  class="flightBtn" name="FlightDate" placeholder="Flight"/>
-                        <div class="calendar" style="position: absolute"></div>
+                    <div style="width: 30%; position: relative;" class="inpflight d-flex">
+                        <div style="width:352px;">
+                            <input class="flightBtn" name="FlightDate" placeholder="Flight" required />
+                            <div class="calendar" style="position: absolute"></div>
+                        </div>
+                        <div style="width: 100%; position: relative; display:none;" class="inpflight" id="returnDateDiv">
+                            <input class="flightBtn" name="ReturnFlightDate" placeholder="Return Flight" />
+                        </div>
                     </div>
+     
                     <div style="width: 15%" class="inpflight">
                         <button class="passangerButton">
                             <span>Passangers</span>
@@ -217,7 +226,7 @@
                                 </div>
                                 <div class="d-flex">
                                     <button type="button" class="passanger_minus">-</button>
-                                    <p class="passanger_num" data-type="adult">0</p>
+                                    <p class="passanger_num adultnum" data-type="adult">0</p>
                                     <button type="button" class="passanger_plus">+</button>
                                 </div>
                             </div>
@@ -229,7 +238,7 @@
                                 </div>
                                 <div class="d-flex">
                                     <button type="button" class="passanger_minus">-</button>
-                                    <p class="passanger_num" data-type="children">0</p>
+                                    <p class="passanger_num childrennum" data-type="children">0</p>
                                     <button type="button" class="passanger_plus">+</button>
                                 </div>
                             </div>
@@ -241,7 +250,7 @@
                                 </div>
                                 <div class="d-flex">
                                     <button type="button" class="passanger_minus">-</button>
-                                    <p class="passanger_num" data-type="infant">0</p>
+                                    <p class="passanger_num infantnum" data-type="infant">0</p>
                                     <button type="button" class="passanger_plus">+</button>
                                 </div>
                             </div>
@@ -253,51 +262,9 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="hidden" id="adultCount" name="adultCount" value="0">
+                        <input type="hidden" id="adultCount" name="adultCount" value="1">
                         <input type="hidden" id="childrenCount" name="childCount" value="0">
                         <input type="hidden" id="infantCount" name="infantCount" value="0">
-
-@*                        <div class="passangerDivs">
-                            <div class="passangerDiv d-flex">
-                                <div class="passangerDiv_parag">
-                                    <p>Adults</p>
-                                    <span>from 12 years</span>
-                                </div>
-                                <div class="d-flex">
-                                    <button class="passanger_minus">-</button>
-                                    <p class="passanger_num">0</p>
-                                    <button class="passanger_plus">+</button>
-                                </div>
-                            </div>
-                            <div class="passangerDiv d-flex">
-                                <div class="passangerDiv_parag">
-                                    <p>Children</p>
-                                    <span>from 12 years</span>
-                                </div>
-                                <div class="d-flex">
-                                    <button class="passanger_minus">-</button>
-                                    <p class="passanger_num">0</p>
-                                    <button class="passanger_plus">+</button>
-                                </div>
-                            </div>
-                            <div class="passangerDiv d-flex">
-                                <div class="passangerDiv_parag">
-                                    <p>Infants</p>
-                                    <span>from 12 years</span>
-                                </div>
-                                <div class="d-flex">
-                                    <button class="passanger_minus">-</button>
-                                    <p class="passanger_num">0</p>
-                                    <button class="passanger_plus">+</button>
-                                </div>
-                            </div>
-                            <div class="classDiv">
-                                <div class="d-flex">
-                                    <span class="passangerClass activeClass">Economy</span>
-                                    <span class="passangerClass">Business</span>
-                                </div>
-                            </div>
-                        </div>*@
                     </div>
 
                     <div style="width: 5%" class="inpflight">
@@ -337,23 +304,36 @@
                         </button>
                     </div>
                 </div>
-                <div class="promeCodeDiv d-flex">
-                    <button class="promeCodeButton">Add Prome Code</button>
-                    <input type="text"
-                           name=""
-                           id="promeCodeInput"
-                           placeholder="Enter Prome Code"
-                           style="display: none" />
+                <div class="d-flex" style="justify-content: space-between;">
+                    <div class="tripTypeSelector">
+                        <label>
+                            <input type="radio" name="tripType" value="oneway" checked /> 
+                            <span>One Way</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="tripType" value="return" /> 
+                            <span>Return</span>
+                        </label>
+                    </div>
+                    <div class="promeCodeDiv d-flex">
+                        <button class="promeCodeButton">Add Prome Code</button>
+                        <input type="text"
+                               name=""
+                               id="promeCodeInput"
+                               placeholder="Enter Prome Code"
+                               style="display: none" />
+                    </div>
                 </div>
+     
             </form>
         </div>
-        <div class="managebooking">
+        <div class="managebooking flightDiv">
             <form class="d-flex" asp-controller="flight" asp-action="PassangerGetTicketNumber" >
-                <div class="d-flex">
-                    <input type="text" name="surname" />
+                <div class="d-flex" style="width: 35%">
+                    <input type="text" name="surname" placeholder="Last Name"/>
                 </div>
-                <div class="d-flex">
-                    <input type="text" name="number"/>
+                <div class="d-flex" style="width: 35%">
+                    <input type="text" name="number" placeholder="Ticket Number"/>
                 </div>
                 <button type="submit">Search</button>
             </form>
@@ -522,6 +502,16 @@
                     console.log(e);
                 })
         })
+        document.querySelectorAll('input[name="tripType"]').forEach((radio) => {
+            radio.addEventListener('change', (e) => {
+                const returnDateDiv = document.getElementById('returnDateDiv');
+                if (e.target.value === 'return') {
+                    returnDateDiv.style.display = 'block';
+                } else {
+                    returnDateDiv.style.display = 'none';
+                }
+            });
+        });
 
     </script>
 }

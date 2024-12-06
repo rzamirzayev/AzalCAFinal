@@ -718,3 +718,45 @@ a:hover {
         z-index: 400;
     }
 }
+.tripTypeSelector label input{
+    width:30px;
+    height:30px;
+}
+.tripTypeSelector {
+    margin-top: 10px;
+    display:flex;
+    gap:15px;
+}
+    .tripTypeSelector label {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+.managebooking {
+    padding: 24px;
+    width: 100%;
+    background: #fff;
+    border-radius: 0 12px 12px;
+    display:none;
+}
+
+    .managebooking form {
+        justify-content: space-between;
+    }
+
+    .managebooking input {
+        width: 100%;
+        padding: 18px;
+        border: 1px solid lightgrey;
+        border-radius: 12px;
+    }
+
+    .managebooking button {
+        width: 18%;
+        background-color: #01357E;
+        border: 1px solid #cdd5df;
+        border-radius: 12px;
+        color: white;
+    }

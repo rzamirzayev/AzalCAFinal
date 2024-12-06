@@ -8,7 +8,7 @@
 <form method="post" enctype="multipart/form-data" >
     <div class="form-group">
         <label for="Flight_AirplaneId">Airplane</label>
-        <select id="Flight_AirplaneId" asp-for="SelectedAirplaneId"  class="form-control">
+        <select id="Flight_AirplaneId" asp-for="SelectedAirplaneId"  class="form-control" required>
             @foreach (var airplane in Model.Airplanes)
             {
                 <option value="@airplane.AirplaneId">
@@ -22,7 +22,7 @@
 
    <div class="form-group">
         <label for="Flight_DepartureAirportId">Departure Airport</label>
-        <select id="Flight_DepartureAirportId" asp-for="SelectedDepartureAirportId" class="form-control">
+        <select id="Flight_DepartureAirportId" asp-for="SelectedDepartureAirportId" class="form-control" required>
             @foreach (var airport in Model.Airports)
             {
                 <option value="@airport.AirportId"  >
@@ -36,7 +36,7 @@
 
     <div class="form-group">
         <label for="Flight_DestinationAirportId">Destination Airport</label>
-        <select id="Flight_DestinationAirportId" asp-for="SelectedDestinationAirportId" class="form-control">
+        <select id="Flight_DestinationAirportId" asp-for="SelectedDestinationAirportId" class="form-control" required>
             @foreach (var airport in Model.Airports)
             {
                 <option value="@airport.AirportId">
@@ -50,34 +50,34 @@
 
     <div class="form-group">
         <label for="Flight_EconomyPrice">Economy Price</label>
-        <input type="number" id="Flight_EconomyPrice"  class="form-control" asp-for="EconomyPrice" />
+        <input type="number" id="Flight_EconomyPrice" class="form-control" asp-for="EconomyPrice" required />
         <span asp-validation-for="EconomyPrice" class="text text-danger"></span>
 
     </div>
 
     <div class="form-group">
         <label for="Flight_BusinessPrice">Business Price</label>
-        <input type="number" id="Flight_BusinessPrice"  class="form-control" asp-for="BusinessPrice" />
+        <input type="number" id="Flight_BusinessPrice" class="form-control" asp-for="BusinessPrice" required />
         <span asp-validation-for="BusinessPrice" class="text text-danger"></span>
 
     </div>
     <div class="form-group">
         <label for="Flight_ArrivalDate">Arrival Time</label>
-        <input type="date" id="Flight_ArrivalDate" class="form-control" asp-for="FlightDate" />
+        <input type="date" id="Flight_ArrivalDate" class="form-control" asp-for="FlightDate" required />
         <span asp-validation-for="FlightDate" class="text text-danger"></span>
 
     </div>
 
     <div class="form-group">
         <label for="Flight_DepartureDate">Departure Time</label>
-        <input type="time" id="Flight_DepartureDate"  class="form-control" asp-for="DepartureTime" />
+        <input type="time" id="Flight_DepartureDate" class="form-control" asp-for="DepartureTime" required />
         <span asp-validation-for="DepartureTime" class="text text-danger"></span>
 
     </div>
 
     <div class="form-group">
         <label for="Flight_ArrivalDate">Arrival Time</label>
-        <input type="time" id="Flight_ArrivalDate"  class="form-control" asp-for="ArrivalTime" />
+        <input type="time" id="Flight_ArrivalDate" class="form-control" asp-for="ArrivalTime" required />
         <span asp-validation-for="ArrivalTime" class="text text-danger"></span>
 
     </div>

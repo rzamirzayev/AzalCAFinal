@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.Common;
 using Services.Flight;
@@ -8,6 +9,7 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
+    [AllowAnonymous]
     public class FlightController : Controller
     {
         private readonly IFlightService flightService;
@@ -23,37 +25,110 @@ namespace WebUI.Controllers
         }
    
         [HttpPost]
-        public async Task<IActionResult> Index(string departureCity, string destinationCity, string flightDate, int adultCount, int childCount, int infantCount)
+        public async Task<IActionResult> Index(string departureCity, string destinationCity, string flightDate, string returnFlightDate,int adultCount, int childCount, int infantCount, string tripType)
         {
-            var availableFlights = await flightService.GetAvailableFlights(departureCity, destinationCity, flightDate, adultCount, childCount, infantCount);
-            ViewBag.AdultCount = adultCount;
-            ViewBag.ChildCount = childCount;
-            ViewBag.InfantCount = infantCount;
-            return View(availableFlights); 
-        }
-        public async Task<IActionResult> Detail(int id, int adultCount, int childCount, int infantCount,string selectedFlightClass)
-        {
-            var flight=await flightService.GetById(id);
-            ViewBag.AdultCount = adultCount;
-            ViewBag.ChildCount = childCount;
-            ViewBag.InfantCount = infantCount;
-            if (selectedFlightClass == "Economy")
+            //var availableFlights = await flightService.GetAvailableFlights(departureCity, destinationCity, flightDate, adultCount, childCount, infantCount);
+            //ViewBag.AdultCount = adultCount;
+            //ViewBag.ChildCount = childCount;
+            //ViewBag.InfantCount = infantCount;
+            //return View(availableFlights);
+            if (tripType == "return" && string.IsNullOrEmpty(returnFlightDate))
             {
-                ViewBag.Price = flight.EconomyPrice;
+                ModelState.AddModelError("ReturnFlightDate", "Return flight date is required for round trips.");
             }
-            if (selectedFlightClass == "Business")
-            {
-                ViewBag.Price = flight.BusinessPrice;
 
+            if (!ModelState.IsValid)
+            {
+                return View();
             }
-            return View(flight);
+            FlightSearchViewModel viewModel = new FlightSearchViewModel
+            {
+                AdultCount = adultCount,
+                ChildCount = childCount,
+                InfantCount = infantCount,
+                TripType = tripType
+            };
+
+            if (tripType == "oneway" || string.IsNullOrEmpty(returnFlightDate))
+            {
+                var availableFlights = await flightService.GetAvailableFlights(
+                    departureCity,
+                    destinationCity,
+                    flightDate,
+                    adultCount,
+                    childCount,
+                    infantCount
+                );
+
+
+                viewModel.OutboundFlights = availableFlights;
+                return View(viewModel);
+            }
+
+            var availableRoundTripFlights = await flightService.GetAvailableRoundTripFlights(
+                departureCity,
+                destinationCity,
+                flightDate,
+                returnFlightDate,
+                adultCount,
+                childCount,
+                infantCount
+            );
+
+            viewModel.OutboundFlights = availableRoundTripFlights.OutboundFlights;
+            viewModel.ReturnFlights = availableRoundTripFlights.ReturnFlights;
+
+            return View(viewModel);
+
+
         }
-        public async Task<IActionResult> Passanger(int id, int adultCount, int childCount, int infantCount,string flightClass)
+        public async Task<IActionResult> Detail(int? outboundId,int? returnId, int adultCount, int childCount, int infantCount,string selectedFlightClass,string returnselectedFlightClass)
+        {
+
+            if (!outboundId.HasValue)
+            {
+                return BadRequest("Qalxis flight gelmedi."); 
+            }
+            var outboundFlight = await flightService.GetById(outboundId.Value);
+            if (outboundFlight == null)
+            {
+                return NotFound("Enis flight gelmedi.");
+            }
+
+            var returnFlight = returnId.HasValue
+                ? await flightService.GetById(returnId.Value)
+                : null;
+
+            ViewBag.OutboundPrice = (selectedFlightClass == "Economy")
+                ? outboundFlight.EconomyPrice
+                : outboundFlight.BusinessPrice;
+
+            if (returnFlight != null)
+            {
+                ViewBag.ReturnPrice = returnselectedFlightClass == "Economy"
+                    ? returnFlight.EconomyPrice
+                    : returnFlight.BusinessPrice;
+            }
+
+            ViewBag.AdultCount = adultCount;
+            ViewBag.ChildCount = childCount;
+            ViewBag.InfantCount = infantCount;
+
+            FlightDetailsViewModel viewModel = new FlightDetailsViewModel
+            {
+                OutboundFlights = outboundFlight,
+                ReturnFlights = returnFlight
+            };
+
+            return View(viewModel);
+        }
+        public async Task<IActionResult> Passanger(int id,int? arrivalId, int adultCount, int childCount, int infantCount,string flightClass)
         {
             var flight = await flightService.GetById(id);
             ViewBag.AdultCount = adultCount;
             ViewBag.ChildCount = childCount;
             ViewBag.InfantCount = infantCount;
+
             if (flightClass == "Economy")
             {
                 ViewBag.Price = flight.EconomyPrice;

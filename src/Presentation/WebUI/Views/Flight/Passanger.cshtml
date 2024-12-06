@@ -187,7 +187,7 @@
                             <div class="round"></div>
                         </div>
                         <div class="dateInfo">
-                            <p>@Model.ArrivalTime.Substring(0,5)</p>
+                            <p>@Model.ArrivalTime?.Substring(0,5)</p>
                             <div class="planeSvg">
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                      width="20"
@@ -304,13 +304,13 @@
                                     <div class="personText">
                                         <span>First Name (Latin)</span>
                                         <div>
-                                            <input type="text" name="adul[@i].Name" />
+                                            <input type="text" name="adul[@i].Name" required />
                                         </div>
                                     </div>
                                     <div class="personText">
                                         <span>Last Name (Latin)</span>
                                         <div>
-                                            <input type="text" name="adul[@i].Surname" />
+                                            <input type="text" name="adul[@i].Surname" required />
                                         </div>
                                     </div>
                                     <div class="personText gender">
@@ -327,7 +327,7 @@
                                     <div class="personText">
                                         <span>Date Of birth</span>
                                         <div>
-                                            <input type="text" name="adul[@i].DateOfBirth" />
+                                            <input type="text" name="adul[@i].DateOfBirth" required />
                                         </div>
                                     </div>
                                 </div>
@@ -349,13 +349,13 @@
                                         <div class="personText">
                                             <span>Document Number</span>
                                             <div>
-                                                <input type="text" name="adul[@i].FinCode" />
+                                                <input type="text" name="adul[@i].FinCode" required />
                                             </div>
                                         </div>
                                         <div class="personText">
                                             <span>Document Expiry Date</span>
                                             <div>
-                                                <input type="text" />
+                                                <input type="text" required />
                                             </div>
                                         </div>
                                     </div>
@@ -375,13 +375,13 @@
                                     <div class="personText">
                                         <span>First Name (Latin)</span>
                                         <div>
-                                            <input type="text" name="child[@i].Name" />
+                                            <input type="text" name="child[@i].Name" required/>
                                         </div>
                                     </div>
                                     <div class="personText">
                                         <span>Last Name (Latin)</span>
                                         <div>
-                                            <input type="text" name="child[@i].Surname" />
+                                            <input type="text" name="child[@i].Surname" required />
                                         </div>
                                     </div>
                                     <div class="personText gender">
@@ -389,13 +389,13 @@
                                         <div class="d-flex">
                                             <button type="button" class="gender-button" data-group="child" data-index="@i" data-gender="M">M</button>
                                             <button type="button" class="gender-button" data-group="child" data-index="@i" data-gender="F">F</button>
-                                            <input type="hidden" name="child[@i].Gender" />
+                                            <input type="hidden" name="child[@i].Gender" required />
                                         </div>
                                     </div>
                                     <div class="personText">
                                         <span>Date Of birth</span>
                                         <div>
-                                            <input type="text" name="child[@i].DateOfBirth" />
+                                            <input type="text" name="child[@i].DateOfBirth" required />
                                         </div>
                                     </div>
                                 </div>
@@ -417,13 +417,13 @@
                                         <div class="personText">
                                             <span>Document Number</span>
                                             <div>
-                                                <input type="text" name="child[@i].FinCode" />
+                                                <input type="text" name="child[@i].FinCode" required/>
                                             </div>
                                         </div>
                                         <div class="personText">
                                             <span>Document Expiry Date</span>
                                             <div>
-                                                <input type="text" />
+                                                <input type="text" required />
                                             </div>
                                         </div>
                                     </div>
@@ -443,13 +443,13 @@
                                     <div class="personText">
                                         <span>First Name (Latin)</span>
                                         <div>
-                                            <input type="text" name="infant[@i].Name" />
+                                            <input type="text" name="infant[@i].Name" required/>
                                         </div>
                                     </div>
                                     <div class="personText">
                                         <span>Last Name (Latin)</span>
                                         <div>
-                                            <input type="text" name="infant[@i].Surname" />
+                                            <input type="text" name="infant[@i].Surname" required/>
                                         </div>
                                     </div>
                                     <div class="personText gender">
@@ -457,13 +457,13 @@
                                         <div class="d-flex">
                                             <button type="button" class="gender-button" data-group="infant" data-index="@i" data-gender="M">M</button>
                                             <button type="button" class="gender-button" data-group="infant" data-index="@i" data-gender="F">F</button>
-                                            <input type="hidden" name="infant[@i].Gender" />
+                                            <input type="hidden" name="infant[@i].Gender" required/>
                                         </div>
                                     </div>
                                     <div class="personText">
                                         <span>Date Of birth</span>
                                         <div>
-                                            <input type="datetime" name="infant[@i].DateOfBirth" />
+                                            <input type="datetime" name="infant[@i].DateOfBirth" required />
                                         </div>
                                     </div>
                                 </div>
@@ -479,13 +479,13 @@
                                 <div class="personText">
                                     <span>Phone Number</span>
                                     <div>
-                                        <input type="text" name="Phone" />
+                                        <input type="text" name="Phone" required/>
                                     </div>
                                 </div>
                                 <div class="personText">
                                     <span>Last Name (Latin)</span>
                                     <div>
-                                        <input type="email" name="email" id="emailinput" />
+                                        <input type="email" name="email" id="emailinput" required/>
                                     </div>
                                 </div>
                             </div>

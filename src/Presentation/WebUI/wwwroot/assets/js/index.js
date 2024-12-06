@@ -1,5 +1,5 @@
-﻿//let passangerButton = document.querySelectorAll(".passangerDiv button");
-//let passangerSum = document.querySelectorAll(".passanger_num");
+﻿let passangerButton = document.querySelectorAll(".passangerDiv button");
+let passangerSum = document.querySelectorAll(".passanger_num");
 let passangers = document.querySelector(".passangerButton p");
 let passangerBtn = document.querySelector(".passangerButton");
 let passangerDiv = document.querySelector(".passangerDivs");
@@ -18,6 +18,50 @@ let fromCountryDiv = document.querySelector(".from_country");
 let toCountryDiv = document.querySelector(".to_country");
 let countryButton = document.querySelectorAll(".country_button");
 let countryInput = document.querySelectorAll(".cntr_input");
+function updateTotalPassengers() {
+    const total = Array.from(passangerSum)
+        .map((p) => parseInt(p.textContent) || 0)
+        .reduce((acc, curr) => acc + curr, 0);
+
+    passangers.textContent = total;
+}
+const adultNumElement = document.querySelector(".adultnum");
+adultNumElement.textContent = '1';
+updateTotalPassengers();
+
+
+
+//passangerButton.forEach((btn) => {
+//    btn.addEventListener("click", function (e) {
+//        e.preventDefault();
+//        let number;
+
+//        if (btn.classList.contains("passanger_minus")) {
+//            number = parseInt(btn.nextElementSibling.textContent);
+
+//            if (number > 0) {
+//                btn.nextElementSibling.textContent = number - 1;
+//            }
+//        }
+
+//        if (btn.classList.contains("passanger_plus")) {
+//            number = parseInt(btn.previousElementSibling.textContent);
+//            if (btn.previousElementSibling.classList.contains("infantnum")) {
+//                const adultCount = parseInt(adultNumElement.textContent);
+//                const currentInfants = parseInt(btn.previousElementSibling.textContent);
+//                if (currentInfants < adultCount) {
+//                    btn.previousElementSibling.textContent = number + 1;
+//                }
+//            } else {
+//                btn.previousElementSibling.textContent = number + 1;
+//            }
+//        }
+
+//        updateTotalPassengers();
+//    });
+//});
+
+
 passangerBtn.addEventListener("click", function (e) {
     e.preventDefault();
     if (passangerDiv.style.display === "none") {
@@ -39,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
             let passengerType;
 
             if (btn.classList.contains("passanger_minus")) {
-                numberElement = btn.nextElementSibling; 
+                numberElement = btn.nextElementSibling;
                 passengerType = numberElement.getAttribute("data-type");
                 currentNumber = parseInt(numberElement.textContent);
                 if (currentNumber > 0) {
@@ -48,12 +92,19 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             if (btn.classList.contains("passanger_plus")) {
-                numberElement = btn.previousElementSibling; 
+                numberElement = btn.previousElementSibling;
                 passengerType = numberElement.getAttribute("data-type");
                 currentNumber = parseInt(numberElement.textContent);
-                numberElement.textContent = currentNumber + 1;
+                if (btn.previousElementSibling.classList.contains("infantnum")) {
+                    const adultCount = parseInt(adultNumElement.textContent);
+                    const currentInfants = parseInt(btn.previousElementSibling.textContent);
+                    if (currentInfants < adultCount) {
+                        numberElement.textContent = currentNumber + 1;
+                    }
+                } else {
+                    numberElement.textContent = currentNumber + 1;
+                }
             }
-
             updateHiddenInputs(passengerType, numberElement.textContent);
             updateTotal(passangerSum);
         });
@@ -76,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const total = Array.from(elements)
             .map((p) => parseInt(p.textContent) || 0)
             .reduce((acc, curr) => acc + curr, 0);
-        passangers.textContent = total; 
+        passangers.textContent = total;
     }
 
     updateTotal(passangerSum);
@@ -132,9 +183,9 @@ calendarDay.forEach((day) => {
     day.addEventListener("click", function (e) {
         e.preventDefault();
         let selectedDay = day.textContent.trim().padStart(2, '0');
-        let selectedMonth = calendarMonth.textContent; 
+        let selectedMonth = calendarMonth.textContent;
         let monthNumber = new Date(Date.parse(selectedMonth + " 1, 2022")).getMonth() + 1;
-        let selectedYear = calendarYear.textContent; 
+        let selectedYear = calendarYear.textContent;
         let datetime = `${selectedDay}.${monthNumber.toString().padStart(2, '0')}.${selectedYear}`;
         flightBtn.value = datetime;
         calendar.style.display = "none";
@@ -227,4 +278,18 @@ passangerClass.forEach((p) => {
 
         this.classList.add("activeClass");
     });
+});
+
+const flightDivs = document.querySelector(".bookflight");
+const manageDivs = document.querySelector(".managebooking");
+
+const bookFlightBtn = document.querySelector(".bookFlightBtn button");
+const ManageFlightBtn = document.querySelector(".manageFlightBtn button");
+bookFlightBtn.addEventListener("click", function () {
+    flightDivs.style.display = "block";
+    manageDivs.style.display = "none";
+});
+ManageFlightBtn.addEventListener("click", function () {
+    flightDivs.style.display = "none";
+    manageDivs.style.display = "block";
 });

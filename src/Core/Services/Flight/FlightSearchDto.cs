@@ -19,4 +19,9 @@ namespace Services.Flight
         
 
     }
+    public class RoundTripFlightSearchResultDto
+    {
+        public List<FlightSearchDto> OutboundFlights { get; set; }
+        public List<FlightSearchDto> ReturnFlights { get; set; }
+    }
 }

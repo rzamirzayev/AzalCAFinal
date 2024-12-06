@@ -1,4 +1,6 @@
 ﻿using Autofac;
+using Domain.Entities.Membership;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +31,8 @@ namespace Services.Implementation.Registration
             builder.RegisterTypes(types.Where(m => m.IsSingleton == false).Select(m => m.Type).ToArray())
                .AsImplementedInterfaces()
                .InstancePerLifetimeScope();
+
+           
         }
     }
 }

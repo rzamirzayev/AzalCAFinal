@@ -222,6 +222,8 @@ namespace WebUI.Controllers
         {
             var flight = await flightService.GetById(flightId);
 
+
+
             foreach (var person in passengers)
             {
                 var passenger = new AddPassangerRequestDto
@@ -236,6 +238,7 @@ namespace WebUI.Controllers
                 };
                 var response = await passangerService.AddAsync(passenger);
 
+                string className = (flight.EconomyPrice == price) ? "Economy" : "Business";
                 Random random = new Random();
                 long min = (long)Math.Pow(10, 12);
                 long max = (long)Math.Pow(10, 13) - 1;
@@ -245,7 +248,7 @@ namespace WebUI.Controllers
                 {
                     PassangerId = response.PassangerId,
                     FlightId = flightId,
-                    CabinClass = "Economy",
+                    CabinClass = className,
                     IsChild = isChild,
                     Price = price,
                     BookingDate = DateTime.Now,

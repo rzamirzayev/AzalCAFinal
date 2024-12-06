@@ -1,4 +1,6 @@
 ﻿using Autofac;
+using Domain.Entities.Membership;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Contexts;
 using Persistence.Repositories;
@@ -17,7 +19,6 @@ namespace Persistence
             base.Load(builder);
             builder.RegisterAssemblyTypes(this.GetType().Assembly).AsImplementedInterfaces().InstancePerLifetimeScope();
             builder.RegisterType<DataContext>().As<DbContext>().InstancePerLifetimeScope();
-
 
         }
     }

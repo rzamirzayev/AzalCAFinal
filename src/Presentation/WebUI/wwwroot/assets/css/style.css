@@ -597,3 +597,124 @@ a:hover {
     line-height: 20px;
     color: #6E7583;
 }
+.sumbitButton span {
+    display: none;
+}
+
+@media only screen and (max-width: 768px) {
+
+    .homeflightdiv {
+        flex-direction: column;
+    }
+
+    .sumbitButton svg {
+        display: none;
+    }
+
+    .passangerButton {
+        width: 100% !important;
+    }
+
+    .header_selects button .text {
+        display: none;
+    }
+
+    header {
+        padding: 12px 16px;
+    }
+
+    .azal_logo svg {
+        width: 146px;
+        height: 40px;
+        background-color: transparent;
+    }
+
+    .btnn {
+        width: 25% !important;
+    }
+
+        .btnn button {
+            width: 100%;
+        }
+
+    main {
+        padding: 0;
+    }
+
+    .special_offers {
+        flex-direction: column;
+    }
+
+    .offer {
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .offer img {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .offer .card_text {
+            max-width: 100%;
+            justify-content: center;
+            align-items: center;
+            padding: 32px 0;
+            text-align: center;
+        }
+
+    * {
+        max-width: 100% !important;
+    }
+
+    .leo {
+        margin: 0;
+    }
+
+    .head_section {
+        width: 100%;
+        justify-content: center;
+    }
+
+    main {
+        padding: 38px 16px;
+    }
+
+    .our_services {
+        flex-direction: column;
+    }
+
+    .sponsor {
+        flex-direction: column;
+    }
+
+    .sumbitButton span {
+        display: block;
+    }
+
+    .inpflight {
+        margin-bottom: 12px;
+        width: 100% !important;
+    }
+
+    .toinpflight {
+        width: 100% !important;
+    }
+
+    .bookflight .return_svg {
+        left: 85%;
+        top: 20%;
+    }
+
+    .calendar {
+        margin: 0;
+        z-index: 700;
+    }
+
+    .country_lists {
+        width: 353px !important;
+        z-index: 400;
+    }
+}

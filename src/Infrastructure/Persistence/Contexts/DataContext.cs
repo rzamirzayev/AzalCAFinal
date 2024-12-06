@@ -1,10 +1,12 @@
 ﻿using Domain;
 using Domain.Entities;
+using Domain.Entities.Membership;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Persistence.Contexts
 {
-     class DataContext : DbContext
+     class DataContext : IdentityDbContext<AzalUser,AzalRole,int,AzalUserClaim,AzalUserRole,AzalUserLogin,AzalRoleClaim,AzalUserToken>
     {
         public DataContext(DbContextOptions options) : base(options) { }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Services.Services;
 
 namespace WebUI.Areas.Admin.Controllers
@@ -11,21 +12,26 @@ namespace WebUI.Areas.Admin.Controllers
         public ServicesController(IServiceService service) {
             this.service = service;
         }
+        [Authorize(Policy = "admin.services.get")]
         public async Task<IActionResult> Index()
         {
             var data = await service.GetAllAsync();
             return View(data);
         }
+        [Authorize(Policy = "admin.services.create")]
         public IActionResult Create()
         {
             return View();
         }
         [HttpPost]
+        [Authorize(Policy = "admin.services.create")]
         public async Task<IActionResult> Create([FromForm]AddServiceRequestDto model)
         {
             await service.AddAsync(model);
             return RedirectToAction("Index");
         }
+
+        [Authorize(Policy = "admin.services.edit")]
         public async Task<IActionResult> Edit(int id)
         {
             var data = await service.GetById(id);
@@ -47,12 +53,17 @@ namespace WebUI.Areas.Admin.Controllers
 
             return View(model);
         }
+
         [HttpPost]
+        [Authorize(Policy = "admin.services.edit")]
+
         public async Task<IActionResult> Edit(EditServiceDto model)
         {
             await service.EditAsync(model);
             return RedirectToAction("Index");
         }
+        [Authorize(Policy = "admin.services.remove")]
+
         public async Task<IActionResult> Remove(int id)
         {
             await service.RemoveAsync(id);

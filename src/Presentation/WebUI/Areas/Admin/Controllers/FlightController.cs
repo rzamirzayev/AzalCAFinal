@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Repositories;
 using Services.Airplane;
@@ -22,11 +23,14 @@ namespace WebUI.Areas.Admin.Controllers
             this.airplaneService = airplaneService;
             this.flightService = flightService;
         }
+        [Authorize(Policy ="admin.flight.get")]
         public async Task<IActionResult> Index()
         {
             var data = await flightService.GetAllAsync();
             return View(data);
         }
+        [Authorize(Policy = "admin.flight.create")]
+
         public async Task<IActionResult> Create()
         {
             var airplanes = await airplaneService.GetAllAsync();
@@ -39,7 +43,9 @@ namespace WebUI.Areas.Admin.Controllers
             return View(viewModel);
         }
         [HttpPost]
-        public async Task<IActionResult> Create(FlightViewModel model)
+        [Authorize(Policy = "admin.flight.create")]
+
+        public async Task<IActionResult> Create([FromForm]FlightViewModel model)
         {
 
             var addFlightRequest = new AddFlightRequestDto
@@ -51,7 +57,7 @@ namespace WebUI.Areas.Admin.Controllers
                 BusinessPrice = model.BusinessPrice,
                 DepartureTime = model.DepartureTime,
                 ArrivalTime = model.ArrivalTime,
-                FlightTime=model.FlightDate
+                FlightTime = model.FlightDate
             };
 
             await flightService.AddAsync(addFlightRequest);
@@ -60,24 +66,24 @@ namespace WebUI.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-    //    public async Task<IActionResult> Edit(int id)
-    //    {
-    //        var flight = await flightService.GetById(id);
-    //        var airplanes = await airplaneService.GetAllAsync();
-    //        var airports = await airportService.GetAllAsync();
-    //        var viewModel = new FlightViewModel
-    //        {
-    //            Airplanes = airplanes.ToList(),
-    //            Airports = airports.ToList(),
-    //            SelectedAirplaneId = (int)flight.AirplaneId,
-    //     SelectedDepartureAirportId= (int)flight.DepartureAirportId,
-    //    SelectedDestinationAirportId= (int)flight.DestinationAirportId,
-    //    EconomyPrice =flight.EconomyPrice,
-    // BusinessPrice =flight.BusinessPrice,
-    //    FlightDate=flight.FlightDate
-    //};
-    //        return View(viewModel);
-    //    }
+        //    public async Task<IActionResult> Edit(int id)
+        //    {
+        //        var flight = await flightService.GetById(id);
+        //        var airplanes = await airplaneService.GetAllAsync();
+        //        var airports = await airportService.GetAllAsync();
+        //        var viewModel = new FlightViewModel
+        //        {
+        //            Airplanes = airplanes.ToList(),
+        //            Airports = airports.ToList(),
+        //            SelectedAirplaneId = (int)flight.AirplaneId,
+        //     SelectedDepartureAirportId= (int)flight.DepartureAirportId,
+        //    SelectedDestinationAirportId= (int)flight.DestinationAirportId,
+        //    EconomyPrice =flight.EconomyPrice,
+        // BusinessPrice =flight.BusinessPrice,
+        //    FlightDate=flight.FlightDate
+        //};
+        //        return View(viewModel);
+        //    }
 
 
 

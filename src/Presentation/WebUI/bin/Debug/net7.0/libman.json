@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "ckeditor5@43.3.1",
+      "destination": "wwwroot/lib/ckeditor5/"
+    },
+    {
+      "library": "sweetalert2@11.14.5",
+      "destination": "wwwroot/lib/sweetalert2/"
+    }
+  ]
+}

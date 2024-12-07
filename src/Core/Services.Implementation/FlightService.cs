@@ -178,6 +178,23 @@ namespace Services.Implementation
             };
         }
 
-
+        public async Task<EditFlightDto> EditAsync(EditFlightDto model, CancellationToken cancellationToken = default)
+        {
+            var entity = await flightRepository.GetAsync(m => m.FlightId == model.FlightId, cancellationToken);
+            var time=await flightScheduleRepository.GetAsync(fs=>fs.FlightId==model.FlightId, cancellationToken);
+            entity.AirplaneId = model.AirplaneId;
+            entity.DepartureAirportId = model.DepartureAirportId;
+            entity.DestinationAirportId = model.DestinationAirportId;
+            entity.EconomyPrice=model.EconomyPrice;
+            entity.BusinessPrice=model.BusinessPrice;
+            entity.FlightTime= model.FlightTime;
+            time.ArrivalTime= model.ArrivalTime;
+            time.DepartureTime=model.DepartureTime;
+            flightRepository.Edit(entity);
+            flightScheduleRepository.Edit(time);
+            await flightRepository.SaveAsync();
+            await flightScheduleRepository.SaveAsync();
+            return model;
+        }
     }
 }

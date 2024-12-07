@@ -37,17 +37,12 @@ namespace Services.Implementation
                 };
             
         }
-        public async Task<AirportGetAllDto> GetByName(string name, CancellationToken cancellationToken = default)
+        public async Task<int?> GetIdByNameAsync(string airportName, CancellationToken cancellationToken = default)
         {
-            var airport = await airportRepoitory.GetAsync(b => b.AirportName == name, cancellationToken);
-
-            return new AirportGetAllDto
-            {
-                AirportName = airport.AirportName,
-                AirportId = airport.AirportId,
-            };
-
+            var airport = await airportRepoitory.GetAsync(a => a.AirportName == airportName, cancellationToken);
+            return airport?.AirportId;
         }
+
 
 
     }

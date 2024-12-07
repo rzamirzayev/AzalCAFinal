@@ -10,6 +10,7 @@ namespace Services.Airplane
     {
         Task<IEnumerable<AirplaneGetAllDto>> GetAllAsync(CancellationToken cancellationToken = default);
         Task<AirplaneGetAllDto> GetById(int id, CancellationToken cancellationToken = default);
+        Task<int?> GetIdByNameAsync(string airplaneName, CancellationToken cancellationToken = default);
 
 
     }

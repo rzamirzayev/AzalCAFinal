@@ -12,6 +12,7 @@ namespace Services.FlightSchedule
     {
         Task<IEnumerable<FlightScheduleGetAllDto>> GetAllAsync(CancellationToken cancellationToken = default);
         Task<FlightScheduleGetAllDto> GetById(int id, CancellationToken cancellationToken = default);
+
         //Task<AddFlightScheduleResponseDto> AddAsync(AddFlightScheduleRequestDto model, CancellationToken cancellationToken = default);
 
     }

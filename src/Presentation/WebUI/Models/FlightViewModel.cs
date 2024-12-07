@@ -9,6 +9,7 @@ namespace WebUI.Models
 
         public List<AirplaneGetAllDto> Airplanes { get; set; }
         public List<AirportGetAllDto> Airports { get; set; }
+        public int? FlightId { get; set; }
         public int SelectedAirplaneId { get; set; }         
         public int SelectedDepartureAirportId { get; set; }   
         public int SelectedDestinationAirportId { get; set; } 

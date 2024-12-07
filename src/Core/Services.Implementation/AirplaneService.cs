@@ -37,5 +37,10 @@ namespace Services.Implementation
                 
             };
         }
+        public async Task<int?> GetIdByNameAsync(string airplaneName, CancellationToken cancellationToken = default)
+        {
+            var airplane = await airplanesRepository.GetAsync(a => a.AirplaneName == airplaneName, cancellationToken);
+            return airplane?.AirplaneId;
+        }
     }
 }

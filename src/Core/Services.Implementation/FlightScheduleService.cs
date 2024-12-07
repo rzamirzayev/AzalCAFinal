@@ -17,6 +17,8 @@ namespace Services.Implementation
 
         public FlightScheduleService(IFlightScheduleRepository flightScheduleRepository) { this.flightScheduleRepository = flightScheduleRepository; }
 
+        
+
         //public Task<AddFlightScheduleResponseDto> AddAsync(AddFlightScheduleRequestDto model, CancellationToken cancellationToken = default)
         //{
         //    var data=new FlightSchedule { }

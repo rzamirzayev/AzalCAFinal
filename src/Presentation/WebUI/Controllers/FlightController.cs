@@ -146,7 +146,6 @@ namespace WebUI.Controllers
             await ProcessPassenger(adul, email, phone, flightId, adultPrice, isChild: false);
             await ProcessPassenger(child, email, phone, flightId, childPrice, isChild: true);
             await ProcessPassenger(infant, email, phone, flightId, childPrice, isChild: true);
-
             return RedirectToAction("Index", "Home");
         }
 
@@ -181,6 +180,12 @@ namespace WebUI.Controllers
             };
 
             return View(viewModel);
+        }
+
+        public async Task<IActionResult> flightByCity(string city,string flightDate,string type)
+        {
+            var flight=await flightService.GetFlightByCity(city, flightDate, type);
+            return View(flight);
         }
 
         [HttpPost]
@@ -254,7 +259,7 @@ namespace WebUI.Controllers
 <body>
     <div class='email-container'>
         <div class='header'>
-            <img src='https://www.azal.az/assets/images/logo.png' alt='Azerbaijan Airlines' />
+            <img src='https://www.azal.az/_next/static/media/05112024_Azal_Miles343x128_aze_9607f2801a.221ea906.png' alt='Azerbaijan Airlines' />
         </div>
         <div class='info-section'>
             <h1>Electronic Ticket Receipt</h1>
@@ -275,7 +280,8 @@ namespace WebUI.Controllers
                 <td>{flight.DepartureAirport}</td>
                 <td>{flight.DestinationAirport}</td>
                 <td>{flight.AirplaneName}</td>
-                <td>{ticket.CabinClass}</td>
+                <td>{ticket.CabinClass}</td>         
+                <td>{flight.FlightTime}</td>
                 <td>{flight.DepartureTime}</td>
                 <td>{flight.ArrivalTime}</td>
             </tr>
@@ -296,9 +302,6 @@ namespace WebUI.Controllers
         private async Task ProcessPassenger(List<AddPassangerRequestDto> passengers, string email, string phone, int flightId, int price, bool isChild)
         {
             var flight = await flightService.GetById(flightId);
-
-
-
             foreach (var person in passengers)
             {
                 var passenger = new AddPassangerRequestDto

@@ -7,6 +7,7 @@ using Services.Passanger;
 using Services.Services;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -69,8 +70,6 @@ namespace Services.Implementation
             return data;
 
         }
-
-   
         public async Task<AddFlightResponseDto> AddAsync(AddFlightRequestDto model, CancellationToken cancellationToken = default)
         {
             var flight = new Domain.Entities.Flight
@@ -149,12 +148,12 @@ namespace Services.Implementation
             var flightDtos = a.Select(flight => new FlightSearchDto
             {
                 Id =flight.FlightId,
-                DepartureAirport = flight.DepartureAirport.AirportName,
-                DestinationAirport = flight.DestinationAirport.AirportName,
+                DepartureAirport = flight.DepartureAirport?.AirportName,
+                DestinationAirport = flight.DestinationAirport?.AirportName,
                 FlightDate = flight.FlightTime.ToString(),
                 EconomyPrice=flight.EconomyPrice,
                 BusinessPrice=flight.BusinessPrice,
-                Airplane=flight.Airplane.AirplaneName,
+                Airplane=flight.Airplane?.AirplaneName,
                 FlightSchedules = flight.FlightSchedules.Select(sch => new FlightScheduleDto
                 {
                     FlightId = sch.FlightId,
@@ -194,7 +193,85 @@ namespace Services.Implementation
             flightScheduleRepository.Edit(time);
             await flightRepository.SaveAsync();
             await flightScheduleRepository.SaveAsync();
+
             return model;
         }
+        public async Task<List<FlightSearchDto>> GetFlightByCity(string city,string flightDate,string type)
+        {
+            var data = await flightRepository.GetAll()
+                .Include(flight => flight.Airplane)
+                .Include(flight => flight.DepartureAirport).ThenInclude(a => a.City)
+                .Include(flight => flight.DestinationAirport).ThenInclude(b => b.City)
+                .Include(flight => flight.FlightSchedules)
+                .ToListAsync();
+
+            var filteredFlights = type.ToLower() == "from"
+               ? data.Where(f => f.DepartureAirport?.City?.CityName == city &&
+                                 f.FlightTime.ToString() == flightDate).ToList()
+               : data.Where(f => f.DestinationAirport?.City?.CityName == city &&
+                                 f.FlightTime.ToString() == flightDate).ToList();
+
+
+            var flightDtos = filteredFlights.Select(flight => new FlightSearchDto
+            {
+
+                Id = flight.FlightId,
+                DepartureAirport = flight.DepartureAirport?.AirportName,
+                DestinationAirport = flight.DestinationAirport?.AirportName,
+                FlightDate = flight.FlightTime.ToString(),
+                EconomyPrice = flight.EconomyPrice,
+                BusinessPrice = flight.BusinessPrice,
+                Airplane = flight.Airplane?.AirplaneName,
+
+                FlightSchedules = flight.FlightSchedules.Select(sch => new FlightScheduleDto
+                {
+                    FlightId = sch.FlightId,
+                    DepartureTime = sch.DepartureTime,
+                    ArrivalTime = sch.ArrivalTime,
+                    onTheAir = GetFlightStatus(flightDate, sch.DepartureTime, sch.ArrivalTime)
+                }).ToList(),
+
+
+            }).ToList();
+
+            return flightDtos;
+        }
+        string GetFlightStatus(string flightDate, TimeSpan departureTime, TimeSpan arrivalTime)
+        {
+            DateTime now = DateTime.Now;
+            DateTime onlyDate = now.Date;
+            TimeSpan onlyOclock = now.TimeOfDay; 
+
+            if (!DateTime.TryParse(flightDate, out DateTime flightDateTime))
+                return "Invalid Flight Date";
+
+            if (departureTime == TimeSpan.Zero || arrivalTime == TimeSpan.Zero)
+                return "Schedule Not Available";
+
+            if (onlyDate > flightDateTime.Date)
+            {
+                return "Landed"; 
+            }
+
+            if (onlyDate < flightDateTime.Date)
+            {
+                return "Not Departed Yet"; 
+            }
+
+            if (onlyOclock < departureTime)
+            {
+                return "Not Departed Yet"; 
+            }
+            else if (onlyOclock >= departureTime && onlyOclock <= arrivalTime)
+            {
+                return "On the Air"; 
+            }
+            else
+            {
+                return "Landed"; 
+            }
+        }
+
+
     }
 }

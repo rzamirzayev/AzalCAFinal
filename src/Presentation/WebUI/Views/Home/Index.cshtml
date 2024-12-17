@@ -158,7 +158,7 @@
             <div class="btnn manageFlightBtn">
                 <button>Manage Booking</button>
             </div>
-            <div class="btnn">
+            <div class="btnn flightstatusBtn">
                 <button>Flight Status</button>
             </div>
         </div>
@@ -327,7 +327,7 @@
      
             </form>
         </div>
-        <div class="managebooking flightDiv">
+        <div class="managebooking flightDiv" style="display:none;">
             <form class="d-flex" asp-controller="flight" asp-action="PassangerGetTicketNumber" >
                 <div class="d-flex" style="width: 35%">
                     <input type="text" name="surname" placeholder="Last Name"/>
@@ -336,6 +336,27 @@
                     <input type="text" name="number" placeholder="Ticket Number"/>
                 </div>
                 <button type="submit">Search</button>
+            </form>
+        </div>
+        <div class="flightstatus flightDiv" style="display:none;">
+            <form class="d-flex" asp-controller="flight" asp-action="flightByCity">
+                <div class="d-flex" style="width: 20%">
+                    <div class="flightselect">
+                        <select name="type">
+                            <option value="from">Departure</option>
+                            <option value="arrival">Arrival</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="d-flex" style="width: 40%">
+                    <input type="text" placeholder="City" name="city" />
+                </div>
+                <div class="d-flex" style="width: 20%">
+                    <div class="flightselect">
+                        <select name="flightdate" id="dateselect" ></select>
+                    </div>
+                </div>
+                <button type="submit" style="width: 15%">Search</button>
             </form>
         </div>
     </div>

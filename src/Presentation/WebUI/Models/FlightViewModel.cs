@@ -7,8 +7,8 @@ namespace WebUI.Models
     public class FlightViewModel
     {
 
-        public List<AirplaneGetAllDto> Airplanes { get; set; }
-        public List<AirportGetAllDto> Airports { get; set; }
+        public List<AirplaneGetAllDto>? Airplanes { get; set; }
+        public List<AirportGetAllDto>? Airports { get; set; }
         public int? FlightId { get; set; }
         public int SelectedAirplaneId { get; set; }         
         public int SelectedDepartureAirportId { get; set; }   
@@ -21,8 +21,8 @@ namespace WebUI.Models
     }
     public class FlightSearchViewModel
     {
-        public List<FlightSearchDto> OutboundFlights { get; set; }
-        public List<FlightSearchDto> ReturnFlights { get; set; }
+        public List<FlightSearchDto>? OutboundFlights { get; set; }
+        public List<FlightSearchDto>? ReturnFlights { get; set; }
         public int AdultCount { get; set; }
         public int ChildCount { get; set; }
         public int InfantCount { get; set; }

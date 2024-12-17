@@ -280,16 +280,51 @@ passangerClass.forEach((p) => {
     });
 });
 
-const flightDivs = document.querySelector(".bookflight");
-const manageDivs = document.querySelector(".managebooking");
+const sections = {
+    bookflight: document.querySelector(".bookflight"),
+    managebooking: document.querySelector(".managebooking"),
+    flightstatus: document.querySelector(".flightstatus"),
+};
 
-const bookFlightBtn = document.querySelector(".bookFlightBtn button");
-const ManageFlightBtn = document.querySelector(".manageFlightBtn button");
-bookFlightBtn.addEventListener("click", function () {
-    flightDivs.style.display = "block";
-    manageDivs.style.display = "none";
-});
-ManageFlightBtn.addEventListener("click", function () {
-    flightDivs.style.display = "none";
-    manageDivs.style.display = "block";
-});
+document
+    .querySelector(".bookFlightBtn button")
+    .addEventListener("click", () => showSection("bookflight"));
+document
+    .querySelector(".manageFlightBtn button")
+    .addEventListener("click", () => showSection("managebooking"));
+document
+    .querySelector(".flightstatusBtn button")
+    .addEventListener("click", () => showSection("flightstatus"));
+
+function showSection(sectionToShow) {
+    Object.keys(sections).forEach((section) => {
+        sections[section].style.display =
+            section === sectionToShow ? "block" : "none";
+    });
+}
+
+//vaxti selecte add elemek
+function formatDate(date) {
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const year = date.getFullYear();
+    return `${day}.${month}.${year}`;
+}
+
+function populateDateOptions() {
+    const dateSelect = document.getElementById("dateselect");
+
+    const today = new Date();
+    for (let i = -3; i <= 3; i++) {
+        const tempDate = new Date();
+        tempDate.setDate(today.getDate() + i);
+
+        const formattedDate = formatDate(tempDate);
+        const option = document.createElement("option");
+        option.value = formattedDate;
+        option.textContent = formattedDate;
+
+        dateSelect.appendChild(option);
+    }
+}
+populateDateOptions();

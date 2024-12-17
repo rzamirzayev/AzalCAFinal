@@ -68,7 +68,7 @@ namespace WebUI.Areas.Admin.Controllers
 
             return RedirectToAction("Index");
         }
-
+        [Authorize(Policy ="admin.flight.edit")]
         public async Task<IActionResult> Edit(int id)
         {
             var response = await flightService.GetById(id);
@@ -103,6 +103,8 @@ namespace WebUI.Areas.Admin.Controllers
 
             return View(viewModel);
         }
+        [Authorize(Policy = "admin.flight.edit")]
+
         [HttpPost]
         public async Task<IActionResult> Edit(EditFlightDto model)
         {

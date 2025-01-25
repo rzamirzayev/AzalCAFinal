@@ -39,7 +39,7 @@ namespace Services.Implementation
             entity.Name=model.Name;
             entity.Title = model.Title;
             entity.Description=model.Description;
-            entity.ImagePath=model.ImagePath;
+            //entity.ImagePath=model.ImagePath;
             serviceRepository.Edit(entity);
             await serviceRepository.SaveAsync();
             return model;

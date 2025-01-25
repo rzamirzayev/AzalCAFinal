@@ -417,6 +417,10 @@
       "PackagePath": "staticwebassets\\account\\fonts\\poppins\\roboto-condensed-v16-latin-regular.woff2"
     },
     {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\account\\images\\AZAL_Tel_viv_f841c9c275.2fdea8b3.jpg",
+      "PackagePath": "staticwebassets\\account\\images\\AZAL_Tel_viv_f841c9c275.2fdea8b3.jpg"
+    },
+    {
       "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\account\\images\\signup-img.jpg",
       "PackagePath": "staticwebassets\\account\\images\\signup-img.jpg"
     },
@@ -6445,6 +6449,10 @@
       "PackagePath": "staticwebassets\\uploads\\1e5553a9-9ca9-4190-a6ac-b5c514f72a78.jpg"
     },
     {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\uploads\\37cc8942-dfa4-4a18-9281-d9a89ec3bdea.jpg",
+      "PackagePath": "staticwebassets\\uploads\\37cc8942-dfa4-4a18-9281-d9a89ec3bdea.jpg"
+    },
+    {
       "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\uploads\\3ca2c988-ea1d-4ea7-b193-9ef023e60793.jpg",
       "PackagePath": "staticwebassets\\uploads\\3ca2c988-ea1d-4ea7-b193-9ef023e60793.jpg"
     },
@@ -6455,6 +6463,10 @@
     {
       "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\uploads\\79486540-fd68-4ea4-a23e-1018861c68c1.jpg",
       "PackagePath": "staticwebassets\\uploads\\79486540-fd68-4ea4-a23e-1018861c68c1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\uploads\\b238d9ae-e778-4174-92fa-72e14f4b6ace.jpg",
+      "PackagePath": "staticwebassets\\uploads\\b238d9ae-e778-4174-92fa-72e14f4b6ace.jpg"
     },
     {
       "Id": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\uploads\\deb06205-7d84-4918-b8cb-bf78d8ea09cf.jpg",

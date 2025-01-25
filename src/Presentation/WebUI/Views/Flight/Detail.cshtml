@@ -4,7 +4,8 @@
     ViewData["Title"] = "Detail";
     Layout = null;
     double ecoPrice = ViewBag.OutboundPrice;
-    double totalPrice = (ViewBag.AdultCount * ecoPrice)+(ViewBag.ChildCount*(ecoPrice * 0.5));
+    double businessPrice = ViewBag.ReturnPrice != null ? (double)ViewBag.ReturnPrice : 0.0;
+    double totalPrice = (ViewBag.AdultCount * ecoPrice) + (ViewBag.ChildCount * (ecoPrice * 0.5)) + (ViewBag.AdultCount * businessPrice) + (ViewBag.ChildCount * (businessPrice * 0.5));
     string ticketClass;
     if (Model.OutboundFlights?.BusinessPrice == ViewBag.Price)
     {

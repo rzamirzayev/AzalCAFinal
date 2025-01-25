@@ -32,6 +32,13 @@ namespace WebUI.Filters
             switch (context.Exception)
             {
                 case NullReferenceException:
+                    context.Result = new ContentResult
+                    {
+                        Content = File.ReadAllText("wwwroot/error-pages/404.html"),
+                        ContentType = "text/html",
+                        StatusCode = 200
+                    };
+                    break;
                 case ArgumentNullException:
                     context.Result = new JsonResult(new
                     {
@@ -47,6 +54,13 @@ namespace WebUI.Filters
             switch (context.Exception)
             {
                 case NullReferenceException:
+                    context.Result = new ContentResult
+                    {
+                        Content = File.ReadAllText("wwwroot/error-pages/404.html"),
+                        ContentType = "text/html",
+                        StatusCode = 200
+                    };
+                    break;
                 case ArgumentNullException:
                     context.Result = new ContentResult
                     {
@@ -58,7 +72,7 @@ namespace WebUI.Filters
                 default:
                     context.Result = new ContentResult
                     {
-                        Content = File.ReadAllText("wwwroot/error-pages/505.html"),
+                        Content = File.ReadAllText("wwwroot/error-pages/500.html"),
                         ContentType = "text/html",
                         StatusCode = 200
                     };

@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using NuGet.Protocol.Plugins;
 using Services.Common;
 using Services.Flight;
 using Services.Passanger;
@@ -82,14 +83,14 @@ namespace WebUI.Controllers
 
 
         }
-        public async Task<IActionResult> Detail(int? outboundId,int? returnId, int adultCount, int childCount, int infantCount,string selectedFlightClass,string returnselectedFlightClass)
+        public async Task<IActionResult> Detail(int? outboundid,int? returnId, int adultCount, int childCount, int infantCount,string selectedFlightClass,string returnselectedFlightClass)
         {
 
-            if (!outboundId.HasValue)
+            if (!outboundid.HasValue)
             {
                 return BadRequest("Qalxis flight gelmedi."); 
             }
-            var outboundFlight = await flightService.GetById(outboundId.Value);
+            var outboundFlight = await flightService.GetById(outboundid.Value);
             if (outboundFlight == null)
             {
                 return NotFound("Enis flight gelmedi.");
@@ -99,9 +100,9 @@ namespace WebUI.Controllers
                 ? await flightService.GetById(returnId.Value)
                 : null;
 
-            ViewBag.OutboundPrice = (selectedFlightClass == "Economy")
-                ? outboundFlight.EconomyPrice
-                : outboundFlight.BusinessPrice;
+            ViewBag.OutboundPrice = (selectedFlightClass == "Business")
+                ? outboundFlight.BusinessPrice
+                : outboundFlight.EconomyPrice;
 
             if (returnFlight != null)
             {
@@ -122,30 +123,60 @@ namespace WebUI.Controllers
 
             return View(viewModel);
         }
-        public async Task<IActionResult> Passanger(int id,int? arrivalId, int adultCount, int childCount, int infantCount,string flightClass)
+        public async Task<IActionResult> Passanger(int? id,int? arrivalId, int adultCount, int childCount, int infantCount,string flightClass)
         {
-            var flight = await flightService.GetById(id);
+            if (!id.HasValue)
+            {
+                return BadRequest("Qalxis flight gelmedi.");
+            }
+            var outboundFlight = await flightService.GetById(id.Value);
+            if (outboundFlight == null)
+            {
+                return NotFound("Enis flight gelmedi.");
+            }
+
+            var returnFlight = arrivalId.HasValue
+                ? await flightService.GetById(arrivalId.Value)
+                : null;
+
             ViewBag.AdultCount = adultCount;
             ViewBag.ChildCount = childCount;
             ViewBag.InfantCount = infantCount;
 
             if (flightClass == "Economy")
             {
-                ViewBag.Price = flight.EconomyPrice;
+                ViewBag.OutbundPrice = outboundFlight.EconomyPrice;
+                if(returnFlight is not null){
+                    ViewBag.ReturnPrice = returnFlight.EconomyPrice;
+
+
+                }
             }
             if (flightClass == "Business")
             {
-                ViewBag.Price = flight.BusinessPrice;
+                ViewBag.Price = outboundFlight.BusinessPrice;
 
             }
-            return View(flight);
+            FlightDetailsViewModel viewModel = new FlightDetailsViewModel
+            {
+                OutboundFlights = outboundFlight,
+                ReturnFlights = returnFlight
+            };
+
+            return View(viewModel);
         }
         [HttpPost]
-        public async Task<IActionResult> Passanger(List<AddPassangerRequestDto> adul,List<AddPassangerRequestDto> child,List<AddPassangerRequestDto> infant,string email, string phone,int flightId,int adultPrice,int childPrice)
+        public async Task<IActionResult> Passanger(List<AddPassangerRequestDto> adult,List<AddPassangerRequestDto> child,List<AddPassangerRequestDto> infant,string email, string phone,int flightId,int adultPrice,int childPrice,int? returnflightId,int returnprice)
         {
-            await ProcessPassenger(adul, email, phone, flightId, adultPrice, isChild: false);
+            await ProcessPassenger(adult, email, phone, flightId, adultPrice, isChild: false);
             await ProcessPassenger(child, email, phone, flightId, childPrice, isChild: true);
             await ProcessPassenger(infant, email, phone, flightId, childPrice, isChild: true);
+            if (returnflightId.HasValue)
+            {
+                await ProcessPassenger(adult, email, phone, returnflightId.Value, returnprice, isChild: false);
+                await ProcessPassenger(child, email, phone, returnflightId.Value, childPrice, isChild: true);
+                await ProcessPassenger(infant, email, phone, returnflightId.Value, childPrice, isChild: true);
+            }
             return RedirectToAction("Index", "Home");
         }
 
@@ -187,26 +218,33 @@ namespace WebUI.Controllers
             var flight=await flightService.GetFlightByCity(city, flightDate, type);
             return View(flight);
         }
-
         [HttpPost]
         public async Task<IActionResult> SendVerificationCode([FromBody] string email)
         {
-            if (string.IsNullOrEmpty(email))
+            try
             {
-                return Json(new { success = false, message = "Email is required." });
+                if (string.IsNullOrEmpty(email))
+                {
+                    return Json(new { success = false, message = "Email is required." });
+                }
+
+                var random = new Random();
+                var verificationCode = random.Next(1000, 9999).ToString();
+
+                HttpContext.Session.SetString("VerificationCode", verificationCode);
+                HttpContext.Session.SetString("VerificationCodeTimestamp", DateTime.UtcNow.ToString());
+                
+                await emailService.SendEmail(email, "Your Verification Code", $"Your verification code is: <b>{verificationCode}</b>");
+
+                return Json(new { success = true, message = "Verification code sent successfully to your email." });
             }
-
-            
-            var random = new Random();
-            var verificationCode = random.Next(1000, 9999).ToString();
-
-            HttpContext.Session.SetString("VerificationCode", verificationCode);
-            HttpContext.Session.SetString("VerificationCodeTimestamp", DateTime.UtcNow.ToString());
-
-            await emailService.SendEmail(email,"Your Verification Code", $"Your verification code is: <b>{verificationCode}</b>");
-
-            return Json(new { success = true, message = "Verification code sent successfully to your email." });
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return StatusCode(500, new { success = false, message = "An error occurred on the server.", error = ex.Message });
+            }
         }
+
         [HttpPost]
         public IActionResult VerifyCode(string enteredCode)
         {

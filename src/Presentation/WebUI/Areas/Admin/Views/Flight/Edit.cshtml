@@ -18,6 +18,8 @@
                 </option>
             }
         </select>
+        <span asp-validation-for="SelectedAirplaneId" class="text text-danger"></span>
+
     </div>
 
     <div class="form-group">
@@ -30,6 +32,8 @@
                 </option>
             }
         </select>
+        <span asp-validation-for="SelectedDepartureAirportId" class="text text-danger"></span>
+
     </div>
 
     <div class="form-group">
@@ -42,30 +46,42 @@
                 </option>
             }
         </select>
+        <span asp-validation-for="SelectedDestinationAirportId" class="text text-danger"></span>
+
     </div>
 
     <div class="form-group">
         <label for="Flight_EconomyPrice">Economy Price</label>
         <input type="number" id="Flight_EconomyPrice" class="form-control" asp-for="EconomyPrice" name="EconomyPrice" />
+        <span asp-validation-for="EconomyPrice" class="text text-danger"></span>
+
     </div>
 
     <div class="form-group">
         <label for="Flight_BusinessPrice">Business Price</label>
-        <input type="number" id="Flight_BusinessPrice" class="form-control" asp-for="BusinessPrice" name="BusinessPrice" />
+        <input type="number" id="Flight_BusinessPrice" class="form-control" asp-for="BusinessPrice" name="BusinessPrice" required />
+        <span asp-validation-for="BusinessPrice" class="text text-danger"></span>
+
     </div>
     <div class="form-group">
         <label for="Flight_ArrivalDate">Flight Time</label>
         <input type="date" id="Flight_ArrivalDate" class="form-control" asp-for="FlightDate" name="FlightTime" value="@(Model.FlightDate != null ? Model.FlightDate.ToString("yyyy-MM-dd") : "")" />
+        <span asp-validation-for="FlightDate" class="text text-danger"></span>
+
     </div>
 
     <div class="form-group">
         <label for="Flight_DepartureDate">Departure Time</label>
         <input type="time" id="Flight_DepartureDate" class="form-control" asp-for="DepartureTime" name="DepartureTime" />
+        <span asp-validation-for="DepartureTime" class="text text-danger"></span>
+
     </div>
 
     <div class="form-group">
         <label for="Flight_ArrivalDate">Arrival Time</label>
         <input type="time" id="Flight_ArrivalDate" class="form-control" asp-for="ArrivalTime" name="ArrivalTime" />
+        <span asp-validation-for="ArrivalTime" class="text text-danger"></span>
+
     </div>
 
     <button type="submit" class="btn btn-primary">Sumbit</button>

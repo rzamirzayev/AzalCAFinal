@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mZPyu3KKrUXACsehsd2d55B1L2bMlhozsbyDchmrasE=",
+  "Hash": "mi5iqs6Y7pLDkYMiLCUnhsFT16Ggn6f/r7J8kiDSs74=",
   "Source": "WebUI",
   "BasePath": "_content/WebUI",
   "Mode": "Default",
@@ -1783,6 +1783,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\account\\fonts\\poppins\\roboto-condensed-v16-latin-regular.woff2"
+    },
+    {
+      "Identity": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\account\\images\\AZAL_Tel_viv_f841c9c275.2fdea8b3.jpg",
+      "SourceId": "WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\",
+      "BasePath": "_content/WebUI",
+      "RelativePath": "account/images/AZAL_Tel_viv_f841c9c275.2fdea8b3.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\account\\images\\AZAL_Tel_viv_f841c9c275.2fdea8b3.jpg"
     },
     {
       "Identity": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\account\\images\\signup-img.jpg",
@@ -27404,6 +27421,23 @@
       "OriginalItemSpec": "wwwroot\\uploads\\1e5553a9-9ca9-4190-a6ac-b5c514f72a78.jpg"
     },
     {
+      "Identity": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\uploads\\37cc8942-dfa4-4a18-9281-d9a89ec3bdea.jpg",
+      "SourceId": "WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\",
+      "BasePath": "_content/WebUI",
+      "RelativePath": "uploads/37cc8942-dfa4-4a18-9281-d9a89ec3bdea.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\37cc8942-dfa4-4a18-9281-d9a89ec3bdea.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\uploads\\3ca2c988-ea1d-4ea7-b193-9ef023e60793.jpg",
       "SourceId": "WebUI",
       "SourceType": "Discovered",
@@ -27453,6 +27487,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\79486540-fd68-4ea4-a23e-1018861c68c1.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\uploads\\b238d9ae-e778-4174-92fa-72e14f4b6ace.jpg",
+      "SourceId": "WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\",
+      "BasePath": "_content/WebUI",
+      "RelativePath": "uploads/b238d9ae-e778-4174-92fa-72e14f4b6ace.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\b238d9ae-e778-4174-92fa-72e14f4b6ace.jpg"
     },
     {
       "Identity": "C:\\Users\\Lenovo\\Desktop\\AzalCAFinal\\src\\Presentation\\WebUI\\wwwroot\\uploads\\deb06205-7d84-4918-b8cb-bf78d8ea09cf.jpg",

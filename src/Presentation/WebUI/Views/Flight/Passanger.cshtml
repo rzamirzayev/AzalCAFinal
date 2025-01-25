@@ -1,10 +1,12 @@
-﻿@model AddFlightResponseDto
+﻿@model FlightDetailsViewModel
 @{
     ViewData["Title"] = "Passanger";
     Layout = null;
-    double ecoPrice = ViewBag.Price;
+    double ecoPrice = ViewBag.OutbundPrice;
+    double returnPrice = ViewBag.ReturnPrice != null ? (double)ViewBag.ReturnPrice : 0.0;
+
     double childPrice = ecoPrice * 0.5;
-    double totalPrice = (ViewBag.AdultCount * ecoPrice) + (ViewBag.ChildCount * (ecoPrice * 0.5));
+    double totalPrice = (ViewBag.AdultCount * (ecoPrice+returnPrice)) + (ViewBag.ChildCount * ((ecoPrice+returnPrice) * 0.5));
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +22,11 @@
     <link rel="stylesheet" href="~/./assets/css/flightId.css" />
     <link rel="stylesheet" href="~/./assets/css/flight.css" />
     <link rel="stylesheet" href="~/./assets/css/passanger.css" />
+    <style>
+        .modal-dialog{
+            position:static;
+        }
+    </style>
 
     <title>Document</title>
 </head>
@@ -166,7 +173,7 @@
                     </div>
                     <div class="d-flex arrivalDate">
                         <div class="dateInfo">
-                            <p>@Model.DepartureTime.Substring(0,5)</p>
+                            <p>@Model.OutboundFlights?.DepartureTime.Substring(0,5)</p>
                             <div class="planeSvg">
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                      width="20"
@@ -177,9 +184,9 @@
                                     <path d="M5.196 2.624a.837.837 0 0 0-.604 1.405l3.501 3.783-3.205 1.401-1.973-1.158a.828.828 0 0 0-1.12 1.157l1.116 1.772a2.355 2.355 0 0 0 2.935.902l11.64-5.095a1.413 1.413 0 0 0-1.131-2.589l-4.377 1.913-6.38-3.394a.836.836 0 0 0-.402-.097Zm-2.071 13.21a.628.628 0 0 0-.634.624.625.625 0 0 0 .634.625h13.75a.624.624 0 1 0 0-1.25H3.125Z"></path>
                                 </svg>
                             </div>
-                            <span style="color: #2e3034">@Model.DepartureAirport</span>
+                            <span style="color: #2e3034">@Model.OutboundFlights?.DepartureAirport</span>
                             <span>Terminal 1</span>
-                            <span>@Model.FlightTime</span>
+                            <span>@Model.OutboundFlights?.FlightTime</span>
                         </div>
                         <div class="svgFlight">
                             <div class="salt"></div>
@@ -187,7 +194,7 @@
                             <div class="round"></div>
                         </div>
                         <div class="dateInfo">
-                            <p>@Model.ArrivalTime?.Substring(0,5)</p>
+                            <p>@Model.OutboundFlights?.ArrivalTime?.Substring(0,5)</p>
                             <div class="planeSvg">
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                      width="20"
@@ -198,9 +205,9 @@
                                     <path d="M8.964 1.667a.853.853 0 0 0-.837.865l.078 5.11-3.383-1.119-.708-2.22a.844.844 0 0 0-1.637.113l-.36 2.104A2.4 2.4 0 0 0 3.73 9.202l12.295 4.058a1.44 1.44 0 0 0 .904-2.733L12.25 8.98l-2.47-6.752a.852.852 0 0 0-.815-.56Zm-5.84 14.166a.624.624 0 1 0 0 1.25h13.75a.628.628 0 0 0 .586-.383.626.626 0 0 0-.585-.867H3.125Z"></path>
                                 </svg>
                             </div>
-                            <span style="color: #2e3034">@Model.DestinationAirport</span>
+                            <span style="color: #2e3034">@Model.OutboundFlights?.DestinationAirport</span>
                             <span>Terminal 1</span>
-                            <span>@Model.FlightTime</span>
+                            <span>@Model.OutboundFlights?.FlightTime</span>
                         </div>
                     </div>
                 </div>
@@ -226,7 +233,7 @@
                                      class="root_ESF size_16_MSX">
                                     <path d="M13.333 6.667H10L6.62 1.66a.698.698 0 0 0-1.256.576l1.628 4.43h-3.66l-.92-1.134c-.1-.12-.186-.2-.34-.2h-.406a.33.33 0 0 0-.32.414L2 8l-.653 2.253a.33.33 0 0 0 .32.414h.406c.154 0 .24-.08.34-.2l.92-1.134h3.66l-1.627 4.43a.697.697 0 0 0 1.257.576L10 9.333h3.333a1.333 1.333 0 1 0 0-2.666Z"></path>
                                 </svg>
-                                @Model.AirplaneName
+                                @Model.OutboundFlights?.AirplaneName
                             </div>
                         </div>
                         <p>4 h 30 min</p>
@@ -288,14 +295,185 @@
                     </div>
                 </div>
             </div>
+            @if(Model.ReturnFlights != null)
+            {
+                            <div class="flight_date d-flex">
+                <div class="left_column">
+                    <div class="d-flex">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             width="20"
+                             height="20"
+                             fill="none"
+                             viewBox="0 0 20 20"
+                             class="root_ESF size_20__Il">
+                            <g id="logo">
+                                <g id="Group 135">
+                                    <path id="path23491"
+                                          fill="#036"
+                                          d="M15.154 12.916c-.868 2.63-3.347 4.534-6.264 4.534a6.604 6.604 0 0 1-6.596-6.597A6.604 6.604 0 0 1 8.89 4.257c1.108 0 2.152.275 3.069.76l.236-.208a6.847 6.847 0 0 0-3.305-.846c-3.8 0-6.89 3.09-6.89 6.89s3.09 6.89 6.89 6.89c3.086 0 5.705-2.04 6.58-4.842l-.316.015Z"></path>
+                                    <path id="path23493"
+                                          fill="#00B2E2"
+                                          d="M4.476 12.976c3.978-.366 7.919-.976 11.804-1.955l-.18.806c-4.97 1.133-8.437 1.237-11.624 1.15Z"></path>
+                                    <path id="path23495"
+                                          fill="#00B2E2"
+                                          d="M5.108 12.581a69.207 69.207 0 0 0 11.459-2.838l-.185.825c-4.346 1.366-8.051 1.976-11.274 2.013Z"></path>
+                                    <path id="path23497"
+                                          fill="#57C8E7"
+                                          d="M5.715 12.161c3.654-.911 7.375-2.186 11.141-3.713l-.185.83c-3.99 1.566-7.68 2.597-10.956 2.883Z"></path>
+                                    <path id="path23499"
+                                          fill="#98DAE9"
+                                          d="M6.32 11.664c3.685-1.12 7.309-2.803 10.895-4.821l-.227 1.017c-4.296 2.133-7.936 3.5-10.668 3.804Z"></path>
+                                    <path id="path23501"
+                                          fill="#57C8E7"
+                                          d="M7.104 11.139c4.138-2.001 7.502-4.074 10.533-6.18l-.25 1.121C13.95 8.274 10.52 10.091 7.103 11.14Z"></path>
+                                    <path id="path23503"
+                                          fill="#00B2E2"
+                                          d="M7.707 10.488c4.069-2.571 7.598-5.188 10.451-7.86l-.306 1.369c-3.375 2.913-6.83 4.919-10.145 6.491Z"></path>
+                                    <path id="path23505"
+                                          fill="#00B2E2"
+                                          d="m18.391 1-1.15.03a50.476 50.476 0 0 1-4.302 4.62c-1.563 1.489-3.134 2.824-4.707 4.138C11.677 7.464 15.095 4.861 18.392 1Z"></path>
+                                </g>
+                            </g>
+                        </svg>
+                        Azerbaijan Airlines
+                    </div>
+                    <div class="d-flex arrivalDate">
+                        <div class="dateInfo">
+                            <p>@Model.ReturnFlights?.DepartureTime.Substring(0,5)</p>
+                            <div class="planeSvg">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     width="20"
+                                     height="20"
+                                     fill="currentColor"
+                                     viewBox="0 0 20 20"
+                                     class="root_ESF size_20__Il">
+                                    <path d="M5.196 2.624a.837.837 0 0 0-.604 1.405l3.501 3.783-3.205 1.401-1.973-1.158a.828.828 0 0 0-1.12 1.157l1.116 1.772a2.355 2.355 0 0 0 2.935.902l11.64-5.095a1.413 1.413 0 0 0-1.131-2.589l-4.377 1.913-6.38-3.394a.836.836 0 0 0-.402-.097Zm-2.071 13.21a.628.628 0 0 0-.634.624.625.625 0 0 0 .634.625h13.75a.624.624 0 1 0 0-1.25H3.125Z"></path>
+                                </svg>
+                            </div>
+                            <span style="color: #2e3034">@Model.ReturnFlights?.DepartureAirport</span>
+                            <span>Terminal 1</span>
+                            <span>@Model.ReturnFlights?.FlightTime</span>
+                        </div>
+                        <div class="svgFlight">
+                            <div class="salt"></div>
+                            <div class="round"></div>
+                            <div class="round"></div>
+                        </div>
+                        <div class="dateInfo">
+                                <p>@Model.ReturnFlights?.ArrivalTime?.Substring(0,5)</p>
+                            <div class="planeSvg">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     width="20"
+                                     height="20"
+                                     fill="currentColor"
+                                     viewBox="0 0 20 20"
+                                     class="root_ESF size_20__Il">
+                                    <path d="M8.964 1.667a.853.853 0 0 0-.837.865l.078 5.11-3.383-1.119-.708-2.22a.844.844 0 0 0-1.637.113l-.36 2.104A2.4 2.4 0 0 0 3.73 9.202l12.295 4.058a1.44 1.44 0 0 0 .904-2.733L12.25 8.98l-2.47-6.752a.852.852 0 0 0-.815-.56Zm-5.84 14.166a.624.624 0 1 0 0 1.25h13.75a.628.628 0 0 0 .586-.383.626.626 0 0 0-.585-.867H3.125Z"></path>
+                                </svg>
+                            </div>
+                            <span style="color: #2e3034">@Model.ReturnFlights?.DestinationAirport</span>
+                            <span>Terminal 1</span>
+                            <span>@Model.ReturnFlights?.FlightTime</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="right_column d-flex">
+                    <div class="flightInfoContainer">
+                        <div class="svgContainer d-flex">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     fill="none"
+                                     viewBox="1.5 5 21 14"
+                                     class="root_ESF size_16_MSX">
+                                    <path fill="currentColor"
+                                          d="M21.8 9.265a.75.75 0 0 0 .7-.75V6.75c0-.965-.785-1.75-1.75-1.75H16.5v1A.749.749 0 1 1 15 6V5H3.25c-.965 0-1.75.785-1.75 1.75v1.765a.75.75 0 0 0 .7.75c1.43.09 2.55 1.295 2.55 2.735s-1.12 2.645-2.55 2.735a.75.75 0 0 0-.7.75v1.765c0 .965.785 1.75 1.75 1.75H15v-1a.749.749 0 1 1 1.5 0v1h4.25c.965 0 1.75-.785 1.75-1.75v-1.765a.75.75 0 0 0-.7-.75c-1.43-.09-2.55-1.295-2.55-2.735s1.12-2.645 2.55-2.735ZM16.5 15a.749.749 0 1 1-1.5 0v-1.5a.749.749 0 1 1 1.5 0V15Zm0-4.5a.749.749 0 1 1-1.5 0V9a.749.749 0 1 1 1.5 0v1.5Z"></path>
+                                </svg>
+                                J2 71
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     width="16"
+                                     height="16"
+                                     fill="currentColor"
+                                     viewBox="0 0 16 16"
+                                     class="root_ESF size_16_MSX">
+                                    <path d="M13.333 6.667H10L6.62 1.66a.698.698 0 0 0-1.256.576l1.628 4.43h-3.66l-.92-1.134c-.1-.12-.186-.2-.34-.2h-.406a.33.33 0 0 0-.32.414L2 8l-.653 2.253a.33.33 0 0 0 .32.414h.406c.154 0 .24-.08.34-.2l.92-1.134h3.66l-1.627 4.43a.697.697 0 0 0 1.257.576L10 9.333h3.333a1.333 1.333 0 1 0 0-2.666Z"></path>
+                                </svg>
+                                    @Model.ReturnFlights?.AirplaneName
+                            </div>
+                        </div>
+                        <p>4 h 30 min</p>
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             width="20"
+                             height="20"
+                             fill="currentColor"
+                             viewBox="0 0 20 20"
+                             class="root_ESF direct_icon_vMk size_20__Il withoutSvg">
+                            <path fill="#2C8DC7"
+                                  d="M8.535 5.41A.625.625 0 0 0 8.1 6.484l3.1 3.1H1.875a.625.625 0 1 0 0 1.25H11.2l-3.1 3.1a.625.625 0 1 0 .884.883l4.166-4.167a.625.625 0 0 0 0-.884L8.984 5.6a.625.625 0 0 0-.449-.19Zm7.923 2.507a2.294 2.294 0 0 0-2.291 2.291 2.294 2.294 0 0 0 2.291 2.292 2.294 2.294 0 0 0 2.292-2.292 2.294 2.294 0 0 0-2.292-2.291Z"></path>
+                        </svg>
+                        <br />
+                        <span style="margin-top: 8px">Without Stops</span>
+                    </div>
+                    <div class="flightsCabin">
+                        <div class="flightCabin">
+                            <h3>
+                                Economy
+                                <div>Budget</div>
+                            </h3>
+                        </div>
+                        <div class="flightCabinService">
+                            <div class="cabinServiceSvg">
+                                <div class="cabinSvg">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         width="24"
+                                         height="24"
+                                         fill="currentColor"
+                                         viewBox="0 0 24 24"
+                                         class="root_ESF size_20__Il">
+                                        <path d="M17.887 2.521c-.344-.023-.701.103-.96.422C15.28 4.967 14 8.494 14 12.79v.695a1.5 1.5 0 0 0 .943 1.393l1.557.623v4.68c0 .653.47 1.246 1.12 1.312a1.248 1.248 0 0 0 1.38-1.24V3.703c0-.685-.54-1.141-1.113-1.18ZM4.738 2.99A.75.75 0 0 0 4 3.75v5a.75.75 0 0 0 .004.087 3.747 3.747 0 0 0 2.327 3.383l-.33 7.28v.25a1.75 1.75 0 1 0 3.5 0v-.25l-.332-7.28a3.747 3.747 0 0 0 2.327-3.385.785.785 0 0 0 .004-.084v-5a.75.75 0 1 0-1.5 0v3.5a.75.75 0 0 1-1.5 0v-3.5a.75.75 0 1 0-1.5 0v3.5a.75.75 0 0 1-1.5 0v-3.5a.75.75 0 0 0-.762-.76Z"></path>
+                                    </svg>
+                                </div>
+                                <div class="cabinSvg">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         width="24"
+                                         height="24"
+                                         fill="currentColor"
+                                         viewBox="0 0 24 24"
+                                         class="root_ESF size_20__Il">
+                                        <path d="M10.75 2C9.793 2 9 2.793 9 3.75v.75H4.75A2.753 2.753 0 0 0 2 7.25v10.5a2.753 2.753 0 0 0 2.75 2.75h14.5A2.753 2.753 0 0 0 22 17.75V7.25a2.753 2.753 0 0 0-2.75-2.75H15v-.75C15 2.793 14.207 2 13.25 2h-2.5Zm0 1.5h2.5c.148 0 .25.102.25.25v.75h-3v-.75c0-.148.102-.25.25-.25ZM9.5 8.75a1.75 1.75 0 1 1 0 3.5 1.75 1.75 0 0 1 0-3.5Zm7.653 3.509.961 2.329-5.084 2.098-.96-2.33 5.083-2.097Z"></path>
+                                    </svg>
+                                </div>
+                                <div class="cabinSvg">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         fill="currentColor"
+                                         viewBox="2 2 20.97 21"
+                                         class="root_ESF size_20__Il">
+                                        <path d="M12.236 17.058c-1.288 0-2.576-.023-3.864.006-2.027.045-3.767-1.305-4.188-3.337C3.5 10.418 2.757 7.122 2.042 3.82c-.163-.757.16-1.41.818-1.693.68-.29 1.37-.077 1.807.58.782 1.174 1.336 2.46 1.838 3.772.69 1.801 1.25 3.644 1.74 5.508.268 1.023.733 1.326 1.779 1.193 1.71-.217 3.421-.417 5.132-.625.321-.039.644-.073.964-.119 1.367-.196 2.593.778 2.669 2.187.071 1.34-.966 2.41-2.294 2.429-1.42.02-2.839.005-4.258.005v.001zm-1.265 5.935H5.633c-.405 0-.744-.124-.926-.518a.845.845 0 0 1-.005-.69c.427-1.075.857-3.149 1.276-4.227.073-.187.162-.21.336-.134.66.29 1.358.393 2.076.392 2.384-.003 4.768.002 7.152-.006.237-.001.361.073.458.29.378.838.752 2.68 1.17 3.5.405.794-.118 1.409-.887 1.4-1.77-.021-3.541-.007-5.312-.007z"></path>
+                                        <path d="M15.568 9.128a1.532 1.532 0 0 1-1.286 1.51c-1.504.241-3.01.46-4.515.689-.208.031-.415.061-.622.097-.172.03-.272-.015-.325-.203-.242-.85-.497-1.698-.75-2.544-.05-.162-.015-.243.165-.269 1.86-.276 3.72-.565 5.582-.832.938-.134 1.758.61 1.752 1.553h-.001z"></path>
+                                        <path fill-rule="evenodd"
+                                              d="M19.611 15.722a4.013 4.013 0 0 1-2.333 2.07c.253.25.504.502.756.754.768.767 1.537 1.535 2.313 2.295a1.532 1.532 0 0 0 1.98.135v.001c.761-.557.871-1.658.204-2.332a450.335 450.335 0 0 0-2.48-2.485l-.44-.438z"
+                                              clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
         </div>
         <h2 class="passhead">Complete Passanger Information</h2>
         <div class="cardsPassanger">
             <form method="post" id="passengerForm">
-                <input type="hidden" value="@Model.FlightId" name="flightId" />
+                <input type="hidden" value="@Model?.OutboundFlights?.FlightId" name="flightId" />
+                <input type="hidden" value="@Model?.ReturnFlights?.FlightId" name="returnflightId" />
+
                 @for (int i = 0; i < ViewBag.AdultCount; i++)
                 {
                     <input type="hidden" value="@ecoPrice" name="adultprice" />
+                    <input type="hidden" value="@returnPrice" name="returnprice" />
+
                     <div class="passanger_card">
                         <h2>Adult</h2>
                         <div class="passanger_info">
@@ -304,22 +482,22 @@
                                     <div class="personText">
                                         <span>First Name (Latin)</span>
                                         <div>
-                                            <input type="text" name="adul[@i].Name" required />
+                                            <input type="text" name="adult[@i].Name" required />
                                         </div>
                                     </div>
                                     <div class="personText">
                                         <span>Last Name (Latin)</span>
                                         <div>
-                                            <input type="text" name="adul[@i].Surname" required />
+                                            <input type="text" name="adult[@i].Surname" required />
                                         </div>
                                     </div>
                                     <div class="personText gender">
                                         <span>Gender *</span>
 
                                         <div class="d-flex">
-                                            <button type="button" class="gender-button" data-group="adul" data-index="@i" data-gender="M">M</button>
-                                            <button type="button" class="gender-button" data-group="adul" data-index="@i" data-gender="F">F</button>
-                                            <input type="hidden" name="adul[@i].Gender" />
+                                            <button type="button" class="gender-button" data-group="adult" data-index="@i" data-gender="M">M</button>
+                                            <button type="button" class="gender-button" data-group="adult" data-index="@i" data-gender="F">F</button>
+                                            <input type="hidden" name="adult[@i].Gender" />
                                         </div>
 
 
@@ -327,7 +505,7 @@
                                     <div class="personText">
                                         <span>Date Of birth</span>
                                         <div>
-                                            <input type="text" name="adul[@i].DateOfBirth" required />
+                                            <input type="text" name="adult[@i].DateOfBirth" required />
                                         </div>
                                     </div>
                                 </div>
@@ -349,7 +527,7 @@
                                         <div class="personText">
                                             <span>Document Number</span>
                                             <div>
-                                                <input type="text" name="adul[@i].FinCode" required />
+                                                <input type="text" name="adult[@i].FinCode" required />
                                             </div>
                                         </div>
                                         <div class="personText">
@@ -537,7 +715,7 @@
                                 <span>for all passanger</span>
                             </div>
 
-                            <button type="submit" id="submitButton">Confirm</button>
+                            <button type="button" id="submitButton" data-bs-toggle="modal" data-bs-target="#verificationPopup">Confirm</button>
 
                         </div>
                     </div>
@@ -547,15 +725,35 @@
     </main>
     
 @*
-<div id="verificationPopup" class="popup" style="display: none;">
+<div id="verificationPopup" class="popup container" style="display: none;">
     <div class="popup-content">
         <h2>Enter Verification Code</h2>
             <p>A verification code has been sent to your email. Please enter it below to continue.</p>
-            <input type="text" id="verificationCode" placeholder="Enter Code" />
+            <input type="text" id="verificationCode" placeholder="Enter Code" name="enteredCode" />
         <button id="verifyButton" class="popup-button">Verify</button>
         <button id="closePopup" class="popup-button close">Close</button>
-    </ div>
+    </div>
 </div>*@
+
+    <div class="modal fade" id="verificationPopup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">3D Secure</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="verificationCode" placeholder="Enter Code" name="enteredCode" />
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">Bagla</button>
+                    <button type="button" class="btn btn-primary" id="verifyButton">Gonder</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </body>
 </html>
@@ -576,53 +774,67 @@
         });
     });
 
-    //document.getElementById('submitButton').addEventListener('click', async function () {
-    //    const email = document.getElementById('emailinput').value;
-    //    console.log(email);
-    //    if (!email) {
-    //        alert('Please enter your email.');
-    //        return;
-    //    }
-    //    const response = await fetch('/Flight/SendVerificationCode', {
-    //        method: 'POST',
-    //        headers: { 'Content-Type': 'application/json' },
-    //        body: JSON.stringify({ email: email })
-    //    });
+    document.getElementById('submitButton').addEventListener('click', async function () {
+        const email = document.getElementById('emailinput').value;
+
+        if (!email) {
+            alert('Please enter your email.');
+            return;
+        }
+
+        try {
+            const response = await fetch('/Flight/SendVerificationCode', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(email)
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                alert(errorData.message || 'An unknown error occurred.');
+                return;
+            }
+
+            const result = await response.json();
+            if (result.success) {
+                alert(result.message);
+                document.getElementById('verificationPopup').style.display = 'block';
+            } else {
+                alert(result.message);
+            }
+        } catch (error) {
+            alert('An error occurred while sending the verification code.');
+            console.error(error);
+        }
+    });
 
 
-    //    const result = await response.json();
-    //    if (result.success) {
-    //        alert(result.message);
-    //        document.getElementById('verificationPopup').style.display = 'block';
-    //    } else {
-    //        alert(result.message);
-    //    }
-    //});
+    document.getElementById('verifyButton').addEventListener('click', async function () {
+        const enteredCode = document.getElementById('verificationCode').value;
 
-    //document.getElementById('verifyButton').addEventListener('click', async function () {
-    //    const enteredCode = document.getElementById('verificationCode').value;
+        if (!enteredCode) {
+            alert('Please enter the verification code.');
+            return;
+        }
 
-    //    if (!enteredCode) {
-    //        alert('Please enter the verification code.');
-    //        return;
-    //    }
+        const response = await fetch('/Flight/VerifyCode', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ enteredCode }) 
+        });
 
-    //    const response = await fetch('/Flight/VerifyCode', {
-    //        method: 'POST',
-    //        headers: { 'Content-Type': 'application/json' },
-    //        body: JSON.stringify({ enteredCode })
-    //    });
 
-    //    const result = await response.json();
-    //    if (result.success) {
-    //        alert('Verification successful!');
-    //        document.getElementById('passengerForm').submit();
-    //    } else {
-    //        alert(result.message);
-    //    }
-    //});
+        const result = await response.json();
+        if (result.success) {
+            alert('Verification successful!');
+            document.getElementById('passengerForm').submit();
+        } else {
+            alert(result.message);
+        }
+    });
 
 
 </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 
 

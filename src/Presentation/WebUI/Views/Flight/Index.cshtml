@@ -527,6 +527,7 @@
                                         class="selectFlightClass"
                                         data-class="Economy"
                                         data-flight-type="@Model.TripType"
+                                        onclick="setOutboundId(@item.Id)"
                          
                                         >
                                         <div>
@@ -569,7 +570,8 @@
             {
                 @foreach (var item in Model.ReturnFlights)
                 {
-                    <form class="flightform" asp-controller="flight" asp-action="detail" asp-route-outboundId="" asp-route-returnId="@item.Id" asp-route-adultCount="@Model.AdultCount" asp-route-childCount="@Model.ChildCount" asp-route-infantCount="@Model.InfantCount">
+                    <form class="flightform" asp-controller="flight" asp-action="detail" asp-route-outboundid="" asp-route-returnId="@item.Id" asp-route-adultCount="@Model.AdultCount" asp-route-childCount="@Model.ChildCount" asp-route-infantCount="@Model.InfantCount">
+             
                         <div class="flight_date d-flex">
                             <div class="left_column">
                                 <div class="d-flex">
@@ -956,75 +958,18 @@
 
 
 <script>
-    //document.querySelectorAll('.selectFlightClass').forEach(button => {
-    //    button.addEventListener('click', function (event) {
-    //        const flightClass = this.getAttribute('data-class');
-    //        document.getElementById('selectedFlightClass').value = flightClass;
+ 
+    function setOutboundId(outboundId) {
+        const forms = document.querySelectorAll('#returnSection form'); 
 
-    //    });
-    //});
-
-//    document.querySelectorAll('.selectFlightClass').forEach(button => {
-//    button.addEventListener('click', function (event) {
-//        event.preventDefault(); 
-//        const flightClass = this.getAttribute('data-class');
-//        const form = this.closest('form');
-//        form.querySelector('input[name="selectedFlightClass"]').value = flightClass;
-//        form.submit();
-//    });
-//});
-//    document.querySelectorAll(".selectFlightButton").forEach(button => {
-//        button.addEventListener("click", function () {
-//            const flightType = this.getAttribute("data-flight-type"); 
-//            const forms = document.querySelectorAll(".flightform");
-
-//            if (flightType === "oneway") {
-//                forms[0].submit();
-//                console.log("1");
-//            } else if (flightType === "return") {
-//                if (this.parentElement.parentElement === forms[0]) {
-//                    console.log("2");
-//                    document.querySelector("#returnSection").scrollIntoView();
-//                } else {
-//                    forms.forEach(form => form.submit());
-//                }
-//            }
-//        });
-//    });
-
-
-    //document.querySelectorAll('.selectFlightClass').forEach(button => {
-    //    button.addEventListener('click', function (event) {
-    //        event.preventDefault();
-    //        const flightClass = this.getAttribute('data-class');
-    //        const form = this.closest('form');
-    //        form.querySelector('input[name="selectedFlightClass"]').value = flightClass;
-    //        form.sumbit();
-    //    });
-    //});
-
-    //document.querySelectorAll(".selectFlightClass").forEach(button => {
-    //    button.addEventListener("click", function () {
-    //        const flightType = this.getAttribute("data-flight-type");
-    //        const forms = document.querySelectorAll(".flightform");
-
-    //        if (flightType === "oneway") {
-    //            if (forms.length > 0) {
-    //                forms[0].submit();
-    //            }
-    //        } else if (flightType === "return") {
-    //            if (forms.length === 1) {
-    //                return;
-    //            }
-
-    //            if (this.parentElement.closest("form") === forms[0]) {
-    //                document.querySelector("#returnSection").scrollIntoView({ behavior: "smooth", block: "start" }); 
-    //            } else {
-    //                forms.forEach(form => form.submit()); 
-    //            }
-    //        }
-    //    });
-    //});
+        forms.forEach(form => {
+            const currentAction = form.getAttribute('action'); 
+            const newAction = new URL(currentAction, window.location.origin);
+            newAction.searchParams.set('outboundId', outboundId);
+            form.setAttribute('action', newAction.toString());
+        });
+    }
+   
     document.querySelectorAll('.selectFlightClass').forEach(button => {
         button.addEventListener('click', function (event) {
             event.preventDefault();

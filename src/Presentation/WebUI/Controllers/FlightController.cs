@@ -246,7 +246,7 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult VerifyCode(string enteredCode)
+        public IActionResult VerifyCode([FromBody] string enteredCode)
         {
             var sessionCode = HttpContext.Session.GetString("VerificationCode");
             var sessionTimestamp = HttpContext.Session.GetString("VerificationCodeTimestamp");
